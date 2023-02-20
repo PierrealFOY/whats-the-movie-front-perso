@@ -1,0 +1,73 @@
+@font-face {
+  font-family: 'GroovyRetro Extrude';
+  src: url('../../assets/fonts/Groovy/GroovyRetroExtrudeRegular.eot');
+  src: local('GroovyRetro Extrude'), local('GroovyRetroExtrudeRegular'),
+    url('../../assets/fonts/Groovy/GroovyRetroExtrudeRegular.eot?#iefix') format('embedded-opentype'),
+    url('../../assets/fonts/Groovy/GroovyRetroExtrudeRegular.woff2') format('woff2'),
+    url('../../assets/fonts/Groovy/GroovyRetroExtrudeRegular.woff') format('woff'),
+    url('../../assets/fonts/Groovy/GroovyRetroExtrudeRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Groovy Retro';
+  src: url('../../assets/fonts/Groovy/GroovyRetroRegular.eot');
+  src: local('Groovy Retro'), local('GroovyRetroRegular'),
+      url('../../assets/fonts/Groovy/GroovyRetroRegular.eot?#iefix') format('embedded-opentype'),
+      url('../../assets/fonts/Groovy/GroovyRetroRegular.woff2') format('woff2'),
+      url('../../assets/fonts/Groovy/GroovyRetroRegular.woff') format('woff'),
+      url('../../assets/fonts/Groovy/GroovyRetroRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.test {
+  position: relative;
+  margin-top: 100px;  
+
+  .logo__back, .logo__front {
+    position: absolute;
+    top: 10px;
+    left: -40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }  
+
+  .logo__back-container, .logo__front-container {
+    height: 60px;
+    width: 400px;
+  }  
+
+  p {
+    font-size: 80px;
+    margin: 0;
+    text-align: center;
+  }
+
+  .back {
+    font-family: 'GroovyRetro Extrude';
+  }
+
+  .front {
+    font-family: 'Groovy Retro';
+    color: rgb(71, 179, 144);
+  }    
+
+  .center {
+    font-size: 60px;
+    position: absolute;
+    left: 170px;
+  }
+
+  .bottom {
+      position: absolute;
+      left: 100px;
+      top: 85px;
+  }  
+}
+

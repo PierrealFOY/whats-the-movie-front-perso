@@ -1,15 +1,60 @@
+@use '../../styles/vars';
+
 .home {
   height: 100vh;
   margin: 0;
   padding: 0;
-  background: url('../../assets/images/fond.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  text-align: center;
+  // background: url('../../assets/images/fond.jpg');
+  // background-size: cover;
+  // background-position: center;
+  // background-repeat: no-repeat;
+  background-color: #F4EBD0;
+  display: flex;
+  justify-content: center;
+  font-family: vars.$fontFredoka;
 
   &__container {
     display: flex;
     flex-direction: column;
+    width: 80%;
+
+    .home__logo {
+      margin: 1rem auto 2rem auto;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .home__button-container {
+      display: flex;
+      flex-direction: column;      
+      text-align: center;
+
+      .home__button {
+        margin: 1rem auto;
+        width: 90%;
+        box-shadow: 8px 8px 31px -3px rgba(0,0,0,0.72);
+        max-width: 400px;
+    
+        &.play {
+          background-color: #B97335;
+          border: 1px solid #6b482a;
+
+          &:hover {
+            background-color: #6b482a;
+            // border: 1px solid #B97335;            
+          }
+        }
+    
+        &.login {
+          border: 1px solid #6b482a;
+          color: #6b482a;
+
+          &:hover {
+            background-color: #6b482a;
+            color: #fff;
+          }
+        }
+      } 
+    }   
   }
 }
