@@ -1,1 +1,16 @@
+.app {
+  background-color: #F4EBD0;
+  padding: 0.5rem;
+}
 
+@media (min-width: 768px) {
+  .app {
+    padding: 1rem 10%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .app {
+    padding: 1rem 15%;
+  }
+}

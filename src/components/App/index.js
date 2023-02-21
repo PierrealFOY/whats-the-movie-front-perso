@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Header from '../Header';
 import Accueil from '../Accueil';
 import './styles.css';
+import Game from '../Game';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Accueil />} />
-          {/* Page de jeu */}
+          <Route path="/jeu" element={<Game />} />
           {/* Page de résultats */}
           {/* Page de connexion */}
         </Routes>

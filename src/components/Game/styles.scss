@@ -1,0 +1,75 @@
+@use '../../styles/vars';
+
+.game {
+  height: 100vh;
+  margin: 0;
+  background-color: #F4EBD0;
+  padding: 1rem; 
+  font-family: vars.$fontFredoka;
+  font-size: 0.9rem;
+
+  &__container {
+    border: 1px solid #6b482a63;
+    border-radius: 7px;
+    padding: 0.5rem;
+  }
+
+  &__affiche {
+    width: 70%;
+    height: 200px;
+    background-color: gray;
+    margin: 0 auto 1rem auto;
+    text-align: center;
+  }
+
+  &__indices {
+
+    &-container {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #6b482a5d;
+    }
+
+    &-title {
+      margin-bottom: 0.25rem;
+      text-decoration: underline;
+    }
+
+    &-items {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-item {
+      color: #6b482a;
+    }
+
+    .masked {
+      filter: blur(5px);
+      -webkit-filter: blur(5px);
+      transition: filter 0.5s linear;
+
+      &:hover {
+        filter: blur(0);
+        -webkit-filter: blur(0);
+      }
+    }
+  }
+}
+
+@media (min-width: 426px) {
+  .game__indices-items {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .game__indices-item {
+    margin-right: 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .game__container {
+    padding: 0.5rem 1rem;
+  }
+}
