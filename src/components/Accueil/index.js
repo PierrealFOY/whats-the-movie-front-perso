@@ -28,7 +28,7 @@ function Accueil() {
             variant="outline-success"
             size="lg"
           >
-            Connexion / Inscription
+            <NavLink to="/authentification" className="home__button-link">Connexion / Inscription</NavLink>
           </Button>
         </div>
       </div>

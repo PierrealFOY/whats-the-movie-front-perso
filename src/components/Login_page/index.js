@@ -1,4 +1,4 @@
-import styles from './styles.scss';
+import './styles.scss';
 import WTM from '../../assets/WTM.png';
 
 function LoginPage() {

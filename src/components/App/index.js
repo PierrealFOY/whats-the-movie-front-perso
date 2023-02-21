@@ -5,6 +5,7 @@ import Accueil from '../Accueil';
 import Footer from '../Footer';
 import './styles.css';
 import Game from '../Game';
+import LoginPage from '../Login_page';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Accueil />} />
           <Route path="/jeu" element={<Game />} />
+          <Route path="/authentification" element={<LoginPage />} />
           {/* Page de résultats */}
           {/* Page de connexion */}
         </Routes>

@@ -26,7 +26,10 @@ function Header() {
             </li>
             <li className="nav-item active">
               <button type="button">
-                <span className="nav-link button_top" href="#">Connexion<span className="sr-only">(current)</span></span>
+                <span className="nav-link button_top" href="#">
+                  <NavLink to="/authentification">Connexion</NavLink>
+                  <span className="sr-only">(current)</span>
+                </span>
               </button>
             </li>
           </ul>
