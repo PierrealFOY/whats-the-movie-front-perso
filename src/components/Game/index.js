@@ -1,4 +1,5 @@
 import './styles.scss';
+import { Button } from 'react-bootstrap';
 
 function Game() {
   return (
@@ -48,6 +49,36 @@ function Game() {
               <p className="game__indices-item masked">Action</p>
             </div>
           </div>
+        </div>
+        <div className="game__responses w-100">
+          <Button
+            className="game__responses-button col-9 col-sm-5"
+            variant="outline-success"
+            size="lg"
+          >
+            Film 1
+          </Button>
+          <Button
+            className="game__responses-button col-9 col-sm-5"
+            variant="outline-success"
+            size="lg"
+          >
+            Film 2
+          </Button>
+          <Button
+            className="game__responses-button col-9 col-sm-5"
+            variant="outline-success"
+            size="lg"
+          >
+            Film 3
+          </Button>
+          <Button
+            className="game__responses-button col-9 col-sm-5"
+            variant="outline-success"
+            size="lg"
+          >
+            Film 4
+          </Button>
         </div>
       </div>
     </div>

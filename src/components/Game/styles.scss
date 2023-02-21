@@ -37,11 +37,13 @@
 
     &-items {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
     }
 
     &-item {
       color: #6b482a;
+      margin-right: 0.5rem;
     }
 
     .masked {
@@ -55,16 +57,24 @@
       }
     }
   }
-}
 
-@media (min-width: 426px) {
-  .game__indices-items {
-    flex-direction: row;
+  &__responses {
+    margin-top: 1rem;
+    display: flex;
     flex-wrap: wrap;
-  }
+    justify-content: space-around;
 
-  .game__indices-item {
-    margin-right: 0.5rem;
+    &-button {
+      margin-bottom: 0.5rem;
+      border: 1px solid #6b482a;
+      color: #6b482a;
+
+      &:hover {
+        border: 1px solid #6b482a;
+        background-color: #6b482a;
+        color: #fff;
+      }      
+    }
   }
 }
 
