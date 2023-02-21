@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Header from '../Header';
 import Accueil from '../Accueil';
 import LoginPage from '../Login_page';
+import Results from '../Results';
 import Footer from '../Footer';
 import './styles.css';
 
@@ -19,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Accueil />} />
           {/* Page de jeu */}
-          {/* Page de résultats */}
+          <Route path="/results" element={<Results />} />
           {/* Page de connexion */}
         </Routes>
         <Footer />
