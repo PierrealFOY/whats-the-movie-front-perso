@@ -1,17 +1,81 @@
-.login_page{
+*{
+  background-color: #F4EBD0;
+}
+
+form{
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: 50px;
-  width: 50%;
-
-  .user{
-    width: 40%;
+  
+  img{
+    width: 15%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .login-icon{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
   }
 
-  .password{
+  .form-group{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+
+
+    .small-p{
+      color: gray;
+      text-decoration: underline;
+      margin: 10px;
+    }
+
+  }
+
+  .btn{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #46b290;
+    color: white;
+  }
+
+  .btn:hover {
+   transform: translateY(-0.33em);
+   background-color: #006666;
+   color: white;
+  }
+
+  .btn:active {
+   transform: translateY(0);
+  }
+
+  hr{
+    width: 30%;
+    border: solid 1px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media screen and (max-width: 600px) {
+    .btn{
+      text-align: center;
+      font-size: 0.5em;
+    }
+    .small-p{
+      font-size: 0.5em;
+    }
+  }
+  @media screen and (max-width: 300px) {
+    .btn{
+      text-align: center;
+      font-size: 0.2em;
+    }
+    .small-p{
+      font-size: 0.2em;
+    }
   }
 }
-
-
