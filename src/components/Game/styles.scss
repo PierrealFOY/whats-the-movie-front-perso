@@ -1,0 +1,118 @@
+@use '../../styles/vars';
+
+.game {
+  height: 100%;
+  margin: 0;
+  background-color: #F4EBD0;
+  padding: 1rem 0; 
+  font-family: vars.$fontFredoka;
+  font-size: 0.9rem;
+
+  &__container {
+    border: 1px solid #6b482a63;
+    border-radius: 7px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__score {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    width: 80%;
+    border: 1px solid #6b482a5d;
+
+    &-text {      
+      padding: 1rem;      
+    }
+  }
+
+  &__affiche {
+    width: 80%;
+    height: 200px;
+    background-color: gray;
+    margin: 0 auto 1rem auto;
+    text-align: center;
+  }
+
+  &__indices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+
+    &-container { 
+      width: 100%;     
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid #6b482a5d;
+    }
+
+    &-title {
+      margin-bottom: 0.25rem;
+      text-decoration: underline;
+    }
+
+    &-items {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    &-item {
+      color: #6b482a;
+      margin-right: 0.5rem;
+    }
+
+    .masked {
+      filter: blur(5px);
+      -webkit-filter: blur(5px);
+      transition: filter 0.5s linear;
+
+      &:hover {
+        filter: blur(0);
+        -webkit-filter: blur(0);
+      }
+    }
+  }
+
+  &__responses {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
+
+    &-button {
+      margin-bottom: 0.5rem;
+      border: 1px solid #6b482a;
+      color: #6b482a;
+
+      &:hover {
+        border: 1px solid #6b482a;
+        background-color: #6b482a;
+        color: #fff;
+      }      
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .game__responses {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1024px) {   
+  .game__container {
+      padding: 0.5rem 1rem;
+    }
+
+  .game__responses-button {
+    font-size: 0.8rem;
+    word-wrap: break-word;
+  }
+}

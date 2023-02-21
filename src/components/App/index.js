@@ -6,6 +6,7 @@ import Accueil from '../Accueil';
 import LoginPage from '../Login_page';
 import Footer from '../Footer';
 import './styles.css';
+import Game from '../Game';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Accueil />} />
-          {/* Page de jeu */}
+          <Route path="/jeu" element={<Game />} />
           {/* Page de résultats */}
           {/* Page de connexion */}
         </Routes>

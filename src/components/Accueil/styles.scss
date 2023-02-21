@@ -34,6 +34,7 @@
         width: 90%;
         box-shadow: 8px 8px 31px -3px rgba(0,0,0,0.72);
         max-width: 400px;
+        padding: 0;
     
         &.play {
           background-color: #B97335;
@@ -54,7 +55,24 @@
             color: #fff;
           }
         }
+
+        &-link {
+          width: 100%;
+          display: block;
+          padding: 0.5rem;
+
+          &:hover {
+            color: #fff;
+            text-decoration: none;
+          }
+        }
       } 
     }   
+  }
+}
+
+@media (max-width: 320px) {
+  .home__button {
+    font-size: 1rem;
   }
 }
