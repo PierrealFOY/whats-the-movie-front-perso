@@ -1,11 +1,14 @@
+
 import { ThemeProvider } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 import Header from '../Header';
 import Accueil from '../Accueil';
+import LoginPage from '../Login_page';
 import './styles.css';
 
 function App() {
   return (
+
     <ThemeProvider
       breakpoints={['xl', 'md', 'xs']}
       minBreakpoint="xs"
@@ -21,6 +24,7 @@ function App() {
         {/* Composant Footer */}
       </div>
     </ThemeProvider>
+
   );
 }
 
