@@ -1,5 +1,6 @@
-import './style.scss';
+import './styles.scss';
 import { Button } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import logo from '../../assets/images/logo-WTM.png';
 // import Logo from '../Logo';
 
@@ -19,7 +20,7 @@ function Accueil() {
             variant="success"
             size="lg"
           >
-            Jouer !
+            <NavLink to="/jeu" className="home__button-link">Jouer !</NavLink>
           </Button>
           {/* Button Login */}
           <Button
@@ -27,7 +28,7 @@ function Accueil() {
             variant="outline-success"
             size="lg"
           >
-            Connexion / Inscription
+            <NavLink to="/authentification" className="home__button-link">Connexion / Inscription</NavLink>
           </Button>
         </div>
       </div>

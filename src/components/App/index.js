@@ -1,12 +1,12 @@
-
 import { ThemeProvider } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 import Header from '../Header';
 import Accueil from '../Accueil';
-import LoginPage from '../Login_page';
 import Results from '../Results';
 import Footer from '../Footer';
 import './styles.css';
+import Game from '../Game';
+import LoginPage from '../Login_page';
 
 function App() {
   return (
@@ -19,7 +19,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Accueil />} />
-          {/* Page de jeu */}
+          <Route path="/jeu" element={<Game />} />
+          <Route path="/authentification" element={<LoginPage />} />
           <Route path="/results" element={<Results />} />
           {/* Page de connexion */}
         </Routes>
