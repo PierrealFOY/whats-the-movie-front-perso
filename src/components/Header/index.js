@@ -12,17 +12,17 @@ function Header() {
           <ul className="navbar-nav">
             <li className="nav-item active">
             <button>
-              <span className="nav-link button_top" href="#">Accueil<span class="sr-only">(current)</span></span>
+              <span className="nav-link button_top" href="#">Accueil<span className="sr-only">(current)</span></span>
             </button>
             </li>
             <li className="nav-item active">
             <button>
-              <span className="nav-link button_top" href="#">Quizz<span class="sr-only">(current)</span></span>
+              <span className="nav-link button_top" href="#">Quizz<span className="sr-only">(current)</span></span>
             </button>
             </li>
             <li className="nav-item active">
             <button>
-              <span className="nav-link button_top" href="#">Connexion<span class="sr-only">(current)</span></span>
+              <span className="nav-link button_top" href="#">Connexion<span className="sr-only">(current)</span></span>
             </button>
             </li>
           </ul>
