@@ -1,0 +1,151 @@
+@use '../../styles/vars';
+
+/* Conteneur principal */
+.results-container {
+  margin: 0 auto;
+  padding: 40px;
+  color: black;
+  font-family: vars.$fontFredoka;
+  background-color: vars.$principalColor;
+  
+/* Propriétés pour positionner votre container */
+  position: relative;
+  z-index: 1;
+
+  /* Logo */
+  .logo {
+    img.home-logo {
+      display: block;
+      margin: 0 auto 40px;
+      max-width: 200px;
+    }
+  }
+
+  /* Résultats */
+  .results {
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    padding: 4em;
+    -webkit-animation-name: fadeInOpacity;
+	        animation-name: fadeInOpacity;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+    -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+  
+        @-webkit-keyframes fadeInOpacity {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+        
+        @keyframes fadeInOpacity {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+
+    .results-bravo {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .results-sentence {
+      display: block;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .results-points {
+      display: block;
+      font-size: 48px;
+      font-weight: bold;
+      padding: 1em;
+      background-color: #226D68;
+      color: white;
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+      animation: wiggle 2s linear infinite;
+    }
+
+    @keyframes wiggle {
+      0%, 7% {
+        transform: rotateZ(0);
+      }
+      15% {
+        transform: rotateZ(-15deg);
+      }
+      20% {
+        transform: rotateZ(10deg);
+      }
+      25% {
+        transform: rotateZ(-10deg);
+      }
+      30% {
+        transform: rotateZ(6deg);
+      }
+      35% {
+        transform: rotateZ(-4deg);
+      }
+      40%, 100% {
+        transform: rotateZ(0);
+      }
+    }
+  }
+
+  /* Classement */
+  .ranking {
+    text-align: center;
+    margin-bottom: 40px;
+
+    .ranking-results {
+      font-size: 24px;
+    }
+  }
+
+  /* Boutons */
+  .btn {
+    display: flex;
+    justify-content: space-around;
+
+    .btn-playAgain,
+    .btn-BackHome {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .btn-playAgain {
+      background-color: #A7001E;
+      color: #fff;
+
+      &:hover {
+        background-color: #1E0F1C;
+      }
+    }
+
+    .btn-BackHome {
+      background-color: #317AC1;
+      color: #fff;
+
+      &:hover {
+        background-color: #1E0F1C;
+      }
+    }
+  }
+}

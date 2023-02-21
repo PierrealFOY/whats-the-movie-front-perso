@@ -2,6 +2,7 @@ import { ThemeProvider } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 import Header from '../Header';
 import Accueil from '../Accueil';
+import Results from '../Results';
 import Footer from '../Footer';
 import './styles.css';
 import Game from '../Game';
@@ -20,7 +21,7 @@ function App() {
           <Route path="/" element={<Accueil />} />
           <Route path="/jeu" element={<Game />} />
           <Route path="/authentification" element={<LoginPage />} />
-          {/* Page de résultats */}
+          <Route path="/results" element={<Results />} />
           {/* Page de connexion */}
         </Routes>
         <Footer />
