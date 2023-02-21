@@ -1,7 +1,17 @@
 import './styles.scss';
 import { Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getMovies } from '../../actions/movies';
 
 function Game() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMovies());
+  }, []);
+  const movie = useSelector((state) => state.movies.movies);
+  console.log(movie);
+
   return (
     <div className="game">
       <div className="game__container">
