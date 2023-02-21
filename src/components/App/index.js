@@ -1,5 +1,6 @@
 import { ThemeProvider } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
+import Header from '../Header';
 import Accueil from '../Accueil';
 import './styles.css';
 
@@ -10,7 +11,7 @@ function App() {
       minBreakpoint="xs"
     >
       <div className="app">
-        {/* Composant Header */}
+        <Header />
         <Routes>
           <Route path="/" element={<Accueil />} />
           {/* Page de jeu */}
