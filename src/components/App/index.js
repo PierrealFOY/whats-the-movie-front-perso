@@ -2,6 +2,7 @@ import { ThemeProvider } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 import Header from '../Header';
 import Accueil from '../Accueil';
+import Footer from '../Footer';
 import './styles.css';
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
           {/* Page de résultats */}
           {/* Page de connexion */}
         </Routes>
-        {/* Composant Footer */}
+        <Footer />
       </div>
     </ThemeProvider>
   );
