@@ -5,6 +5,9 @@ function Game() {
   return (
     <div className="game">
       <div className="game__container">
+        <div className="game__score">
+          <h1 className="game__score-text">Score : 0 points</h1>
+        </div>
         <div className="game__affiche">
           Affiche du film
           {/* affiche du film */}
@@ -50,34 +53,34 @@ function Game() {
             </div>
           </div>
         </div>
-        <div className="game__responses w-100">
+        <div className="game__responses">
           <Button
-            className="game__responses-button col-9 col-sm-5"
+            className="game__responses-button col-10 col-sm-5"
             variant="outline-success"
             size="lg"
           >
-            Film 1
+            Matrix
           </Button>
           <Button
-            className="game__responses-button col-9 col-sm-5"
+            className="game__responses-button col-10 col-sm-5"
             variant="outline-success"
             size="lg"
           >
-            Film 2
+            La Soupe Aux Choux
           </Button>
           <Button
-            className="game__responses-button col-9 col-sm-5"
+            className="game__responses-button col-10 col-sm-5"
             variant="outline-success"
             size="lg"
           >
-            Film 3
+            Avatar 2
           </Button>
           <Button
-            className="game__responses-button col-9 col-sm-5"
+            className="game__responses-button col-10 col-sm-5"
             variant="outline-success"
             size="lg"
           >
-            Film 4
+            Camping
           </Button>
         </div>
       </div>

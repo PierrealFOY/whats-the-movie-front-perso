@@ -1,10 +1,10 @@
 @use '../../styles/vars';
 
 .game {
-  height: 100vh;
+  height: 100%;
   margin: 0;
   background-color: #F4EBD0;
-  padding: 1rem; 
+  padding: 1rem 0; 
   font-family: vars.$fontFredoka;
   font-size: 0.9rem;
 
@@ -12,10 +12,26 @@
     border: 1px solid #6b482a63;
     border-radius: 7px;
     padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__score {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    width: 80%;
+    border: 1px solid #6b482a5d;
+
+    &-text {      
+      padding: 1rem;      
+    }
   }
 
   &__affiche {
-    width: 70%;
+    width: 80%;
     height: 200px;
     background-color: gray;
     margin: 0 auto 1rem auto;
@@ -23,11 +39,16 @@
   }
 
   &__indices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
 
-    &-container {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid #6b482a5d;
+    &-container { 
+      width: 100%;     
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid #6b482a5d;
     }
 
     &-title {
@@ -62,7 +83,8 @@
     margin-top: 1rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 80%;
 
     &-button {
       margin-bottom: 0.5rem;
@@ -78,8 +100,19 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 576px) {
+  .game__responses {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1024px) {   
   .game__container {
-    padding: 0.5rem 1rem;
+      padding: 0.5rem 1rem;
+    }
+
+  .game__responses-button {
+    font-size: 0.8rem;
+    word-wrap: break-word;
   }
 }
