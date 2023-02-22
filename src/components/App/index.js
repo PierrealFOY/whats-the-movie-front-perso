@@ -36,7 +36,6 @@ function App() {
           <Route path="/authentification" element={<LoginPage />} />
           <Route path="/results" element={<Results handleResetGame={handleResetGame} />} />
           <Route path="*" element={<Errors />} />
-          <Route path="/add" element={<AddMovies />} />
           {/* Page de connexion */}
         </Routes>
         <Footer />
