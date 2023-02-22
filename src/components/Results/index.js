@@ -1,5 +1,6 @@
 import './styles.scss'
 import logo from '../../assets/images/logo-WTM.png';
+import { NavLink } from 'react-router-dom';
 
 function Results() {
   return (
@@ -16,8 +17,8 @@ function Results() {
         <span className="ranking-results">Vous êtes 7ème</span>
       </div>
       <div className="btn">
-        <button className="btn-playAgain">Rejouer</button>
-        <button className="btn-BackHome">Retour à l'accueil</button>
+        <NavLink to="/jeu" className="btn-playAgain">Rejouer </NavLink>
+        <NavLink to="/" className="btn-BackHome">Retour à l'accueil</NavLink>
       </div>
     </div>
   );
