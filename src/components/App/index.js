@@ -9,6 +9,7 @@ import Footer from '../Footer';
 import Game from '../Game';
 import LoginPage from '../Login_page';
 import Errors from '../Errors';
+import AddMovies from '../Add_movies';
 
 import './styles.css';
 
@@ -35,6 +36,7 @@ function App() {
           <Route path="/authentification" element={<LoginPage />} />
           <Route path="/results" element={<Results handleResetGame={handleResetGame} />} />
           <Route path="*" element={<Errors />} />
+          <Route path="/add" element={<AddMovies />} />
           {/* Page de connexion */}
         </Routes>
         <Footer />
