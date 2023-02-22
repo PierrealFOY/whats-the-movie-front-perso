@@ -1,5 +1,6 @@
 import './styles.scss';
 import Logo404 from './../../assets/images/404.png'
+import { NavLink } from 'react-router-dom';
 
 function Errors() {
   return (
@@ -19,7 +20,7 @@ function Errors() {
       </div>
       <h2>Page non trouvée</h2>
       <p>La page que vous recherchez n'existe pas ou est temporairement indisponible.</p>
-      <button to="/">Retour à l'accueil</button>
+      <NavLink className="error-home" to="/">Retour à l'accueil</NavLink>
       <div className="error-animation"></div>
     </div>
   );
