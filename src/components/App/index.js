@@ -6,9 +6,11 @@ import Header from '../Header';
 import Accueil from '../Accueil';
 import Results from '../Results';
 import Footer from '../Footer';
-import './styles.css';
 import Game from '../Game';
 import LoginPage from '../Login_page';
+import Errors from '../Errors';
+
+import './styles.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +34,7 @@ function App() {
           <Route path="/jeu" element={<Game handleResponse={handleResponse} />} />
           <Route path="/authentification" element={<LoginPage />} />
           <Route path="/results" element={<Results handleResetGame={handleResetGame} />} />
+          <Route path="*" element={<Errors />} />
           {/* Page de connexion */}
         </Routes>
         <Footer />
