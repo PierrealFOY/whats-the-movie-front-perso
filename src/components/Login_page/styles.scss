@@ -1,5 +1,8 @@
+@use '../../styles/vars';
+
 .LoginPage{
   background-color: #F4EBD0;
+  font-family: vars.$fontFredoka;
 }
 
 form{
@@ -39,6 +42,7 @@ form{
   .btn{
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1%;
     background-color: #46b290;
     color: white;
   }
