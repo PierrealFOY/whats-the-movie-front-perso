@@ -1,7 +1,14 @@
-import './styles.scss'
+import PropTypes from 'prop-types';
+import './styles.scss';
+import { NavLink } from 'react-router-dom';
 import logo from '../../assets/images/logo-WTM.png';
 
-function Results() {
+function Results({ handleResetGame }) {
+  const handleReplay = (evt) => {
+    evt.preventDefault();
+    handleResetGame();
+  };
+
   return (
     <div className="results-container">
       <div className="logo">
@@ -16,11 +23,28 @@ function Results() {
         <span className="ranking-results">Vous êtes 7ème</span>
       </div>
       <div className="btn">
-        <button className="btn-playAgain">Rejouer</button>
-        <button className="btn-BackHome">Retour à l'accueil</button>
+        <button type="button" className="btn-playAgain" onClick={handleReplay}>
+          <NavLink
+            to="/jeu"
+
+          >
+            Rejouer
+          </NavLink>
+        </button>
+        <button type="button" className="btn-BackHome">
+          <NavLink
+            to="/"
+          >
+            Retour à l'accueil
+          </NavLink>
+        </button>
       </div>
     </div>
   );
 }
+
+Results.propTypes = {
+  handleResetGame: PropTypes.func.isRequired,
+};
 
 export default Results;

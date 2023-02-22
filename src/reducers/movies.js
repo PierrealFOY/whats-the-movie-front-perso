@@ -1,7 +1,9 @@
-import { FETCH_MOVIES } from '../actions/movies';
+import { FETCH_MOVIES, NEXT_MOVIE, RESET_GAME } from '../actions/movies';
+import data from '../data/data';
 
 export const initialState = {
-  movies: [],
+  movies: data,
+  tour: 0,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -11,6 +13,19 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         movies: action.data,
       };
+
+    case NEXT_MOVIE:
+      return {
+        ...state,
+        tour: state.tour + 1,
+      };
+
+    case RESET_GAME:
+      return {
+        ...state,
+        tour: 0,
+      };
+
     default:
       return state;
   }

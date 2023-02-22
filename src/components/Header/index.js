@@ -1,8 +1,13 @@
+import PropTypes from 'prop-types';
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
 import logo from './logo.png';
 
-function Header() {
+function Header({ handleResetGame }) {
+  const handleClickHome = (evt) => {
+    evt.preventDefault();
+    handleResetGame();
+  };
   return (
     <header>
       <nav className="navbar navbar-expand-sm navbar-light">
@@ -12,7 +17,7 @@ function Header() {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <button type="button">
+              <button type="button" onClick={handleClickHome}>
                 <span className="nav-link button_top" href="#">
                   <NavLink to="/">Accueil</NavLink>
                   <span className="sr-only">(current)</span>
@@ -39,5 +44,9 @@ function Header() {
     </header>
   );
 }
+
+Header.propTypes = {
+  handleResetGame: PropTypes.func.isRequired,
+};
 
 export default Header;
