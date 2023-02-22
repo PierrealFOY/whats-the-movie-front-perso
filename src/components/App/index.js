@@ -4,9 +4,11 @@ import Header from '../Header';
 import Accueil from '../Accueil';
 import Results from '../Results';
 import Footer from '../Footer';
-import './styles.css';
 import Game from '../Game';
 import LoginPage from '../Login_page';
+import Errors from '../Errors';
+
+import './styles.css';
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
           <Route path="/jeu" element={<Game />} />
           <Route path="/authentification" element={<LoginPage />} />
           <Route path="/results" element={<Results />} />
+          <Route path="*" element={<Errors />} />
           {/* Page de connexion */}
         </Routes>
         <Footer />
