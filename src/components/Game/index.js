@@ -3,6 +3,7 @@ import './styles.scss';
 import { Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { formatDate } from '../utils';
 
 function Game({ handleResponse }) {
   const handleButtonClick = (evt) => {
@@ -14,16 +15,6 @@ function Game({ handleResponse }) {
   const movies = useSelector((state) => state.movies.movies);
   const movie = movies[tour];
 
-  const formatDate = (date) => {
-    const dateToFormat = new Date(date);
-    const options = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    };
-
-    return dateToFormat.toLocaleDateString('fr-FR', options);
-  };
   return (
     <div className="game">
       <div className="game__container">

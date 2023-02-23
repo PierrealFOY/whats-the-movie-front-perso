@@ -18,6 +18,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         movies: action.data,
+        tour: 0,
       };
 
     case NEXT_MOVIE:
@@ -31,6 +32,7 @@ const reducer = (state = initialState, action = {}) => {
       // resets the game turn number to 0
       return {
         ...state,
+        movies: [],
         tour: 0,
       };
 
