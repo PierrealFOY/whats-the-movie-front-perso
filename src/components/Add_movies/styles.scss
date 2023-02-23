@@ -1,0 +1,91 @@
+@use '../../styles/vars';
+
+.AddMovies{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-family: vars.$fontFredoka;
+}
+
+.add_new{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+
+.button_module{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+
+  button{
+    width: 20%;
+    color: white;
+    padding: 20px;
+
+    &:hover{
+      transform: translateY(-0.33em);
+    }
+
+    &:active{
+      transform: translateY(0);
+    }
+
+    &:first-child{
+      background-color: #46b290;
+
+      &:hover{
+        background-color: #006666;
+      }
+    }
+
+    &:last-child{
+      background-color: red;
+
+      &:hover{
+        background-color: #B22222;}
+    }
+  }
+}
+
+.left{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  padding: 5%;
+  width: 50%;
+
+  input{
+    width: 80%;
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+    border: solid 2px darkgrey;
+    border-radius: 2px;
+    }
+
+  .synopsis_input{
+    height: 90px;
+  }
+}
+
+.right{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 5%;
+  width: 50%;
+
+
+  input{
+    width: 80%;
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+    border: solid 2px darkgrey;
+    border-radius: 2px;
+    }
+    
+}
+
