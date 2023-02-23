@@ -15,6 +15,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 1024px) {   
+      padding: 0.5rem 1rem;
+    }
   }
 
   &__score {
@@ -121,22 +125,15 @@
         padding: 0.5rem 1rem;
       }
     }
+
+    @media (max-width: 576px) {
+      justify-content: center;
+    }    
+  }
+
+  &__next-movie {
+    width: 80%;
+    text-align: center;
   }
 }
 
-@media (max-width: 576px) {
-  .game__responses {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 1024px) {   
-  .game__container {
-      padding: 0.5rem 1rem;
-    }
-
-  .game__responses-button {
-    font-size: 0.8rem;
-    word-wrap: break-word;
-  }
-}

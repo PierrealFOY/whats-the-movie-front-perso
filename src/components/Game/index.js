@@ -1,11 +1,13 @@
+/* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
 import './styles.scss';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { formatDate } from '../utils';
 import ResponseButton from './ResponseButton';
+import NextMovieButton from './NextMovieButton';
 
-function Game({ handleBeginGame, handleResponse, getResponses }) {
+function Game({ handleBeginGame, handleNextMovie, getResponses }) {
   // when the page loads for the first time,
   // we load the list of the movies
   useEffect(() => {
@@ -40,6 +42,8 @@ function Game({ handleBeginGame, handleResponse, getResponses }) {
     // getting the title of the movie at the random index
     responses[random].title = movie.title;
   }
+
+  const userResponse = useSelector((state) => state.movies.userResponse);
 
   return (
     <div className="game">
@@ -132,21 +136,35 @@ function Game({ handleBeginGame, handleResponse, getResponses }) {
                     </div>
                   </div>
                 </div>
-                <div className="game__responses">
-                  {
-                    responses.length > 0
-                      ? responses.map((response) => (
-                        <ResponseButton
-                          key={response.id}
+                {
+                  // no response given yet
+                  userResponse === ''
+                    ? (
+                      <div className="game__responses">
+                        {
+                        responses.length > 0
+                          ? responses.map((response) => (
+                            <ResponseButton
+                              title={response.title}
+                              idResponse={response.id}
+                              idCurrentMovie={movie.id}
+                              key={response.id}
+                            />
+                          ))
+                          : undefined
+                        }
+                      </div>
+                    )
+                    : (
+                      <div className="game__next-movie">
+                        <NextMovieButton
                           tour={tour}
-                          id={response.id}
-                          title={response.title}
-                          handleResponse={handleResponse}
+                          handleNextMovie={handleNextMovie}
+                          userResponse={userResponse}
                         />
-                      ))
-                      : undefined
-                  }
-                </div>
+                      </div>
+                    )
+                }
               </>
             )
             : undefined
@@ -158,7 +176,7 @@ function Game({ handleBeginGame, handleResponse, getResponses }) {
 
 Game.propTypes = {
   handleBeginGame: PropTypes.func.isRequired,
-  handleResponse: PropTypes.func.isRequired,
+  handleNextMovie: PropTypes.func.isRequired,
   getResponses: PropTypes.func.isRequired,
 };
 

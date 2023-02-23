@@ -20,7 +20,7 @@ import './styles.css';
 function App() {
   const dispatch = useDispatch();
 
-  const handleResponse = () => {
+  const handleNextMovie = () => {
     dispatch(nextMovie());
   };
 
@@ -45,7 +45,7 @@ function App() {
         <Header handleResetGame={handleResetGame} />
         <Routes>
           <Route path="/" element={<Accueil />} />
-          <Route path="/jeu" element={<Game handleBeginGame={handleBeginGame} handleResponse={handleResponse} getResponses={getMoviesResponsesForButtons} />} />
+          <Route path="/jeu" element={<Game handleBeginGame={handleBeginGame} handleNextMovie={handleNextMovie} getResponses={getMoviesResponsesForButtons} />} />
           <Route path="/authentification" element={<LoginPage />} />
           <Route path="/results" element={<Results handleResetGame={handleResetGame} handleReplay={handleBeginGame} />} />
           <Route path="*" element={<Errors />} />

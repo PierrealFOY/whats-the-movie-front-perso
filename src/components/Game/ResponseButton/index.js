@@ -1,20 +1,35 @@
 import PropTypes from 'prop-types';
 import './styles.scss';
 import { Button } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setUserResponse } from '../../../actions/movies';
 
 function ResponseButton({
-  tour,
   title,
-  handleResponse,
+  idResponse,
+  idCurrentMovie,
 }) {
+  const dispatch = useDispatch();
+
+  const setResponse = () => {
+    document.querySelectorAll('.masked').forEach((element) => {
+      element.classList.remove('masked');
+    });
+    if (idResponse === idCurrentMovie) {
+      dispatch(setUserResponse('T'));
+    }
+    else {
+      dispatch(setUserResponse('F'));
+    }
+  };
+
   /**
    * Handler of the click on the Response buttons
    * @param {*} evt
    */
   const handleButtonClick = (evt) => {
     evt.preventDefault();
-    handleResponse();
+    setResponse();
   };
 
   return (
@@ -22,21 +37,17 @@ function ResponseButton({
       className="responses__button col-10 col-sm-5"
       variant="outline-success"
       size="lg"
-      onClick={tour !== 4 ? handleButtonClick : null}
+      onClick={handleButtonClick}
     >
-      {
-        tour === 4
-          ? <NavLink to="/results"><p className="responses__button-text">{title}</p></NavLink>
-          : <p className="responses__button-text">{title}</p>
-      }
+      <p className="responses__button-text">{title}</p>
     </Button>
   );
 }
 
 ResponseButton.propTypes = {
-  tour: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  handleResponse: PropTypes.func.isRequired,
+  idResponse: PropTypes.number.isRequired,
+  idCurrentMovie: PropTypes.number.isRequired,
 };
 
 export default ResponseButton;
