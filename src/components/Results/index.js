@@ -5,12 +5,13 @@ import logo from '../../assets/images/logo-WTM.png';
 import { stopTimer } from '../../actions/movies';
 import { useDispatch } from 'react-redux';
 
-function Results({ handleResetGame }) {
+function Results({ handleResetGame, handleReplay }) {
   const dispatch = useDispatch()
-
-  const handleReplay = (evt) => {
+  
+  const handleClickReplay = (evt) => {
     evt.preventDefault();
     handleResetGame();
+    handleReplay();
     dispatch(stopTimer());
   };
 
@@ -28,7 +29,7 @@ function Results({ handleResetGame }) {
         <span className="ranking-results">Vous êtes 7ème</span>
       </div>
       <div className="btn">
-        <button type="button" className="btn-playAgain" onClick={handleReplay}>
+        <button type="button" className="btn-playAgain" onClick={handleClickReplay}>
           <NavLink
             to="/jeu"
 
@@ -50,6 +51,7 @@ function Results({ handleResetGame }) {
 
 Results.propTypes = {
   handleResetGame: PropTypes.func.isRequired,
+  handleReplay: PropTypes.func.isRequired,
 };
 
 export default Results;
