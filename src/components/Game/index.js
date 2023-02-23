@@ -2,7 +2,10 @@
 import PropTypes from 'prop-types';
 import './styles.scss';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { Button } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { startTimer, resetTimer, updateTime } from '../../actions/movies';
 import { formatDate } from '../utils';
 import ResponseButton from './ResponseButton';
 import NextMovieButton from './NextMovieButton';
@@ -13,12 +16,41 @@ function Game({ handleBeginGame, handleNextMovie, getResponses }) {
   useEffect(() => {
     handleBeginGame();
   }, []);
+  
+  const dispatch = useDispatch();
+  
+  const handleButtonClick = (evt) => {
+    evt.preventDefault();
+    handleResponse();
+    dispatch(resetTimer())
+  };
 
   // game turn number
   const tour = useSelector((state) => state.movies.tour);
   // list of the movies
   const movies = useSelector((state) => state.movies.movies);
 
+  //Timer
+  const time = useSelector((state) => state.timer.time);
+  const running = useSelector((state) => state.timer.running);
+
+  const handleStartButtonClick = (evt) => {
+      evt.preventDefault();
+      dispatch(startTimer());
+  };
+
+  useEffect(() => {
+    let timer = null;
+    if (running) {
+      timer = setInterval(() => {
+        dispatch(updateTime());
+      }, 1000);
+    } else {
+      clearInterval(timer);
+    }
+    return () => clearInterval(timer);
+  }, [running]);
+    
   useEffect(() => {
     // everytime a movie is guessed,
     // we re-generate the responses
@@ -53,6 +85,10 @@ function Game({ handleBeginGame, handleNextMovie, getResponses }) {
           movies.length > 0 && responses.length > 0
             ? (
               <>
+                <div>
+                  <button className="game__bouton-start" onClick={handleStartButtonClick}>Commencer la partie</button>
+                </div>
+                <h1 className="game__countdown">Timer: {time}</h1>
                 <div className="game__score">
                   <h1 className="game__score-text">Score : 0 points</h1>
                 </div>

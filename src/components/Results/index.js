@@ -2,12 +2,17 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/images/logo-WTM.png';
+import { stopTimer } from '../../actions/movies';
+import { useDispatch } from 'react-redux';
 
 function Results({ handleResetGame, handleReplay }) {
+  const dispatch = useDispatch()
+  
   const handleClickReplay = (evt) => {
     evt.preventDefault();
     handleResetGame();
     handleReplay();
+    dispatch(stopTimer());
   };
 
   return (

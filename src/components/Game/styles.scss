@@ -8,6 +8,63 @@
   font-family: vars.$fontFredoka;
   font-size: 0.9rem;
 
+  &__bouton-start {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: #A7001E;
+    color: #fff;
+
+      &:hover {
+        background-color: #1E0F1C;
+      }
+  }
+
+  &__countdown {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    counter-reset: my-count 5;
+    animation: countdown 5s linear infinite;
+    padding: 2em;
+    border-radius: 10px;
+    margin-bottom: 2em;
+    margin-top: 2em;
+    font-size: 1rem;
+  }
+
+  @keyframes countdown {
+    0% {
+      background: hsl(0,100%,20%);
+    }
+    20% {
+      counter-increment: my-count -1;
+      background: hsl(90,100%,20%);
+    }
+    40% {
+      counter-increment: my-count -2;
+      background: hsl(180,100%,20%);
+    }
+    60% {
+      counter-increment: my-count -3;
+      background: hsl(270,100%,20%);
+    }
+    80% {
+      counter-increment: my-count -4;
+      background: hsl(360,100%,20%);
+    }
+    100% {
+      background: hsl(0,100%,20%);
+    }
+  }
+
   &__container {
     border: 1px solid #6b482a63;
     border-radius: 7px;

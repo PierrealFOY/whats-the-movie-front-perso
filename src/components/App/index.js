@@ -47,7 +47,9 @@ function App() {
           <Route path="/" element={<Accueil />} />
           <Route path="/jeu" element={<Game handleBeginGame={handleBeginGame} handleNextMovie={handleNextMovie} getResponses={getMoviesResponsesForButtons} />} />
           <Route path="/authentification" element={<LoginPage />} />
+
           <Route path="/results" element={<Results handleResetGame={handleResetGame} handleReplay={handleBeginGame} />} />
+          
           <Route path="*" element={<Errors />} />
         </Routes>
         <Footer />
