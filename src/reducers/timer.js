@@ -1,4 +1,4 @@
-import { START_TIMER, RESET_TIMER, UPDATE_TIME } from './../actions/movies'
+import { START_TIMER, RESET_TIMER, UPDATE_TIME, STOP_TIMER } from './../actions/movies'
 
 const initialState = {
   time: 60,
@@ -15,14 +15,22 @@ const reducer = (state = initialState, action) => {
     case RESET_TIMER:
       return {
         ...state,
-        time : action.payload,
-        running: false,
+        time : 60,
+        running: true,
       };
     case UPDATE_TIME:
       return {
         ...state,
         time: state.time - 1,
       };
+    
+    case  STOP_TIMER:
+      return {
+        ...state,
+        time: 60,
+        running: false,
+      }
+      
     default:
       return state;
   }

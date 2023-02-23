@@ -5,6 +5,7 @@ export const RESET_GAME = 'RESET_GAME';
 
 // Timer
 export const START_TIMER = 'START_TIMER'
+export const STOP_TIMER  = 'STOP_TIMER' 
 export const RESET_TIMER = 'RESET_TIMER'
 export const UPDATE_TIME = 'UPDATE_TIME'
 
@@ -35,5 +36,9 @@ export const updateTime = () => ({
 })
 
 export const resetTimer = () => ({
-  type: RESET_GAME,
+  type: RESET_TIMER,
+})
+
+export const stopTimer = () => ({
+  type: STOP_TIMER
 })

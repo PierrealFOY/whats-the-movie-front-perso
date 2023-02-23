@@ -12,6 +12,7 @@ function Game({ handleResponse }) {
   const handleButtonClick = (evt) => {
     evt.preventDefault();
     handleResponse();
+    dispatch(resetTimer())
   };
 
   const tour = useSelector((state) => state.movies.tour);
@@ -21,12 +22,9 @@ function Game({ handleResponse }) {
   const time = useSelector((state) => state.timer.time);
   const running = useSelector((state) => state.timer.running);
 
-  const handleStartButtonClick = () => {
+  const handleStartButtonClick = (evt) => {
+      evt.preventDefault();
       dispatch(startTimer());
-  };
-
-  const handleResetButtonClick = () => {
-    dispatch(resetTimer());
   };
 
   useEffect(() => {
@@ -39,7 +37,7 @@ function Game({ handleResponse }) {
       clearInterval(timer);
     }
     return () => clearInterval(timer);
-  }, [running, dispatch]);
+  }, [running]);
 
   const formatDate = (date) => {
     const dateToFormat = new Date(date);
@@ -55,10 +53,9 @@ function Game({ handleResponse }) {
     <div className="game">
       <div className="game__container">
         <div>
-        <h1>Quiz Timer: {time}</h1>
-              <button onClick={handleStartButtonClick} disabled={running}>Start</button>
-              <button onClick={handleResetButtonClick} disabled={!running}>Reset</button>
+              <button className="game__bouton-start" onClick={handleStartButtonClick}>Commencer la partie</button>
         </div>
+        <h1 className="game__countdown">Timer: {time}</h1>
 
         <div className="game__score">
           <h1 className="game__score-text">Score : 0 points</h1>
