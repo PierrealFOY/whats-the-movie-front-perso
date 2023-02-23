@@ -1,12 +1,12 @@
 import { FETCH_MOVIES, NEXT_MOVIE, RESET_GAME } from '../actions/movies';
-import data from '../data/data';
+// import data from '../data/data';
 
 /**
  * Initial state
  */
 export const initialState = {
   // list of the movies
-  movies: data,
+  movies: [],
   // game turn number
   tour: 0,
 };
