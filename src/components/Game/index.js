@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import './styles.scss';
+import { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { formatDate } from '../utils';
 
-function Game({ handleResponse }) {
+function Game({ handleResponse, getResponses }) {
   const handleButtonClick = (evt) => {
     evt.preventDefault();
     handleResponse();
@@ -13,7 +14,19 @@ function Game({ handleResponse }) {
 
   const tour = useSelector((state) => state.movies.tour);
   const movies = useSelector((state) => state.movies.movies);
+
+  useEffect(() => {
+    getResponses();
+  }, [tour]);
+
+  const responses = useSelector((state) => state.movies.responses);
   const movie = movies[tour];
+
+  if (responses.length > 0 && (responses.findIndex((element) => element.id === movie.id) === -1)) {
+    const random = Math.floor(Math.random() * 4);
+    responses[random].id = movie.id;
+    responses[random].title = movie.title;
+  }
 
   return (
     <div className="game">
@@ -28,6 +41,7 @@ function Game({ handleResponse }) {
                 </div>
                 <div className="game__affiche">
                   <img className="game__affiche-poster" src={movie.poster} alt="Movie Poster" />
+                  <h1>{movie.title}</h1>
                 </div>
                 <div className="game__indices">
                   <div className="game__indices-container">
@@ -106,7 +120,24 @@ function Game({ handleResponse }) {
                   </div>
                 </div>
                 <div className="game__responses">
-                  <Button
+                  {
+                    responses.length > 0
+                      ? responses.map((response) => (
+                        <Button
+                          key={response.id}
+                          className="game__responses-button col-10 col-sm-5"
+                          variant="outline-success"
+                          size="lg"
+                          onClick={tour !== 4 ? handleButtonClick : null}
+                        >
+                          {
+                            tour === 4 ? <NavLink to="/results">{response.title}</NavLink> : response.title
+                          }
+                        </Button>
+                      ))
+                      : undefined
+                  }
+                  {/* <Button
                     className="game__responses-button col-10 col-sm-5"
                     variant="outline-success"
                     size="lg"
@@ -123,7 +154,9 @@ function Game({ handleResponse }) {
                     onClick={tour !== 4 ? handleButtonClick : null}
                   >
                     {
-                      tour === 4 ? <NavLink to="/results">La Soupe Aux Choux</NavLink> : 'La Soupe Aux Choux'
+                      tour === 4
+                      ? <NavLink to="/results">La Soupe Aux Choux</NavLink>
+                      : 'La Soupe Aux Choux'
                     }
                   </Button>
                   <Button
@@ -145,7 +178,7 @@ function Game({ handleResponse }) {
                     {
                       tour === 4 ? <NavLink to="/results">Camping</NavLink> : 'Camping'
                     }
-                  </Button>
+                  </Button> */}
                 </div>
               </>
             )
@@ -158,6 +191,7 @@ function Game({ handleResponse }) {
 
 Game.propTypes = {
   handleResponse: PropTypes.func.isRequired,
+  getResponses: PropTypes.func.isRequired,
 };
 
 export default Game;

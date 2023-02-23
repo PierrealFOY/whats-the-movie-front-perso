@@ -3,13 +3,13 @@ import './styles.scss';
 import { Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/images/logo-WTM.png';
-// import Logo from '../Logo';
 
 function Accueil({ handleBeginGame }) {
   const handleClickBeginGame = (evt) => {
     evt.preventDefault();
     handleBeginGame();
   };
+
   return (
     // main page
     <main className="home">

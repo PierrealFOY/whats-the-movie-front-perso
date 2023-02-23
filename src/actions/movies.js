@@ -2,6 +2,8 @@ export const GET_MOVIES = 'GET_MOVIES';
 export const FETCH_MOVIES = 'FETCH_MOVIES';
 export const NEXT_MOVIE = 'NEXT_MOVIE';
 export const RESET_GAME = 'RESET_GAME';
+export const GET_MOVIES_RESPONSES = 'GET_MOVIES_RESPONSES';
+export const FETCH_MOVIES_RESPONSES = 'FETCH_MOVIES_RESPONSES';
 
 /**
  * Getting movies from the API
@@ -31,4 +33,13 @@ export const nextMovie = () => ({
  */
 export const resetGame = () => ({
   type: RESET_GAME,
+});
+
+export const getMoviesResponses = () => ({
+  type: GET_MOVIES_RESPONSES,
+});
+
+export const fetchMoviesResponses = (responses) => ({
+  type: FETCH_MOVIES_RESPONSES,
+  responses: responses,
 });

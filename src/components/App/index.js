@@ -1,7 +1,12 @@
 import { ThemeProvider } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { getMovies, nextMovie, resetGame } from '../../actions/movies';
+import {
+  getMovies,
+  getMoviesResponses,
+  nextMovie,
+  resetGame,
+} from '../../actions/movies';
 import Header from '../Header';
 import Accueil from '../Accueil';
 import Results from '../Results';
@@ -14,6 +19,7 @@ import './styles.css';
 
 function App() {
   const dispatch = useDispatch();
+
   const handleResponse = () => {
     dispatch(nextMovie());
   };
@@ -26,6 +32,10 @@ function App() {
     dispatch(getMovies());
   };
 
+  const getMoviesResponsesForButtons = (test) => {
+    dispatch(getMoviesResponses(test));
+  };
+
   return (
     <ThemeProvider
       breakpoints={['xl', 'md', 'xs']}
@@ -35,11 +45,10 @@ function App() {
         <Header handleResetGame={handleResetGame} />
         <Routes>
           <Route path="/" element={<Accueil handleBeginGame={handleBeginGame} />} />
-          <Route path="/jeu" element={<Game handleResponse={handleResponse} />} />
+          <Route path="/jeu" element={<Game handleResponse={handleResponse} getResponses={getMoviesResponsesForButtons} />} />
           <Route path="/authentification" element={<LoginPage />} />
           <Route path="/results" element={<Results handleResetGame={handleResetGame} handleReplay={handleBeginGame} />} />
           <Route path="*" element={<Errors />} />
-          {/* Page de connexion */}
         </Routes>
         <Footer />
       </div>

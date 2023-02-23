@@ -1,5 +1,9 @@
-import { FETCH_MOVIES, NEXT_MOVIE, RESET_GAME } from '../actions/movies';
-// import data from '../data/data';
+import {
+  FETCH_MOVIES,
+  FETCH_MOVIES_RESPONSES,
+  NEXT_MOVIE,
+  RESET_GAME,
+} from '../actions/movies';
 
 /**
  * Initial state
@@ -9,6 +13,8 @@ export const initialState = {
   movies: [],
   // game turn number
   tour: 0,
+  // possibles responses to give to the gamer
+  responses: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -26,6 +32,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         tour: state.tour + 1,
+        responses: [],
       };
 
     case RESET_GAME:
@@ -34,6 +41,13 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         movies: [],
         tour: 0,
+        responses: [],
+      };
+
+    case FETCH_MOVIES_RESPONSES:
+      return {
+        ...state,
+        responses: action.responses,
       };
 
     default:
