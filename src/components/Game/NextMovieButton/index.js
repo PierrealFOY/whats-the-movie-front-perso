@@ -3,12 +3,18 @@ import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { resetTimer } from '../../../actions/movies';
 
 function NextMovieButton({ tour, handleNextMovie, userResponse }) {
+  const dispatch = useDispatch();
+
   const handleButtonClick = (evt) => {
     evt.preventDefault();
+    dispatch(resetTimer());
     handleNextMovie();
   };
+
   return (
     <Button
       className="responses__button col-10 col-sm-5"

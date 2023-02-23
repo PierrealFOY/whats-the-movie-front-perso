@@ -6,13 +6,11 @@ export const GET_MOVIES_RESPONSES = 'GET_MOVIES_RESPONSES';
 export const FETCH_MOVIES_RESPONSES = 'FETCH_MOVIES_RESPONSES';
 export const SET_USER_RESPONSE = 'SET_USER_RESPONSE';
 
-
 // Timer
-export const START_TIMER = 'START_TIMER'
-export const STOP_TIMER  = 'STOP_TIMER' 
-export const RESET_TIMER = 'RESET_TIMER'
-export const UPDATE_TIME = 'UPDATE_TIME'
-
+export const START_TIMER = 'START_TIMER';
+export const STOP_TIMER = 'STOP_TIMER';
+export const RESET_TIMER = 'RESET_TIMER';
+export const UPDATE_TIME = 'UPDATE_TIME';
 
 /**
  * Getting movies from the API
@@ -60,16 +58,16 @@ export const setUserResponse = (response) => ({
 
 export const startTimer = () => ({
   type: START_TIMER,
-})
+});
 
 export const updateTime = () => ({
   type: UPDATE_TIME,
-})
+});
 
 export const resetTimer = () => ({
   type: RESET_TIMER,
-})
+});
 
 export const stopTimer = () => ({
-  type: STOP_TIMER
-})
+  type: STOP_TIMER,
+});

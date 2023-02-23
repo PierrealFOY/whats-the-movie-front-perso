@@ -2,10 +2,8 @@
 import PropTypes from 'prop-types';
 import './styles.scss';
 import { useEffect } from 'react';
-import { Button } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { startTimer, resetTimer, updateTime } from '../../actions/movies';
+import { startTimer, updateTime } from '../../actions/movies';
 import { formatDate } from '../utils';
 import ResponseButton from './ResponseButton';
 import NextMovieButton from './NextMovieButton';
@@ -16,27 +14,21 @@ function Game({ handleBeginGame, handleNextMovie, getResponses }) {
   useEffect(() => {
     handleBeginGame();
   }, []);
-  
+
   const dispatch = useDispatch();
-  
-  const handleButtonClick = (evt) => {
-    evt.preventDefault();
-    handleResponse();
-    dispatch(resetTimer())
-  };
 
   // game turn number
   const tour = useSelector((state) => state.movies.tour);
   // list of the movies
   const movies = useSelector((state) => state.movies.movies);
 
-  //Timer
+  // Timer
   const time = useSelector((state) => state.timer.time);
   const running = useSelector((state) => state.timer.running);
 
   const handleStartButtonClick = (evt) => {
-      evt.preventDefault();
-      dispatch(startTimer());
+    evt.preventDefault();
+    dispatch(startTimer());
   };
 
   useEffect(() => {
@@ -45,12 +37,13 @@ function Game({ handleBeginGame, handleNextMovie, getResponses }) {
       timer = setInterval(() => {
         dispatch(updateTime());
       }, 1000);
-    } else {
+    }
+    else {
       clearInterval(timer);
     }
     return () => clearInterval(timer);
   }, [running]);
-    
+
   useEffect(() => {
     // everytime a movie is guessed,
     // we re-generate the responses
@@ -86,7 +79,7 @@ function Game({ handleBeginGame, handleNextMovie, getResponses }) {
             ? (
               <>
                 <div>
-                  <button className="game__bouton-start" onClick={handleStartButtonClick}>Commencer la partie</button>
+                  <button type="button" className="game__bouton-start" onClick={handleStartButtonClick}>Commencer la partie</button>
                 </div>
                 <h1 className="game__countdown">Timer: {time}</h1>
                 <div className="game__score">
