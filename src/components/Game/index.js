@@ -2,9 +2,13 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 import { Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { startTimer, resetTimer, updateTime } from '../../actions/movies';
+import { useEffect } from 'react';
 
 function Game({ handleResponse }) {
+  const dispatch = useDispatch();
+
   const handleButtonClick = (evt) => {
     evt.preventDefault();
     handleResponse();
@@ -12,6 +16,30 @@ function Game({ handleResponse }) {
 
   const tour = useSelector((state) => state.movies.tour);
   const movie = useSelector((state) => state.movies.movies[tour]);
+
+  //Timer
+  const time = useSelector((state) => state.timer.time);
+  const running = useSelector((state) => state.timer.running);
+
+  const handleStartButtonClick = () => {
+      dispatch(startTimer());
+  };
+
+  const handleResetButtonClick = () => {
+    dispatch(resetTimer());
+  };
+
+  useEffect(() => {
+    let timer = null;
+    if (running) {
+      timer = setInterval(() => {
+        dispatch(updateTime());
+      }, 1000);
+    } else {
+      clearInterval(timer);
+    }
+    return () => clearInterval(timer);
+  }, [running, dispatch]);
 
   const formatDate = (date) => {
     const dateToFormat = new Date(date);
@@ -26,6 +54,12 @@ function Game({ handleResponse }) {
   return (
     <div className="game">
       <div className="game__container">
+        <div>
+        <h1>Quiz Timer: {time}</h1>
+              <button onClick={handleStartButtonClick} disabled={running}>Start</button>
+              <button onClick={handleResetButtonClick} disabled={!running}>Reset</button>
+        </div>
+
         <div className="game__score">
           <h1 className="game__score-text">Score : 0 points</h1>
         </div>
