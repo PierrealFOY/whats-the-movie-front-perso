@@ -4,6 +4,7 @@ export const NEXT_MOVIE = 'NEXT_MOVIE';
 export const RESET_GAME = 'RESET_GAME';
 export const GET_MOVIES_RESPONSES = 'GET_MOVIES_RESPONSES';
 export const FETCH_MOVIES_RESPONSES = 'FETCH_MOVIES_RESPONSES';
+export const SET_USER_RESPONSE = 'SET_USER_RESPONSE';
 
 
 // Timer
@@ -50,6 +51,11 @@ export const getMoviesResponses = () => ({
 export const fetchMoviesResponses = (responses) => ({
   type: FETCH_MOVIES_RESPONSES,
   responses: responses,
+});
+
+export const setUserResponse = (response) => ({
+  type: SET_USER_RESPONSE,
+  userResponse: response,
 });
 
 export const startTimer = () => ({

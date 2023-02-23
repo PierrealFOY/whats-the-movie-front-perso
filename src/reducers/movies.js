@@ -3,6 +3,7 @@ import {
   FETCH_MOVIES_RESPONSES,
   NEXT_MOVIE,
   RESET_GAME,
+  SET_USER_RESPONSE,
 } from '../actions/movies';
 
 /**
@@ -15,6 +16,8 @@ export const initialState = {
   tour: 0,
   // possibles responses to give to the gamer
   responses: [],
+  // indicator to know if a response is given or not
+  userResponse: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -25,6 +28,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         movies: action.data,
         tour: 0,
+        userResponse: '',
       };
 
     case NEXT_MOVIE:
@@ -33,6 +37,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         tour: state.tour + 1,
         responses: [],
+        userResponse: '',
       };
 
     case RESET_GAME:
@@ -42,12 +47,19 @@ const reducer = (state = initialState, action = {}) => {
         movies: [],
         tour: 0,
         responses: [],
+        userResponse: '',
       };
 
     case FETCH_MOVIES_RESPONSES:
       return {
         ...state,
         responses: action.responses,
+      };
+
+    case SET_USER_RESPONSE:
+      return {
+        ...state,
+        userResponse: action.userResponse,
       };
 
     default:

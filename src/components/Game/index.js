@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
 import './styles.scss';
 import { useEffect } from 'react';
@@ -6,17 +7,27 @@ import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { startTimer, resetTimer, updateTime } from '../../actions/movies';
 import { formatDate } from '../utils';
+import ResponseButton from './ResponseButton';
+import NextMovieButton from './NextMovieButton';
 
-function Game({ handleResponse, getResponses }) {
+function Game({ handleBeginGame, handleNextMovie, getResponses }) {
+  // when the page loads for the first time,
+  // we load the list of the movies
+  useEffect(() => {
+    handleBeginGame();
+  }, []);
+  
   const dispatch = useDispatch();
-
+  
   const handleButtonClick = (evt) => {
     evt.preventDefault();
     handleResponse();
     dispatch(resetTimer())
   };
 
+  // game turn number
   const tour = useSelector((state) => state.movies.tour);
+  // list of the movies
   const movies = useSelector((state) => state.movies.movies);
 
   //Timer
@@ -39,34 +50,39 @@ function Game({ handleResponse, getResponses }) {
     }
     return () => clearInterval(timer);
   }, [running]);
-
-  const formatDate = (date) => {
-    const dateToFormat = new Date(date);
-    const options = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    };
     
   useEffect(() => {
+    // everytime a movie is guessed,
+    // we re-generate the responses
     getResponses();
   }, [tour]);
 
+  // possible responses
   const responses = useSelector((state) => state.movies.responses);
+  // current movie
   const movie = movies[tour];
 
-  if (responses.length > 0 && (responses.findIndex((element) => element.id === movie.id) === -1)) {
+  // if there is responses in the state
+  // and there is not the current movie in the responses
+  if (responses.length > 0
+    && movie.id !== undefined
+    && (responses.findIndex((element) => element.id === movie.id) === -1)) {
+    // generating a number between 1 and 4
     const random = Math.floor(Math.random() * 4);
+    // getting the id of the movie at the random index
     responses[random].id = movie.id;
+    // getting the title of the movie at the random index
     responses[random].title = movie.title;
   }
+
+  const userResponse = useSelector((state) => state.movies.userResponse);
 
   return (
     <div className="game">
       <div className="game__container">
         {
           // if there is movies in the state, we show the elements
-          movies.length > 0
+          movies.length > 0 && responses.length > 0
             ? (
               <>
                 <div>
@@ -156,67 +172,35 @@ function Game({ handleResponse, getResponses }) {
                     </div>
                   </div>
                 </div>
-                <div className="game__responses">
-                  {
-                    responses.length > 0
-                      ? responses.map((response) => (
-                        <Button
-                          key={response.id}
-                          className="game__responses-button col-10 col-sm-5"
-                          variant="outline-success"
-                          size="lg"
-                          onClick={tour !== 4 ? handleButtonClick : null}
-                        >
-                          {
-                            tour === 4 ? <NavLink to="/results">{response.title}</NavLink> : response.title
-                          }
-                        </Button>
-                      ))
-                      : undefined
-                  }
-                  {/* <Button
-                    className="game__responses-button col-10 col-sm-5"
-                    variant="outline-success"
-                    size="lg"
-                    onClick={tour !== 4 ? handleButtonClick : null}
-                  >
-                    {
-                      tour === 4 ? <NavLink to="/results">Matrix</NavLink> : 'Matrix'
-                    }
-                  </Button>
-                  <Button
-                    className="game__responses-button col-10 col-sm-5"
-                    variant="outline-success"
-                    size="lg"
-                    onClick={tour !== 4 ? handleButtonClick : null}
-                  >
-                    {
-                      tour === 4
-                      ? <NavLink to="/results">La Soupe Aux Choux</NavLink>
-                      : 'La Soupe Aux Choux'
-                    }
-                  </Button>
-                  <Button
-                    className="game__responses-button col-10 col-sm-5"
-                    variant="outline-success"
-                    size="lg"
-                    onClick={tour !== 4 ? handleButtonClick : null}
-                  >
-                    {
-                      tour === 4 ? <NavLink to="/results">Avatar 2</NavLink> : 'Avatar 2'
-                    }
-                  </Button>
-                  <Button
-                    className="game__responses-button col-10 col-sm-5"
-                    variant="outline-success"
-                    size="lg"
-                    onClick={tour !== 4 ? handleButtonClick : null}
-                  >
-                    {
-                      tour === 4 ? <NavLink to="/results">Camping</NavLink> : 'Camping'
-                    }
-                  </Button> */}
-                </div>
+                {
+                  // no response given yet
+                  userResponse === ''
+                    ? (
+                      <div className="game__responses">
+                        {
+                        responses.length > 0
+                          ? responses.map((response) => (
+                            <ResponseButton
+                              title={response.title}
+                              idResponse={response.id}
+                              idCurrentMovie={movie.id}
+                              key={response.id}
+                            />
+                          ))
+                          : undefined
+                        }
+                      </div>
+                    )
+                    : (
+                      <div className="game__next-movie">
+                        <NextMovieButton
+                          tour={tour}
+                          handleNextMovie={handleNextMovie}
+                          userResponse={userResponse}
+                        />
+                      </div>
+                    )
+                }
               </>
             )
             : undefined
@@ -227,7 +211,8 @@ function Game({ handleResponse, getResponses }) {
 }
 
 Game.propTypes = {
-  handleResponse: PropTypes.func.isRequired,
+  handleBeginGame: PropTypes.func.isRequired,
+  handleNextMovie: PropTypes.func.isRequired,
   getResponses: PropTypes.func.isRequired,
 };
 
