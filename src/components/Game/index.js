@@ -3,18 +3,51 @@ import './styles.scss';
 import { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { startTimer, resetTimer, updateTime } from '../../actions/movies';
 import { formatDate } from '../utils';
 
 function Game({ handleResponse, getResponses }) {
+  const dispatch = useDispatch();
+
   const handleButtonClick = (evt) => {
     evt.preventDefault();
     handleResponse();
+    dispatch(resetTimer())
   };
 
   const tour = useSelector((state) => state.movies.tour);
   const movies = useSelector((state) => state.movies.movies);
 
+  //Timer
+  const time = useSelector((state) => state.timer.time);
+  const running = useSelector((state) => state.timer.running);
+
+  const handleStartButtonClick = (evt) => {
+      evt.preventDefault();
+      dispatch(startTimer());
+  };
+
+  useEffect(() => {
+    let timer = null;
+    if (running) {
+      timer = setInterval(() => {
+        dispatch(updateTime());
+      }, 1000);
+    } else {
+      clearInterval(timer);
+    }
+    return () => clearInterval(timer);
+  }, [running]);
+
+  const formatDate = (date) => {
+    const dateToFormat = new Date(date);
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    };
+    
   useEffect(() => {
     getResponses();
   }, [tour]);
@@ -36,6 +69,10 @@ function Game({ handleResponse, getResponses }) {
           movies.length > 0
             ? (
               <>
+                <div>
+                  <button className="game__bouton-start" onClick={handleStartButtonClick}>Commencer la partie</button>
+                </div>
+                <h1 className="game__countdown">Timer: {time}</h1>
                 <div className="game__score">
                   <h1 className="game__score-text">Score : 0 points</h1>
                 </div>
