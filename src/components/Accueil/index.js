@@ -1,15 +1,9 @@
-import PropTypes from 'prop-types';
 import './styles.scss';
 import { Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/images/logo-WTM.png';
 
-function Accueil({ handleBeginGame }) {
-  const handleClickBeginGame = (evt) => {
-    evt.preventDefault();
-    handleBeginGame();
-  };
-
+function Accueil() {
   return (
     // main page
     <main className="home">
@@ -24,7 +18,6 @@ function Accueil({ handleBeginGame }) {
             className="home__button play"
             variant="success"
             size="lg"
-            onClick={handleClickBeginGame}
           >
             <NavLink to="/jeu" className="home__button-link">Jouer !</NavLink>
           </Button>
@@ -41,9 +34,5 @@ function Accueil({ handleBeginGame }) {
     </main>
   );
 }
-
-Accueil.propTypes = {
-  handleBeginGame: PropTypes.func.isRequired,
-};
 
 export default Accueil;
