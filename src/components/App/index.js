@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
   getMovies,
-  getMoviesResponses,
   nextMovie,
   resetGame,
 } from '../../actions/movies';
@@ -32,10 +31,6 @@ function App() {
     dispatch(getMovies());
   };
 
-  const getMoviesResponsesForButtons = (test) => {
-    dispatch(getMoviesResponses(test));
-  };
-
   return (
     <ThemeProvider
       breakpoints={['xl', 'md', 'xs']}
@@ -45,11 +40,9 @@ function App() {
         <Header handleResetGame={handleResetGame} />
         <Routes>
           <Route path="/" element={<Accueil />} />
-          <Route path="/jeu" element={<Game handleBeginGame={handleBeginGame} handleNextMovie={handleNextMovie} getResponses={getMoviesResponsesForButtons} />} />
+          <Route path="/jeu" element={<Game handleBeginGame={handleBeginGame} handleNextMovie={handleNextMovie} />} />
           <Route path="/authentification" element={<LoginPage />} />
-
           <Route path="/results" element={<Results handleResetGame={handleResetGame} handleReplay={handleBeginGame} />} />
-          
           <Route path="*" element={<Errors />} />
         </Routes>
         <Footer />
