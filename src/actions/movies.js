@@ -9,6 +9,7 @@ export const SET_USER_RESPONSE = 'SET_USER_RESPONSE';
 export const START_TIMER = 'START_TIMER';
 export const STOP_TIMER = 'STOP_TIMER';
 export const RESET_TIMER = 'RESET_TIMER';
+export const RESET_FALSE_ANSWER = 'RESET_FALSE_ANSWER';
 export const UPDATE_TIME = 'UPDATE_TIME';
 
 /**
@@ -66,3 +67,7 @@ export const resetTimer = () => ({
 export const stopTimer = () => ({
   type: STOP_TIMER,
 });
+
+export const resetFalseAnswer = () => ({
+  type: RESET_FALSE_ANSWER,
+})
