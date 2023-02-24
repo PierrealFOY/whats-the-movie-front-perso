@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { startTimer, updateTime } from '../../actions/movies';
+import { startTimer, updateTime, stopTimer } from '../../actions/movies';
 import { formatDate } from '../utils';
 import ResponseButton from './ResponseButton';
 import NextMovieButton from './NextMovieButton';
-import { ProgressBar } from 'react-bootstrap';
 
 function Game({ handleBeginGame, handleNextMovie, getResponses }) {
   // when the page loads for the first time,
@@ -36,14 +35,18 @@ function Game({ handleBeginGame, handleNextMovie, getResponses }) {
     let timer = null;
     if (running) {
       timer = setInterval(() => {
-        dispatch(updateTime());
+        if (time === 0) {
+          dispatch(stopTimer());
+          clearInterval(timer);
+        } else {
+          dispatch(updateTime());
+        }
       }, 1000);
-    }
-    else {
+    } else {
       clearInterval(timer);
     }
     return () => clearInterval(timer);
-  }, [running]);
+  }, [running, time]);
 
   useEffect(() => {
     // everytime a movie is guessed,
