@@ -84,10 +84,17 @@ function Game({ handleBeginGame, handleNextMovie }) {
                   <button type="button" className="game__bouton-start" onClick={handleStartButtonClick}>Commencer la partie</button>
                 </div>
                 <div className="game__countdown">
-                  <h1 className="game__countdown-timer">Timer: <span className="game__countdown-number">{time}</span></h1>
+                  <h1 className="game__countdown-timer"><span className="game__countdown-number">{time}</span>
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
+                  <style>{`@keyframes rotate{0%{transform:rotate(0)}to{transform:rotate(360deg)}}`}</style>
+                  <rect width="20" height="20" x="3" y="3" stroke="#0A0A30" strokeWidth="1.5" rx="8" />
+                  <path stroke="#0A0A30" strokeLinecap="round" strokeWidth="1.5" d="M12.021 12l2.325 2.325" />
+                  <path stroke="#265BFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12.021 12V6.84" style={{animation: 'rotate 2s linear infinite both', transformOrigin: 'center'}} />
+                  </svg>
+                  </h1>
                 </div>
                 <div className="game__score">
-                  <h1 className="game__score-text">Score : {score}</h1>
+                  <h1 className="game__score-text">Score : <span className="game__score-number">{score}</span></h1>
                 </div>
                 <div className="game__affiche">
                   <img className="game__affiche-poster" src={movie.poster} alt="Movie Poster" />

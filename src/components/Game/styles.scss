@@ -76,7 +76,7 @@
     counter-reset: my-count 5;
     animation: countdown 5s linear infinite;
     padding: 2em;
-    border-radius: 60px;
+    border-radius: 20px;
     margin-bottom: 2em;
     margin-top: 2em;
     font-size: 1rem;
@@ -135,6 +135,20 @@
 
     &-text {      
       padding: 1rem;      
+    }
+    &-number {
+      animation: scoring 1s linear infinite;
+      font-size: 2em;
+    }
+  }
+
+  @keyframes scoring {
+    0% {
+      color: rgb(0, 0, 0);
+    }
+    20% {
+      counter-increment: my-count -1;
+      color: red;
     }
   }
 
