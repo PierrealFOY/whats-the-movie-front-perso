@@ -10,7 +10,7 @@ const apiMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_MOVIES:
       // call the endpoint on the API to get the movies
-      axios.get('http://localhost:8000/api/movies/game?limit=5')
+      axios.get('http://localhost:8081/api/movies/game?limit=5')
         .then((response) => {
           // dispatch the array returned in the state
           store.dispatch(fetchMovies(response.data));
@@ -23,7 +23,7 @@ const apiMiddleware = (store) => (next) => (action) => {
 
     case GET_MOVIES_RESPONSES:
       // call the endpoint on the API to get the movies
-      axios.get('http://localhost:8000/api/movies/game?limit=4')
+      axios.get('http://localhost:8081/api/movies/game?limit=4')
         .then((response) => {
           // dispatch the array returned in the state
           store.dispatch(fetchMoviesResponses(response.data));
