@@ -13,47 +13,77 @@ export const updateReleaseDate = (releaseDate) => ({
   payload: releaseDate,
 });
 
-export const updateProductionStudio = (productionStudio) => ({
-  type: 'UPDATE_PRODUCTION_STUDIO',
+export const updateProductionStudio1 = (productionStudio) => ({
+  type: 'UPDATE_PRODUCTION_STUDIO_1',
   payload: productionStudio,
 });
 
-export const updateActor1 = (actorOne) => ({
-  type: 'UPDATE_ACTOR_ONE',
-  payload: actorOne,
+export const updateProductionStudio2 = (productionStudio) => ({
+  type: 'UPDATE_PRODUCTION_STUDIO_2',
+  payload: productionStudio,
 });
 
-export const updateActor2 = (actorSecond) => ({
-  type: 'UPDATE_ACTOR_SECOND',
-  payload: actorSecond,
+export const updateActor1 = (actor) => ({
+  type: 'UPDATE_ACTOR_1',
+  payload: actor,
 });
 
-export const updateCountry1 = (countryFirst) => ({
-  type: 'UPDATE_COUNTRY_FIRST',
-  payload: countryFirst,
+export const updateActor2 = (actor) => ({
+  type: 'UPDATE_ACTOR_2',
+  payload: actor,
 });
 
-export const updateCountry2 = (countrySecond) => ({
-  type: 'UPDATE_COUNTRY_SECOND',
-  payload: countrySecond,
+export const updateActor3 = (actor) => ({
+  type: 'UPDATE_ACTOR_3',
+  payload: actor,
 });
 
-export const updateRealisator1 = (realisatorFirst) => ({
-  type: 'UPDATE_REALISATOR_FIRST',
-  payload: realisatorFirst,
+export const updateActor4 = (actor) => ({
+  type: 'UPDATE_ACTOR_4',
+  payload: actor,
 });
 
-export const updateRealisator2 = (realisatorSecond) => ({
-  type: 'UPDATE_REALISATOR_SECOND',
-  payload: realisatorSecond,
+export const updateActor5 = (actor) => ({
+  type: 'UPDATE_ACTOR_5',
+  payload: actor,
 });
 
-export const updateGenre1 = (genreFirst) => ({
-  type: 'UPDATE_GENRE_FIRST',
-  payload: genreFirst,
+export const updateCountry1 = (country) => ({
+  type: 'UPDATE_COUNTRY_1',
+  payload: country,
 });
 
-export const updateGenre2 = (genreSecond) => ({
-  type: 'UPDATE_GENRE_SECOND',
-  payload: genreSecond,
+export const updateCountry2 = (country) => ({
+  type: 'UPDATE_COUNTRY_2',
+  payload: country,
+});
+
+export const updateCountry3 = (country) => ({
+  type: 'UPDATE_COUNTRY_3',
+  payload: country,
+});
+
+export const updateRealisator1 = (realisator) => ({
+  type: 'UPDATE_REALISATOR_1',
+  payload: realisator,
+});
+
+export const updateRealisator2 = (realisator) => ({
+  type: 'UPDATE_REALISATOR_2',
+  payload: realisator,
+});
+
+export const updateGenre1 = (genre) => ({
+  type: 'UPDATE_GENRE_1',
+  payload: genre,
+});
+
+export const updateGenre2 = (genre) => ({
+  type: 'UPDATE_GENRE_2',
+  payload: genre,
+});
+
+export const updateGenre3 = (genre) => ({
+  type: 'UPDATE_GENRE_3',
+  payload: genre,
 });
