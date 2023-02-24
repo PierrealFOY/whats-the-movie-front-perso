@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { startTimer, updateTime, stopTimer } from '../../actions/movies';
 import { formatDate } from '../utils';
+import { ProgressBar } from 'react-bootstrap';
 import ResponseButton from './ResponseButton';
 import NextMovieButton from './NextMovieButton';
 
@@ -22,9 +23,12 @@ function Game({ handleBeginGame, handleNextMovie, getResponses }) {
   // list of the movies
   const movies = useSelector((state) => state.movies.movies);
 
-  // Timer
+  // timer
   const time = useSelector((state) => state.timer.time);
   const running = useSelector((state) => state.timer.running);
+
+  // score
+  const score = useSelector((state) => state.timer.score)
 
   const handleStartButtonClick = (evt) => {
     evt.preventDefault();
@@ -32,19 +36,29 @@ function Game({ handleBeginGame, handleNextMovie, getResponses }) {
   };
 
   useEffect(() => {
+    // Initialize the timer variable to null
     let timer = null;
+  
+    // Check if the 'running' flag is true
     if (running) {
+      // If running, set the timer to run every 1 second
       timer = setInterval(() => {
+        // Check if the 'time' variable has reached 0
         if (time === 0) {
+          // If time is 0, dispatch a 'stopTimer' action and clear the timer
           dispatch(stopTimer());
           clearInterval(timer);
         } else {
+          // If time is not 0, dispatch an 'updateTime' action
           dispatch(updateTime());
         }
       }, 1000);
     } else {
+      // If not running, clear the timer
       clearInterval(timer);
     }
+  
+    // Return a cleanup function that clears the timer
     return () => clearInterval(timer);
   }, [running, time]);
 
@@ -77,6 +91,7 @@ function Game({ handleBeginGame, handleNextMovie, getResponses }) {
   return (
     <div className="game">
       <div className="game__container">
+      <ProgressBar now={60} />
         {
           // if there is movies in the state, we show the elements
           movies.length > 0 && responses.length > 0
@@ -89,7 +104,7 @@ function Game({ handleBeginGame, handleNextMovie, getResponses }) {
                   <h1 className="game__countdown-timer">Timer: <span className="game__countdown-number">{time}</span></h1>
                 </div>
                 <div className="game__score">
-                  <h1 className="game__score-text">Score : 0 points</h1>
+                  <h1 className="game__score-text">Score : {score}</h1>
                 </div>
                 <div className="game__affiche">
                   <img className="game__affiche-poster" src={movie.poster} alt="Movie Poster" />
