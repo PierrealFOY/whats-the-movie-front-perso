@@ -10,6 +10,7 @@ const reducer = (state = initialState, action) => {
     case START_TIMER:
       return {
         ...state,
+        time: 60,
         running: true,
       };
     case RESET_TIMER:
@@ -27,7 +28,7 @@ const reducer = (state = initialState, action) => {
     case  STOP_TIMER:
       return {
         ...state,
-        time: 60,
+        time: state.time,
         running: false,
       }
       
