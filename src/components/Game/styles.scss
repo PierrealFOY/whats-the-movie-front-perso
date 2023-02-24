@@ -7,6 +7,43 @@
   padding: 1rem 0; 
   font-family: vars.$fontFredoka;
   font-size: 0.9rem;
+  animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari et Chrome */
+    -o-animation: fadein 2s; /* Opera */
+
+  @keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+  }
+  @-moz-keyframes fadein { /* sur Firefox */
+      from {
+          opacity:0;
+      }
+      to {
+          opacity:1;
+      }
+  }
+  @-webkit-keyframes fadein { /* sur Safari et Chrome */
+      from {
+          opacity:0;
+      }
+      to {
+          opacity:1;
+      }
+  }
+  @-o-keyframes fadein { /* sur Opera */
+      from {
+          opacity:0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
 
   &__bouton-start {
     display: flex;
@@ -27,17 +64,27 @@
   }
 
   &__countdown {
+    flex-direction: column;
+  }
+
+  &__countdown-timer {
     color: #fff;
     display: flex;
-    align-items: center;
+    align-items: center ;
     justify-content: center;
+    flex-direction: column;
     counter-reset: my-count 5;
     animation: countdown 5s linear infinite;
     padding: 2em;
-    border-radius: 10px;
+    border-radius: 60px;
     margin-bottom: 2em;
     margin-top: 2em;
     font-size: 1rem;
+  }
+
+  &__countdown-number {
+    padding-top: 10px;
+    font-size: 2em;
   }
 
   @keyframes countdown {
