@@ -8,7 +8,7 @@ import { formatDate } from '../utils';
 import ResponseButton from './ResponseButton';
 import NextMovieButton from './NextMovieButton';
 
-function Game({ handleBeginGame, handleNextMovie, getResponses }) {
+function Game({ handleBeginGame, handleNextMovie }) {
   // when the page loads for the first time,
   // we load the list of the movies
   useEffect(() => {
@@ -48,29 +48,12 @@ function Game({ handleBeginGame, handleNextMovie, getResponses }) {
     return () => clearInterval(timer);
   }, [running, time]);
 
-  useEffect(() => {
-    // everytime a movie is guessed,
-    // we re-generate the responses
-    getResponses();
-  }, [tour]);
-
   // possible responses
   const responses = useSelector((state) => state.movies.responses);
+  const response = responses[tour];
+
   // current movie
   const movie = movies[tour];
-
-  // if there is responses in the state
-  // and there is not the current movie in the responses
-  if (responses.length > 0
-    && movie.id !== undefined
-    && (responses.findIndex((element) => element.id === movie.id) === -1)) {
-    // generating a number between 1 and 4
-    const random = Math.floor(Math.random() * 4);
-    // getting the id of the movie at the random index
-    responses[random].id = movie.id;
-    // getting the title of the movie at the random index
-    responses[random].title = movie.title;
-  }
 
   const userResponse = useSelector((state) => state.movies.userResponse);
 
@@ -179,13 +162,13 @@ function Game({ handleBeginGame, handleNextMovie, getResponses }) {
                     ? (
                       <div className="game__responses">
                         {
-                        responses.length > 0
-                          ? responses.map((response) => (
+                        response.length > 0
+                          ? response.map((item) => (
                             <ResponseButton
-                              title={response.title}
-                              idResponse={response.id}
+                              title={item.title}
+                              idResponse={item.id}
                               idCurrentMovie={movie.id}
-                              key={response.id}
+                              key={item.id}
                             />
                           ))
                           : undefined
@@ -214,7 +197,6 @@ function Game({ handleBeginGame, handleNextMovie, getResponses }) {
 Game.propTypes = {
   handleBeginGame: PropTypes.func.isRequired,
   handleNextMovie: PropTypes.func.isRequired,
-  getResponses: PropTypes.func.isRequired,
 };
 
 export default Game;

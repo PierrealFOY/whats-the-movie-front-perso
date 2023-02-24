@@ -36,7 +36,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         tour: state.tour + 1,
-        responses: [],
         userResponse: '',
       };
 

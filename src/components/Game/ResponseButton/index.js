@@ -12,14 +12,20 @@ function ResponseButton({
 }) {
   const dispatch = useDispatch();
 
+  /**
+   * setting the right or false state depending on the answer chosen by the user
+   */
   const setResponse = () => {
+    // when a user choose a response, we reveal all the indices
     document.querySelectorAll('.masked').forEach((element) => {
       element.classList.remove('masked');
     });
     if (idResponse === idCurrentMovie) {
+      // correct answer
       dispatch(setUserResponse('T'));
     }
     else {
+      // false answer
       dispatch(setUserResponse('F'));
     }
   };
