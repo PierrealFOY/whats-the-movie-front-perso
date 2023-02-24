@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { startTimer, updateTime } from '../../actions/movies';
+import { startTimer, updateTime, stopTimer } from '../../actions/movies';
 import { formatDate } from '../utils';
 import ResponseButton from './ResponseButton';
 import NextMovieButton from './NextMovieButton';
@@ -35,14 +35,18 @@ function Game({ handleBeginGame, handleNextMovie }) {
     let timer = null;
     if (running) {
       timer = setInterval(() => {
-        dispatch(updateTime());
+        if (time === 0) {
+          dispatch(stopTimer());
+          clearInterval(timer);
+        } else {
+          dispatch(updateTime());
+        }
       }, 1000);
-    }
-    else {
+    } else {
       clearInterval(timer);
     }
     return () => clearInterval(timer);
-  }, [running]);
+  }, [running, time]);
 
   // possible responses
   const responses = useSelector((state) => state.movies.responses);
@@ -64,7 +68,9 @@ function Game({ handleBeginGame, handleNextMovie }) {
                 <div>
                   <button type="button" className="game__bouton-start" onClick={handleStartButtonClick}>Commencer la partie</button>
                 </div>
-                <h1 className="game__countdown">Timer: {time}</h1>
+                <div className="game__countdown">
+                  <h1 className="game__countdown-timer">Timer: <span className="game__countdown-number">{time}</span></h1>
+                </div>
                 <div className="game__score">
                   <h1 className="game__score-text">Score : 0 points</h1>
                 </div>
@@ -79,7 +85,9 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.directors !== []
                           ? movie.directors.map((director) => (
-                            <p key={director.lastname} className="game__indices-item masked">{director.firstname} {director.lastname}</p>
+                            <p key={director.lastname} className={`game__indices-item ${time <= 50 ? '' : 'masked'}`}>
+                              {director.firstname} {director.lastname}
+                            </p>
                           ))
                           : undefined
                       }
@@ -87,7 +95,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                   </div>
                   <div className="game__indices-container">
                     <p className="game__indices-title">Date de sortie : </p>
-                    <p className="game__indices-item masked">
+                    <p className={`game__indices-item ${time <= 40 ? '' : 'masked'}`}>
                       {
                         formatDate(movie.realeaseDate)
                       }
@@ -99,7 +107,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.countries !== []
                           ? movie.countries.map((country) => (
-                            <p key={country.name} className="game__indices-item masked">{country.name}</p>
+                            <p key={country.name} className={`game__indices-item ${time <= 30 ? '' : 'masked'}`}>{country.name}</p>
                           ))
                           : undefined
                       }
@@ -111,7 +119,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.actors !== []
                           ? movie.actors.map((actor) => (
-                            <p key={actor.lastname} className="game__indices-item masked">{actor.firstname} {actor.lastname}</p>
+                            <p key={actor.lastname} className={`game__indices-item ${time <= 35 ? '' : 'masked'}`}>{actor.firstname} {actor.lastname}</p>
                           ))
                           : undefined
                       }
@@ -123,7 +131,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.productionStudios !== []
                           ? movie.productionStudios.map((studio) => (
-                            <p key={studio.name} className="game__indices-item masked">{studio.name}</p>
+                            <p key={studio.name} className={`game__indices-item ${time <= 20 ? '' : 'masked'}`}>{studio.name}</p>
                           ))
                           : undefined
                       }
@@ -135,7 +143,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.genres !== []
                           ? movie.genres.map((genre) => (
-                            <p key={genre.name} className="game__indices-item masked">{genre.name}</p>
+                            <p key={genre.name} className={`game__indices-item ${time <= 10 ? '' : 'masked'}`}>{genre.name}</p>
                           ))
                           : undefined
                       }
@@ -144,7 +152,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                   <div className="game__indices-container">
                     <p className="game__indices-title">Synopsis : </p>
                     <div className="game__indices-items">
-                      <p className="game__indices-item masked">{movie.synopsys}</p>
+                      <p className={`game__indices-item ${time <= 5 ? '' : 'masked'}`}>{movie.synopsys}</p>
                     </div>
                   </div>
                 </div>

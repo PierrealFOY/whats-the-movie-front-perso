@@ -1,10 +1,29 @@
-import './styles.scss';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import WTM from '../../assets/WTM.png';
 
+import { submitEmail, submitPassword } from '../../actions/loginPageActions';
+
+import './styles.scss';
+
 function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(submitEmail(email));
+    dispatch(submitPassword(password));
+    setEmail('');
+    setPassword('');
+  };
+
   return (
     <div className="LoginPage">
-      <form>
+      <form onSubmit={handleSubmit}>
         <img src={WTM} alt="WTM" />
         <div className="login-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
@@ -13,15 +32,30 @@ function LoginPage() {
           </svg>
         </div>
         <div className="form-group">
-          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Identifiant" />
+          <input
+            type="email"
+            className="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHel p"
+            placeholder="Identifiant"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
         <div className="form-group">
-          <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Mot de passe" />
+          <input
+            type="password"
+            className="form-control"
+            id="exampleInputPassword1"
+            placeholder="Mot de passe"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <a className="small-p" href="#">Mot de passe oublié ?</a>
         </div>
         <button type="submit" className="btn">SE CONNECTER</button>
         <hr />
-        <button type="submit" className="btn">S'INSCRIRE</button>
+        <NavLink to="/inscription" className="btn">S'INSCRIRE</NavLink>
       </form>
     </div>
   );

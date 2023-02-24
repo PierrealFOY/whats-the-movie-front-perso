@@ -15,6 +15,7 @@ import LoginPage from '../Login_page';
 import Errors from '../Errors';
 
 import './styles.css';
+import RegisterForm from '../Login_register';
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ function App() {
           <Route path="/" element={<Accueil />} />
           <Route path="/jeu" element={<Game handleBeginGame={handleBeginGame} handleNextMovie={handleNextMovie} />} />
           <Route path="/authentification" element={<LoginPage />} />
+          <Route path="/inscription" element={<RegisterForm />} />
           <Route path="/results" element={<Results handleResetGame={handleResetGame} handleReplay={handleBeginGame} />} />
           <Route path="*" element={<Errors />} />
         </Routes>
