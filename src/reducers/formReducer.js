@@ -3,6 +3,14 @@ const initialState = {
   synopsis: '',
   releaseDate: '',
   productionStudio: '',
+  actorOne: '',
+  actorSecond: '',
+  countryFirst: '',
+  countrySecond: '',
+  realisatorFirst: '',
+  realisatorSecond: '',
+  genreFirst: '',
+  genreSecond: '',
 };
 
 export default function formReducer(action, state = initialState) {

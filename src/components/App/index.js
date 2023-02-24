@@ -49,7 +49,7 @@ function App() {
           <Route path="/authentification" element={<LoginPage />} />
 
           <Route path="/results" element={<Results handleResetGame={handleResetGame} handleReplay={handleBeginGame} />} />
-          
+
           <Route path="*" element={<Errors />} />
         </Routes>
         <Footer />
