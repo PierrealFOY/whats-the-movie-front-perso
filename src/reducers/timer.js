@@ -1,4 +1,4 @@
-import { START_TIMER, RESET_TIMER, UPDATE_TIME, STOP_TIMER } from './../actions/movies'
+import { START_TIMER, RESET_TIMER, UPDATE_TIME, STOP_TIMER, RESET_FALSE_ANSWER } from './../actions/movies'
 
 const initialState = {
   time: 60,
@@ -22,6 +22,15 @@ const reducer = (state = initialState, action) => {
         running: true,
         score: 600,
       };
+
+    case RESET_FALSE_ANSWER:
+      return {
+        ...state,
+        time : state.time,
+        running: false,
+        score: 0,
+      }
+      
     case UPDATE_TIME:
       return {
         ...state,

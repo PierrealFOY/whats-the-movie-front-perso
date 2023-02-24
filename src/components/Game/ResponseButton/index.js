@@ -3,7 +3,7 @@ import './styles.scss';
 import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { setUserResponse } from '../../../actions/movies';
-import { stopTimer } from '../../../actions/movies';
+import { stopTimer, resetFalseAnswer } from '../../../actions/movies';
 
 function ResponseButton({
   title,
@@ -27,6 +27,8 @@ function ResponseButton({
     else {
       // false answer
       dispatch(setUserResponse('F'));
+      // stop the timer and set the score to zero
+      dispatch(resetFalseAnswer());
     }
   };
 
