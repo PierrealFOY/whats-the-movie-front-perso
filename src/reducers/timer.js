@@ -3,7 +3,7 @@ import { START_TIMER, RESET_TIMER, UPDATE_TIME, STOP_TIMER, RESET_FALSE_ANSWER }
 const initialState = {
   time: 60,
   running: false,
-  score: 600,
+  score: 1200,
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,14 +13,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         time: 60,
         running: true,
-        score: 600,
+        score: 1200,
       };
     case RESET_TIMER:
       return {
         ...state,
         time : 60,
         running: true,
-        score: 600,
+        score: 1200,
       };
 
     case RESET_FALSE_ANSWER:
@@ -35,7 +35,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         time: state.time - 1,
-        score: state.score - 10,
+        score: state.score - 20,
       };
     
     case  STOP_TIMER:
