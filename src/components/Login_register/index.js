@@ -85,7 +85,7 @@ function RegisterForm() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-        <button type="submit" className="btn">S'INSCRIRE</button>
+        <button type="submit" className="btn">VALIDER</button>
       </form>
     </div>
   );

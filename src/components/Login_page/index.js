@@ -55,7 +55,7 @@ function LoginPage() {
         </div>
         <button type="submit" className="btn">SE CONNECTER</button>
         <hr />
-        <NavLink to="/inscription" className="btn">Connexion / Inscription</NavLink>
+        <NavLink to="/inscription" className="btn">S'INSCRIRE</NavLink>
       </form>
     </div>
   );
