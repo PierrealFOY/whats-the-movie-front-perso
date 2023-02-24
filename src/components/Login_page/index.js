@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import WTM from '../../assets/WTM.png';
 
 import { submitEmail, submitPassword } from '../../actions/loginPageActions';
@@ -54,7 +55,7 @@ function LoginPage() {
         </div>
         <button type="submit" className="btn">SE CONNECTER</button>
         <hr />
-        <button type="submit" className="btn">S'INSCRIRE</button>
+        <NavLink to="/inscription" className="btn">Connexion / Inscription</NavLink>
       </form>
     </div>
   );
