@@ -16,6 +16,8 @@ import Errors from '../Errors';
 
 import './styles.css';
 import RegisterForm from '../Login_register';
+import PersonalSpace from '../Personal_space';
+import AddMovies from '../Add_movies';
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +47,8 @@ function App() {
           <Route path="/authentification" element={<LoginPage />} />
           <Route path="/inscription" element={<RegisterForm />} />
           <Route path="/results" element={<Results handleResetGame={handleResetGame} handleReplay={handleBeginGame} />} />
+          <Route path="/compte" element={<PersonalSpace />} />
+          <Route path="/compte/ajout-film" element={<AddMovies />} />
           <Route path="*" element={<Errors />} />
         </Routes>
         <Footer />
