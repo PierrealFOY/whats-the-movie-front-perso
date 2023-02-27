@@ -105,7 +105,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.directors !== []
                           ? movie.directors.map((director) => (
-                            <p key={director.lastname} className={`game__indices-item ${time <= 50 ? 'unmasked' : 'masked'}`}>
+                            <p key={director.lastname} className={`game__indices-item ${time <= 50 || running === false ? 'unmasked' : 'masked'}`}>
                               {director.firstname} {director.lastname}
                             </p>
                           ))
@@ -115,7 +115,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                   </div>
                   <div className="game__indices-container">
                     <p className="game__indices-title">Date de sortie : </p>
-                    <p className={`game__indices-item ${time <= 40 ? 'unmasked' : 'masked'}`}>
+                    <p className={`game__indices-item ${time <= 40 || running === false ? 'unmasked' : 'masked'}`}>
                       {
                         formatDate(movie.realeaseDate)
                       }
@@ -127,7 +127,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.countries !== []
                           ? movie.countries.map((country) => (
-                            <p key={country.name} className={`game__indices-item ${time <= 35 ? 'unmasked' : 'masked'}`}>{country.name}</p>
+                            <p key={country.name} className={`game__indices-item ${time <= 35 || running === false ? 'unmasked' : 'masked'}`}>{country.name}</p>
                           ))
                           : undefined
                       }
@@ -139,7 +139,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.actors !== []
                           ? movie.actors.map((actor) => (
-                            <p key={actor.lastname} className={`game__indices-item ${time <= 30 ? 'unmasked' : 'masked'}`}>{actor.firstname} {actor.lastname}</p>
+                            <p key={actor.lastname} className={`game__indices-item ${time <= 30 || running === false ? 'unmasked' : 'masked'}`}>{actor.firstname} {actor.lastname}</p>
                           ))
                           : undefined
                       }
@@ -151,7 +151,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.productionStudios !== []
                           ? movie.productionStudios.map((studio) => (
-                            <p key={studio.name} className={`game__indices-item ${time <= 20 ? 'unmasked' : 'masked'}`}>{studio.name}</p>
+                            <p key={studio.name} className={`game__indices-item ${time <= 20 || running === false ? 'unmasked' : 'masked'}`}>{studio.name}</p>
                           ))
                           : undefined
                       }
@@ -163,7 +163,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.genres !== []
                           ? movie.genres.map((genre) => (
-                            <p key={genre.name} className={`game__indices-item ${time <= 10 ? 'unmasked' : 'masked'}`}>{genre.name}</p>
+                            <p key={genre.name} className={`game__indices-item ${time <= 10 || running === false ? 'unmasked' : 'masked'}`}>{genre.name}</p>
                           ))
                           : undefined
                       }
@@ -172,7 +172,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                   <div className="game__indices-container">
                     <p className="game__indices-title">Synopsis : </p>
                     <div className="game__indices-items">
-                      <p className={`game__indices-item ${time <= 5 ? 'unmasked' : 'masked'}`}>{movie.synopsys}</p>
+                      <p className={`game__indices-item ${time <= 5 || running === false ? 'unmasked' : 'masked'}`}>{movie.synopsys}</p>
                     </div>
                   </div>
                 </div>
