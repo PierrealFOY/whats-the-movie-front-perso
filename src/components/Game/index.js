@@ -7,6 +7,7 @@ import { startTimer, updateTime, stopTimer } from '../../actions/movies';
 import { formatDate } from '../utils';
 import ResponseButton from './ResponseButton';
 import NextMovieButton from './NextMovieButton';
+import Loader from '../Loader';
 
 function Game({ handleBeginGame, handleNextMovie }) {
   // when the page loads for the first time,
@@ -27,7 +28,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
   const running = useSelector((state) => state.timer.running);
 
   // score
-  const score = useSelector((state) => state.timer.score)
+  const score = useSelector((state) => state.timer.score);
 
   const handleStartButtonClick = (evt) => {
     evt.preventDefault();
@@ -37,7 +38,6 @@ function Game({ handleBeginGame, handleNextMovie }) {
   useEffect(() => {
     // Initialize the timer variable to null
     let timer = null;
-  
     // Check if the 'running' flag is true
     if (running) {
       // If running, set the timer to run every 1 second
@@ -47,16 +47,17 @@ function Game({ handleBeginGame, handleNextMovie }) {
           // If time is 0, dispatch a 'stopTimer' action and clear the timer
           dispatch(stopTimer());
           clearInterval(timer);
-        } else {
+        }
+        else {
           // If time is not 0, dispatch an 'updateTime' action
           dispatch(updateTime());
         }
       }, 1000);
-    } else {
+    }
+    else {
       // If not running, clear the timer
       clearInterval(timer);
     }
-  
     // Return a cleanup function that clears the timer
     return () => clearInterval(timer);
   }, [running, time]);
@@ -83,12 +84,12 @@ function Game({ handleBeginGame, handleNextMovie }) {
                 </div>
                 <div className="game__countdown">
                   <h1 className="game__countdown-timer"><span className="game__countdown-number">{time}</span>
-                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
-                  <style>{`@keyframes rotate{0%{transform:rotate(0)}to{transform:rotate(360deg)}}`}</style>
-                  <rect width="19" height="19" x="1" y="3" stroke="#0A0A30" strokeWidth="1.5" rx="8" />
-                  <path stroke="#0A0A30" strokeLinecap="round" strokeWidth="1.5" d="M12.021 12l2.325 2.325" />
-                  <path stroke="#265BFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12.021 12V6.84" style={running ? {animation: 'rotate 2s linear infinite both', transformOrigin: 'center'} : {}} />
-                  </svg>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
+                      <style>{'@keyframes rotate{0%{transform:rotate(0)}to{transform:rotate(360deg)}}'}</style>
+                      <rect width="19" height="19" x="1" y="3" stroke="#0A0A30" strokeWidth="1.5" rx="8" />
+                      <path stroke="#0A0A30" strokeLinecap="round" strokeWidth="1.5" d="M12.021 12l2.325 2.325" />
+                      <path stroke="#265BFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12.021 12V6.84" style={running ? { animation: 'rotate 2s linear infinite both', transformOrigin: 'center' } : {}} />
+                    </svg>
                   </h1>
                 </div>
                 <div className="game__score">
@@ -207,7 +208,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                 }
               </>
             )
-            : undefined
+            : <Loader />
         }
       </div>
     </div>
