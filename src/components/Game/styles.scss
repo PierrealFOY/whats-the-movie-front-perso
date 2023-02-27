@@ -68,47 +68,35 @@
   }
 
   &__countdown-timer {
-    color: #fff;
+    color: black;
     display: flex;
     align-items: center ;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     counter-reset: my-count 5;
-    animation: countdown 5s linear infinite;
-    padding: 2em;
+    padding: 15px;
     border-radius: 20px;
     margin-bottom: 2em;
     margin-top: 2em;
     font-size: 1rem;
+    animation: countdown 5s linear infinite;
+    box-shadow: vars.$boxShadow;
   }
 
   &__countdown-number {
     padding-top: 10px;
     font-size: 2em;
+    transform-origin: center;
+    margin-right: 10px;
   }
 
   @keyframes countdown {
     0% {
-      background: hsl(0,100%,20%);
+      background: vars.$principalColor;
     }
-    20% {
+    50% {
       counter-increment: my-count -1;
-      background: hsl(90,100%,20%);
-    }
-    40% {
-      counter-increment: my-count -2;
-      background: hsl(180,100%,20%);
-    }
-    60% {
-      counter-increment: my-count -3;
-      background: hsl(270,100%,20%);
-    }
-    80% {
-      counter-increment: my-count -4;
-      background: hsl(360,100%,20%);
-    }
-    100% {
-      background: hsl(0,100%,20%);
+      background: vars.$secondaryColor;
     }
   }
 
@@ -132,6 +120,8 @@
     margin-bottom: 0.5rem;
     width: 80%;
     border: 1px solid #6b482a5d;
+    box-shadow: vars.$boxShadow;
+    margin-bottom: 2em;
 
     &-text {      
       padding: 1rem;      
@@ -139,6 +129,11 @@
     &-number {
       animation: scoring 1s linear infinite;
       font-size: 2em;
+    }
+
+    &-number-validated {
+    font-size: 2em;
+    color: green;
     }
   }
 
@@ -198,11 +193,23 @@
     .masked {
       filter: blur(5px);
       -webkit-filter: blur(5px);
-      transition: filter 0.5s linear;
+      animation-play-state: paused;
+    }
 
-      &:hover {
-        filter: blur(0);
-        -webkit-filter: blur(0);
+    .unmasked {
+      filter: blur(0px);
+      -webkit-filter: blur(0px);
+      animation: unBlur 0.5s linear forwards;
+    }
+
+    @keyframes unBlur {
+      0% {
+        filter: blur(5px);
+        -webkit-filter: blur(5px);
+      }
+      to {
+        filter: blur(0px);
+        -webkit-filter: blur(0px);
       }
     }
   }

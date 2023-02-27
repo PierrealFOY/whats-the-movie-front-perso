@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/images/logo-WTM.png';
-import { stopTimer } from '../../actions/movies';
+import { resetTimer, stopTimer } from '../../actions/movies';
 import { useDispatch } from 'react-redux';
 
 function Results({ handleResetGame, handleReplay }) {
@@ -12,6 +12,7 @@ function Results({ handleResetGame, handleReplay }) {
     evt.preventDefault();
     handleResetGame();
     handleReplay();
+    dispatch(resetTimer());
     dispatch(stopTimer());
   };
 

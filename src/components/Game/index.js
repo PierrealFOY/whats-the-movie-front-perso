@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { startTimer, updateTime, stopTimer } from '../../actions/movies';
 import { formatDate } from '../utils';
-import { ProgressBar } from 'react-bootstrap';
 import ResponseButton from './ResponseButton';
 import NextMovieButton from './NextMovieButton';
 
@@ -74,7 +73,6 @@ function Game({ handleBeginGame, handleNextMovie }) {
   return (
     <div className="game">
       <div className="game__container">
-      <ProgressBar now={60} />
         {
           // if there is movies in the state, we show the elements
           movies.length > 0 && responses.length > 0
@@ -87,14 +85,14 @@ function Game({ handleBeginGame, handleNextMovie }) {
                   <h1 className="game__countdown-timer"><span className="game__countdown-number">{time}</span>
                   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
                   <style>{`@keyframes rotate{0%{transform:rotate(0)}to{transform:rotate(360deg)}}`}</style>
-                  <rect width="20" height="20" x="3" y="3" stroke="#0A0A30" strokeWidth="1.5" rx="8" />
+                  <rect width="19" height="19" x="1" y="3" stroke="#0A0A30" strokeWidth="1.5" rx="8" />
                   <path stroke="#0A0A30" strokeLinecap="round" strokeWidth="1.5" d="M12.021 12l2.325 2.325" />
-                  <path stroke="#265BFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12.021 12V6.84" style={{animation: 'rotate 2s linear infinite both', transformOrigin: 'center'}} />
+                  <path stroke="#265BFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12.021 12V6.84" style={running ? {animation: 'rotate 2s linear infinite both', transformOrigin: 'center'} : {}} />
                   </svg>
                   </h1>
                 </div>
                 <div className="game__score">
-                  <h1 className="game__score-text">Score : <span className="game__score-number">{score}</span></h1>
+                  <h1 className="game__score-text">Score : <span className={`game__${running === true ? 'score-number' : 'score-number-validated'}`}>{score}</span></h1>
                 </div>
                 <div className="game__affiche">
                   <img className="game__affiche-poster" src={movie.poster} alt="Movie Poster" />
@@ -107,7 +105,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.directors !== []
                           ? movie.directors.map((director) => (
-                            <p key={director.lastname} className={`game__indices-item ${time <= 50 ? '' : 'masked'}`}>
+                            <p key={director.lastname} className={`game__indices-item ${time <= 50 ? 'unmasked' : 'masked'}`}>
                               {director.firstname} {director.lastname}
                             </p>
                           ))
@@ -117,7 +115,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                   </div>
                   <div className="game__indices-container">
                     <p className="game__indices-title">Date de sortie : </p>
-                    <p className={`game__indices-item ${time <= 40 ? '' : 'masked'}`}>
+                    <p className={`game__indices-item ${time <= 40 ? 'unmasked' : 'masked'}`}>
                       {
                         formatDate(movie.realeaseDate)
                       }
@@ -129,7 +127,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.countries !== []
                           ? movie.countries.map((country) => (
-                            <p key={country.name} className={`game__indices-item ${time <= 30 ? '' : 'masked'}`}>{country.name}</p>
+                            <p key={country.name} className={`game__indices-item ${time <= 35 ? 'unmasked' : 'masked'}`}>{country.name}</p>
                           ))
                           : undefined
                       }
@@ -141,7 +139,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.actors !== []
                           ? movie.actors.map((actor) => (
-                            <p key={actor.lastname} className={`game__indices-item ${time <= 35 ? '' : 'masked'}`}>{actor.firstname} {actor.lastname}</p>
+                            <p key={actor.lastname} className={`game__indices-item ${time <= 30 ? 'unmasked' : 'masked'}`}>{actor.firstname} {actor.lastname}</p>
                           ))
                           : undefined
                       }
@@ -153,7 +151,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.productionStudios !== []
                           ? movie.productionStudios.map((studio) => (
-                            <p key={studio.name} className={`game__indices-item ${time <= 20 ? '' : 'masked'}`}>{studio.name}</p>
+                            <p key={studio.name} className={`game__indices-item ${time <= 20 ? 'unmasked' : 'masked'}`}>{studio.name}</p>
                           ))
                           : undefined
                       }
@@ -165,7 +163,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.genres !== []
                           ? movie.genres.map((genre) => (
-                            <p key={genre.name} className={`game__indices-item ${time <= 10 ? '' : 'masked'}`}>{genre.name}</p>
+                            <p key={genre.name} className={`game__indices-item ${time <= 10 ? 'unmasked' : 'masked'}`}>{genre.name}</p>
                           ))
                           : undefined
                       }
@@ -174,7 +172,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                   <div className="game__indices-container">
                     <p className="game__indices-title">Synopsis : </p>
                     <div className="game__indices-items">
-                      <p className={`game__indices-item ${time <= 5 ? '' : 'masked'}`}>{movie.synopsys}</p>
+                      <p className={`game__indices-item ${time <= 5 ? 'unmasked' : 'masked'}`}>{movie.synopsys}</p>
                     </div>
                   </div>
                 </div>
