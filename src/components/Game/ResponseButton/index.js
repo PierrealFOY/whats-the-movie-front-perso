@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import './styles.scss';
 import { Button } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { setUserResponse } from '../../../actions/movies';
-import { stopTimer, resetFalseAnswer } from '../../../actions/movies';
+import { useDispatch, useSelector } from 'react-redux';
+import { stopTimer, resetFalseAnswer, setUserResponse } from '../../../actions/movies';
+import { addScore } from '../../../actions/score';
 
 function ResponseButton({
   title,
@@ -11,6 +11,7 @@ function ResponseButton({
   idCurrentMovie,
 }) {
   const dispatch = useDispatch();
+  const score = useSelector((state) => state.timer.score);
 
   /**
    * setting the right or false state depending on the answer chosen by the user
@@ -19,6 +20,7 @@ function ResponseButton({
     if (idResponse === idCurrentMovie) {
       // correct answer
       dispatch(setUserResponse('T'));
+      dispatch(addScore(score));
     }
     else {
       // false answer

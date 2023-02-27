@@ -70,4 +70,4 @@ export const stopTimer = () => ({
 
 export const resetFalseAnswer = () => ({
   type: RESET_FALSE_ANSWER,
-})
+});
