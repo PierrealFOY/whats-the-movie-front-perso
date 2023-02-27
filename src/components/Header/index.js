@@ -1,12 +1,16 @@
 import PropTypes from 'prop-types';
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import logo from './logo.png';
+import { resetScore } from '../../actions/score';
 
 function Header({ handleResetGame }) {
+  const dispatch = useDispatch();
   const handleClickHome = (evt) => {
     evt.preventDefault();
     handleResetGame();
+    dispatch(resetScore());
   };
   return (
     <header>
