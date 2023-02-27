@@ -1,4 +1,7 @@
+@use '../../styles/vars';
+
 footer {
+  font-style: vars.$fontFredoka;
   .btn_legalMentions {
     background-color: #B97335;
   }
