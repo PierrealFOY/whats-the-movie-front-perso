@@ -1,3 +1,5 @@
+@use '../../styles/vars';
+
 html, body, #root, .app {
   height: 100%;
   overflow: auto;
@@ -14,16 +16,18 @@ html, body, #root, .app {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
 
-@media (min-width: 768px) {
-  .app {
+  @media (min-width: 768px) {
     padding: 0 10%;
   }
-}
-
-@media (min-width: 1440px) {
-  .app {
+  
+  @media (min-width: 1440px) {
     padding: 0 15%;
+  }  
+
+  .global-container {
+    height: 100%;
+    background-color: vars.$principalColor;
+    display: inline-table;
   }
 }
