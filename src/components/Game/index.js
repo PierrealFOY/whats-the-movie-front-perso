@@ -95,8 +95,9 @@ function Game({ handleBeginGame, handleNextMovie }) {
                 <div className="game__score">
                   <h1 className="game__score-text">Score : <span className={`game__${running === true ? 'score-number' : 'score-number-validated'}`}>{score}</span></h1>
                 </div>
-                <div className="game__affiche">
-                  <img className="game__affiche-poster" src={movie.poster} alt="Movie Poster" />
+                <div className={`game__affiche ${time <= 0 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
+                  <img className="game__affiche-poster"
+                   src={movie.poster} alt="Movie Poster" />
                   <h1>{movie.title}</h1>
                 </div>
                 <div className="game__indices">
@@ -106,9 +107,9 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.directors !== []
                           ? movie.directors.map((director) => (
-                            <p key={director.lastname} className={`game__indices-item ${time <= 50 || running === false ? 'unmasked' : 'masked'}`}>
+                            <p key={director.lastname} className={`game__indices-item ${time <= 60 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
                               {director.firstname} {director.lastname}
-                            </p>
+                            </p> 
                           ))
                           : undefined
                       }
@@ -116,9 +117,9 @@ function Game({ handleBeginGame, handleNextMovie }) {
                   </div>
                   <div className="game__indices-container">
                     <p className="game__indices-title">Date de sortie : </p>
-                    <p className={`game__indices-item ${time <= 40 || running === false ? 'unmasked' : 'masked'}`}>
+                    <p className={`game__indices-item ${time <= 50 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
                       {
-                        formatDate(movie.realeaseDate)
+                        formatDate(movie.realeaseDate) 
                       }
                     </p>
                   </div>
@@ -128,7 +129,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.countries !== []
                           ? movie.countries.map((country) => (
-                            <p key={country.name} className={`game__indices-item ${time <= 35 || running === false ? 'unmasked' : 'masked'}`}>{country.name}</p>
+                            <p key={country.name} className={`game__indices-item ${time <= 40 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>{country.name}</p>
                           ))
                           : undefined
                       }
@@ -140,7 +141,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.actors !== []
                           ? movie.actors.map((actor) => (
-                            <p key={actor.lastname} className={`game__indices-item ${time <= 30 || running === false ? 'unmasked' : 'masked'}`}>{actor.firstname} {actor.lastname}</p>
+                            <p key={actor.lastname} className={`game__indices-item ${time <= 35 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>{actor.firstname} {actor.lastname}</p>
                           ))
                           : undefined
                       }
@@ -152,7 +153,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.productionStudios !== []
                           ? movie.productionStudios.map((studio) => (
-                            <p key={studio.name} className={`game__indices-item ${time <= 20 || running === false ? 'unmasked' : 'masked'}`}>{studio.name}</p>
+                            <p key={studio.name} className={`game__indices-item ${time <= 30 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>{studio.name}</p>
                           ))
                           : undefined
                       }
@@ -164,7 +165,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.genres !== []
                           ? movie.genres.map((genre) => (
-                            <p key={genre.name} className={`game__indices-item ${time <= 10 || running === false ? 'unmasked' : 'masked'}`}>{genre.name}</p>
+                            <p key={genre.name} className={`game__indices-item ${time <= 20 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>{genre.name}</p>
                           ))
                           : undefined
                       }
@@ -173,7 +174,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                   <div className="game__indices-container">
                     <p className="game__indices-title">Synopsis : </p>
                     <div className="game__indices-items">
-                      <p className={`game__indices-item ${time <= 5 || running === false ? 'unmasked' : 'masked'}`}>{movie.synopsys}</p>
+                      <p className={`game__indices-item ${time <= 10 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>{movie.synopsys}</p>
                     </div>
                   </div>
                 </div>
