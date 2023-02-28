@@ -18,6 +18,7 @@ function Header({ handleResetGame }) {
   };
 
   const logged = useSelector((state) => state.login.logged);
+
   return (
     <header>
       <nav className="navbar navbar-expand-sm navbar-light">

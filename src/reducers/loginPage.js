@@ -20,7 +20,6 @@ export default function LoginPageReducer(state = initialState, action = {}) {
         logged: true,
         nickname: action.nickname,
         token: action.token,
-        email: '',
         password: '',
       };
     case HANDLE_FAILED_AUTH:
