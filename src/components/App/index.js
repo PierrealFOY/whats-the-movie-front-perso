@@ -14,7 +14,7 @@ import Game from '../Game';
 import LoginPage from '../Login_page';
 import Errors from '../Errors';
 
-import './styles.css';
+import './styles.scss';
 import RegisterForm from '../Login_register';
 import PersonalSpace from '../Personal_space';
 import AddMovies from '../Add_movies';
@@ -41,16 +41,18 @@ function App() {
     >
       <div className="app">
         <Header handleResetGame={handleResetGame} />
-        <Routes>
-          <Route path="/" element={<Accueil />} />
-          <Route path="/jeu" element={<Game handleBeginGame={handleBeginGame} handleNextMovie={handleNextMovie} />} />
-          <Route path="/authentification" element={<LoginPage />} />
-          <Route path="/inscription" element={<RegisterForm />} />
-          <Route path="/results" element={<Results handleResetGame={handleResetGame} handleReplay={handleBeginGame} />} />
-          <Route path="/compte" element={<PersonalSpace />} />
-          <Route path="/compte/ajout-film" element={<AddMovies />} />
-          <Route path="*" element={<Errors />} />
-        </Routes>
+        <div className="global-container">
+          <Routes>
+            <Route path="/" element={<Accueil />} />
+            <Route path="/jeu" element={<Game handleBeginGame={handleBeginGame} handleNextMovie={handleNextMovie} />} />
+            <Route path="/authentification" element={<LoginPage />} />
+            <Route path="/inscription" element={<RegisterForm />} />
+            <Route path="/results" element={<Results handleResetGame={handleResetGame} handleReplay={handleBeginGame} />} />
+            <Route path="/compte" element={<PersonalSpace />} />
+            <Route path="/compte/ajout-film" element={<AddMovies />} />
+            <Route path="*" element={<Errors />} />
+          </Routes>
+        </div>
         <Footer />
       </div>
     </ThemeProvider>
