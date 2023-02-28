@@ -1,16 +1,29 @@
+html, body, #root, .app {
+  height: 100%;
+  overflow: auto;
+}
+
+#root {
+  background: url('../../assets/images/background.svg');
+  background-size: cover;
+  background-position: center;
+}
+
 .app {
-  background-color: #F4EBD0;
-  padding: 0.5rem;
+  /* background-color: #f4ebd081; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @media (min-width: 768px) {
   .app {
-    padding: 1rem 10%;
+    padding: 0 10%;
   }
 }
 
 @media (min-width: 1440px) {
   .app {
-    padding: 1rem 15%;
+    padding: 0 15%;
   }
 }
