@@ -1,4 +1,4 @@
-import { HANDLE_SUCCESSFUL_AUTH } from '../actions/loginPageActions';
+import { HANDLE_SUCCESSFUL_AUTH, HANDLE_FAILED_AUTH, HANDLE_LOGOUT } from '../actions/loginPageActions';
 
 const initialState = {
   logged: false,
@@ -20,6 +20,19 @@ export default function LoginPageReducer(state = initialState, action = {}) {
         logged: true,
         nickname: action.nickname,
         token: action.token,
+        email: '',
+        password: '',
+      };
+    case HANDLE_FAILED_AUTH:
+      return {
+        ...state,
+        logged: false,
+      };
+
+    case HANDLE_LOGOUT:
+      return {
+        ...state,
+        logged: false,
       };
 
     default:
