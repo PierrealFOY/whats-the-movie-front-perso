@@ -13,7 +13,7 @@ function Header({ handleResetGame }) {
 
   const dispatch = useDispatch();
 
-  const HandleLogout = () => {
+  const userLogout = () => {
     dispatch(handleLogout());
   };
 
@@ -66,7 +66,7 @@ function Header({ handleResetGame }) {
                 <li className="nav-item active">
                   <button
                     type="button"
-                    onClick={HandleLogout}
+                    onClick={userLogout}
                   >
                     <span className="nav-link button_top" href="#">
                       Deconnexion
