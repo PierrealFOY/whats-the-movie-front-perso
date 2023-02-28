@@ -4,6 +4,7 @@ export const NEXT_MOVIE = 'NEXT_MOVIE';
 export const RESET_GAME = 'RESET_GAME';
 export const FETCH_MOVIES_RESPONSES = 'FETCH_MOVIES_RESPONSES';
 export const SET_USER_RESPONSE = 'SET_USER_RESPONSE';
+export const SUBMIT_MOVIE = 'SUBMIT_MOVIE';
 
 // Timer
 export const START_TIMER = 'START_TIMER';
@@ -70,4 +71,8 @@ export const stopTimer = () => ({
 
 export const resetFalseAnswer = () => ({
   type: RESET_FALSE_ANSWER,
+});
+
+export const submitMovie = () => ({
+  type: SUBMIT_MOVIE,
 });

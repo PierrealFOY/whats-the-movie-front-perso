@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   updateTitle, updateSynopsis, updateReleaseDate,
@@ -9,69 +8,106 @@ import {
   updateRealisator1, updateRealisator2,
   updateGenre1, updateGenre2, updateGenre3,
 } from '../../actions/formActions';
+import { submitMovie } from '../../actions/movies';
 
 import './styles.scss';
 
 function AddMovies() {
-  const [title, setTitle] = useState('');
-  const [synopsis, setSynopsis] = useState('');
-  const [releaseDate, setReleaseDate] = useState('');
-  const [productionStudio1, setProductionStudio1] = useState('');
-  const [productionStudio2, setProductionStudio2] = useState('');
-  const [actor1, setActor1] = useState('');
-  const [actor2, setActor2] = useState('');
-  const [actor3, setActor3] = useState('');
-  const [actor4, setActor4] = useState('');
-  const [actor5, setActor5] = useState('');
-  const [country1, setCountry1] = useState('');
-  const [country2, setCountry2] = useState('');
-  const [country3, setCountry3] = useState('');
-  const [realisator1, setRealisator1] = useState('');
-  const [realisator2, setRealisator2] = useState('');
-  const [genre1, setGenre1] = useState('');
-  const [genre2, setGenre2] = useState('');
-  const [genre3, setGenre3] = useState('');
-
   const dispatch = useDispatch();
+  const title = useSelector((state) => state.addMovie.title);
+  const synopsis = useSelector((state) => state.addMovie.synopsis);
+  const releaseDate = useSelector((state) => state.addMovie.releaseDate);
+  const productionStudio1 = useSelector((state) => state.addMovie.productionStudio1);
+  const productionStudio2 = useSelector((state) => state.addMovie.productionStudio2);
+  const actor1 = useSelector((state) => state.addMovie.actor1);
+  const actor2 = useSelector((state) => state.addMovie.actor2);
+  const actor3 = useSelector((state) => state.addMovie.actor3);
+  const actor4 = useSelector((state) => state.addMovie.actor4);
+  const actor5 = useSelector((state) => state.addMovie.actor5);
+  const director1 = useSelector((state) => state.addMovie.realisator1);
+  const director2 = useSelector((state) => state.addMovie.realisator2);
+  const country1 = useSelector((state) => state.addMovie.country1);
+  const country2 = useSelector((state) => state.addMovie.country2);
+  const country3 = useSelector((state) => state.addMovie.country3);
+  const genre1 = useSelector((state) => state.addMovie.genre1);
+  const genre2 = useSelector((state) => state.addMovie.genre2);
+  const genre3 = useSelector((state) => state.addMovie.genre3);
+
+  const handleChangeTitle = (e) => {
+    dispatch(updateTitle(e.target.value));
+  };
+
+  const handleChangeSynopsis = (e) => {
+    dispatch(updateSynopsis(e.target.value));
+  };
+
+  const handleChangeReleaseDate = (e) => {
+    dispatch(updateReleaseDate(e.target.value));
+  };
+
+  const handleChangeProductionStudio1 = (e) => {
+    dispatch(updateProductionStudio1(e.target.value));
+  };
+
+  const handleChangeProductionStudio2 = (e) => {
+    dispatch(updateProductionStudio2(e.target.value));
+  };
+
+  const handleChangeActor1 = (e) => {
+    dispatch(updateActor1(e.target.value));
+  };
+
+  const handleChangeActor2 = (e) => {
+    dispatch(updateActor2(e.target.value));
+  };
+
+  const handleChangeActor3 = (e) => {
+    dispatch(updateActor3(e.target.value));
+  };
+
+  const handleChangeActor4 = (e) => {
+    dispatch(updateActor4(e.target.value));
+  };
+
+  const handleChangeActor5 = (e) => {
+    dispatch(updateActor5(e.target.value));
+  };
+
+  const handleChangeCountry1 = (e) => {
+    dispatch(updateCountry1(e.target.value));
+  };
+
+  const handleChangeCountry2 = (e) => {
+    dispatch(updateCountry2(e.target.value));
+  };
+
+  const handleChangeCountry3 = (e) => {
+    dispatch(updateCountry3(e.target.value));
+  };
+
+  const handleChangeDirector1 = (e) => {
+    dispatch(updateRealisator1(e.target.value));
+  };
+
+  const handleChangeDirector2 = (e) => {
+    dispatch(updateRealisator2(e.target.value));
+  };
+
+  const handleChangeGenre1 = (e) => {
+    dispatch(updateGenre1(e.target.value));
+  };
+
+  const handleChangeGenre2 = (e) => {
+    dispatch(updateGenre2(e.target.value));
+  };
+
+  const handleChangeGenre3 = (e) => {
+    dispatch(updateGenre3(e.target.value));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateTitle(title));
-    dispatch(updateSynopsis(synopsis));
-    dispatch(updateReleaseDate(releaseDate));
-    dispatch(updateProductionStudio1(productionStudio1));
-    dispatch(updateProductionStudio2(productionStudio2));
-    dispatch(updateActor1(actor1));
-    dispatch(updateActor2(actor2));
-    dispatch(updateActor3(actor3));
-    dispatch(updateActor4(actor4));
-    dispatch(updateActor5(actor5));
-    dispatch(updateCountry1(country1));
-    dispatch(updateCountry2(country2));
-    dispatch(updateCountry3(country3));
-    dispatch(updateRealisator1(realisator1));
-    dispatch(updateRealisator2(realisator2));
-    dispatch(updateGenre1(genre1));
-    dispatch(updateGenre2(genre2));
-    dispatch(updateGenre3(genre3));
-    setTitle('');
-    setSynopsis('');
-    setReleaseDate('');
-    setProductionStudio1('');
-    setProductionStudio2('');
-    setActor1('');
-    setActor2('');
-    setActor3('');
-    setActor4('');
-    setActor5('');
-    setCountry1('');
-    setCountry2('');
-    setCountry3('');
-    setRealisator1('');
-    setRealisator2('');
-    setGenre1('');
-    setGenre2('');
-    setGenre3('');
+    dispatch(submitMovie());
   };
 
   const handleClickAdd = (evt) => {
@@ -92,10 +128,11 @@ function AddMovies() {
           <div className="left">
             <div className="AddMovies--title">
               <input
+                id="title"
                 type="text"
                 placeholder="Titre"
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={handleChangeTitle}
               />
             </div>
             <div className="AddMovies--synopsis">
@@ -104,15 +141,15 @@ function AddMovies() {
                 type="text"
                 placeholder="Synopsis"
                 value={synopsis}
-                onChange={(e) => setSynopsis(e.target.value)}
+                onChange={handleChangeSynopsis}
               />
             </div>
             <div className="AddMovies--date">
               <input
-                type="text"
+                type="date"
                 placeholder="Date de sortie"
                 value={releaseDate}
-                onChange={(e) => setReleaseDate(e.target.value)}
+                onChange={handleChangeReleaseDate}
               />
             </div>
 
@@ -122,7 +159,7 @@ function AddMovies() {
                 type="text"
                 placeholder="Studio de production"
                 value={productionStudio1}
-                onChange={(e) => setProductionStudio1(e.target.value)}
+                onChange={handleChangeProductionStudio1}
               />
               <i className="sudio bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
@@ -131,7 +168,7 @@ function AddMovies() {
                 type="text"
                 placeholder="Studio de production 2"
                 value={productionStudio2}
-                onChange={(e) => setProductionStudio2(e.target.value)}
+                onChange={handleChangeProductionStudio2}
               />
             </div>
           </div>
@@ -143,7 +180,7 @@ function AddMovies() {
                 type="text"
                 placeholder="Acteur 1"
                 value={actor1}
-                onChange={(e) => setActor1(e.target.value)}
+                onChange={handleChangeActor1}
               />
               <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
@@ -152,7 +189,7 @@ function AddMovies() {
                 type="text"
                 placeholder="Acteur 2"
                 value={actor2}
-                onChange={(e) => setActor2(e.target.value)}
+                onChange={handleChangeActor2}
               />
               <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
@@ -161,7 +198,7 @@ function AddMovies() {
                 type="text"
                 placeholder="Acteur 3"
                 value={actor3}
-                onChange={(e) => setActor3(e.target.value)}
+                onChange={handleChangeActor3}
               />
               <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
@@ -170,7 +207,7 @@ function AddMovies() {
                 type="text"
                 placeholder="Acteur 4"
                 value={actor4}
-                onChange={(e) => setActor4(e.target.value)}
+                onChange={handleChangeActor4}
               />
               <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
@@ -179,7 +216,7 @@ function AddMovies() {
                 type="text"
                 placeholder="Acteur 5"
                 value={actor5}
-                onChange={(e) => setActor5(e.target.value)}
+                onChange={handleChangeActor5}
               />
             </div>
 
@@ -189,7 +226,7 @@ function AddMovies() {
                 type="text"
                 placeholder="Pays 1"
                 value={country1}
-                onChange={(e) => setCountry1(e.target.value)}
+                onChange={handleChangeCountry1}
               />
               <i className="country bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
@@ -198,7 +235,7 @@ function AddMovies() {
                 type="text"
                 placeholder="Pays 2"
                 value={country2}
-                onChange={(e) => setCountry2(e.target.value)}
+                onChange={handleChangeCountry2}
               />
               <i className="country bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
@@ -207,7 +244,7 @@ function AddMovies() {
                 type="text"
                 placeholder="Pays 3"
                 value={country3}
-                onChange={(e) => setCountry3(e.target.value)}
+                onChange={handleChangeCountry3}
               />
             </div>
 
@@ -216,8 +253,8 @@ function AddMovies() {
               <input
                 type="text"
                 placeholder="Réalisateur 1"
-                value={realisator1}
-                onChange={(e) => setRealisator1(e.target.value)}
+                value={director1}
+                onChange={handleChangeDirector1}
               />
               <i className="director bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
@@ -225,8 +262,8 @@ function AddMovies() {
               <input
                 type="text"
                 placeholder="Réalisateur 2"
-                value={realisator2}
-                onChange={(e) => setRealisator2(e.target.value)}
+                value={director2}
+                onChange={handleChangeDirector2}
               />
             </div>
 
@@ -236,7 +273,7 @@ function AddMovies() {
                 type="text"
                 placeholder="Genre 1"
                 value={genre1}
-                onChange={(e) => setGenre1(e.target.value)}
+                onChange={handleChangeGenre1}
               />
               <i className="genre bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
@@ -245,7 +282,7 @@ function AddMovies() {
                 type="text"
                 placeholder="Genre 2"
                 value={genre2}
-                onChange={(e) => setGenre2(e.target.value)}
+                onChange={handleChangeGenre2}
               />
               <i className="genre bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
@@ -254,7 +291,7 @@ function AddMovies() {
                 type="text"
                 placeholder="Genre 3"
                 value={genre3}
-                onChange={(e) => setGenre3(e.target.value)}
+                onChange={handleChangeGenre3}
               />
             </div>
           </div>
@@ -262,7 +299,7 @@ function AddMovies() {
 
         <div className="button_module">
           <button type="submit">Valider</button>
-          <button type="submit">Annuler</button>
+          <button type="button">Annuler</button>
         </div>
       </form>
     </div>

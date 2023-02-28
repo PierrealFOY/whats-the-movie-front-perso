@@ -2,9 +2,11 @@
 import axios from 'axios';
 import {
   GET_MOVIES,
+  SUBMIT_MOVIE,
   fetchMovies,
   fetchMoviesResponses,
 } from '../actions/movies';
+import { formatDateForAPI } from '../components/utils';
 
 const apiMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -61,6 +63,27 @@ const apiMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           // error
           console.log('Error : ', error);
+        });
+      break;
+
+    case SUBMIT_MOVIE:
+      axios.post('http://localhost:8081/api/movies', {
+        title: store.getState().addMovie.title,
+        synopsis: store.getState().addMovie.synopsis,
+        releaseDate: formatDateForAPI(store.getState().addMovie.releaseDate),
+        poster: store.getState().addMovie.poster,
+        status: 0,
+        idGenres: [],
+        idActors: [],
+        idProductionStudios: [],
+        idDirectors: [],
+        idCountries: [],
+      })
+        .then((response) => {
+          console.log('Response : ', response);
+        })
+        .catch((error) => {
+          console.log('Erreur : ', error);
         });
       break;
 

@@ -13,3 +13,8 @@ export const formatDate = (date) => {
   };
   return dateToFormat.toLocaleDateString('fr-FR', options);
 };
+
+export const formatDateForAPI = (date) => {
+  const dateToFormat = new Date(date);
+  return dateToFormat.toISOString();
+};
