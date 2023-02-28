@@ -108,6 +108,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 
     @media (max-width: 1024px) {   
       padding: 0.5rem 1rem;
@@ -147,6 +148,12 @@
       color: red;
     }
   }
+  .masked {
+    display: none;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    animation-play-state: paused;
+  }
 
   &__affiche {
     width: 80%;
@@ -159,6 +166,44 @@
     &-poster {
       max-width: 100%;
       max-height: 100%;
+    }
+
+    .roll-in-blurred-left {
+      -webkit-animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+              animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    }
+
+    @-webkit-keyframes roll-in-blurred-left {
+      0% {
+        -webkit-transform: translateX(-1000px) rotate(-720deg);
+                transform: translateX(-1000px) rotate(-720deg);
+        -webkit-filter: blur(50px);
+                filter: blur(50px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateX(0) rotate(0deg);
+                transform: translateX(0) rotate(0deg);
+        -webkit-filter: blur(0);
+                filter: blur(0);
+        opacity: 1;
+      }
+    }
+    @keyframes roll-in-blurred-left {
+      0% {
+        -webkit-transform: translateX(-1000px) rotate(-720deg);
+                transform: translateX(-1000px) rotate(-720deg);
+        -webkit-filter: blur(50px);
+                filter: blur(50px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateX(0) rotate(0deg);
+                transform: translateX(0) rotate(0deg);
+        -webkit-filter: blur(0);
+                filter: blur(0);
+        opacity: 1;
+      }
     }
   }
 
@@ -189,28 +234,60 @@
     &-item {
       color: #6b482a;
       margin-right: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .reveal {
+      color: #A7001E;
     }
 
     .masked {
+      display: none;
       filter: blur(5px);
       -webkit-filter: blur(5px);
       animation-play-state: paused;
     }
 
-    .unmasked {
-      filter: blur(0px);
-      -webkit-filter: blur(0px);
-      animation: unBlur 0.5s linear forwards;
+    .cover {
+      
     }
 
-    @keyframes unBlur {
+    .roll-in-blurred-left {
+      -webkit-animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+              animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    }
+
+    @-webkit-keyframes roll-in-blurred-left {
       0% {
-        filter: blur(5px);
-        -webkit-filter: blur(5px);
+        -webkit-transform: translateX(-1000px) rotate(-720deg);
+                transform: translateX(-1000px) rotate(-720deg);
+        -webkit-filter: blur(50px);
+                filter: blur(50px);
+        opacity: 0;
       }
-      to {
-        filter: blur(0px);
-        -webkit-filter: blur(0px);
+      100% {
+        -webkit-transform: translateX(0) rotate(0deg);
+                transform: translateX(0) rotate(0deg);
+        -webkit-filter: blur(0);
+                filter: blur(0);
+        opacity: 1;
+      }
+    }
+    @keyframes roll-in-blurred-left {
+      0% {
+        -webkit-transform: translateX(-1000px) rotate(-720deg);
+                transform: translateX(-1000px) rotate(-720deg);
+        -webkit-filter: blur(50px);
+                filter: blur(50px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateX(0) rotate(0deg);
+                transform: translateX(0) rotate(0deg);
+        -webkit-filter: blur(0);
+                filter: blur(0);
+        opacity: 1;
       }
     }
   }
