@@ -1,9 +1,12 @@
+@use '../../../styles/vars';
+
 .responses__button {
   padding: 0 !important;
   margin-bottom: 0.5rem;
   border: 1px solid #6b482a;
   color: #6b482a;
   white-space: normal;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 
   & > a {
     display: inline-block;
