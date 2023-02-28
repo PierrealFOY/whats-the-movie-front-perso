@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { submitEmail, submitPassword, submitLogin } from '../../actions/loginPageActions';
 
 import WTM from '../../assets/WTM.png';
-import Accueil from '../Accueil';
+import PersonalSpace from '../Personal_space';
 import './styles.scss';
 
 function LoginPage() {
@@ -26,7 +26,7 @@ function LoginPage() {
 
   return (
     <div className="LoginPage">
-      {logged ? <Accueil />
+      {logged ? <PersonalSpace />
         : (
           <form onSubmit={handleSubmit}>
             <img src={WTM} alt="WTM" />
