@@ -6,6 +6,8 @@
   background-color: #F4EBD0;
   font-family: vars.$fontFredoka;
   font-size: 0.9rem;
+  display: inline-table;
+  padding-top: 1rem;
   // animation: fadein 2s;
   //   -moz-animation: fadein 2s; /* Firefox */
   //   -webkit-animation: fadein 2s; /* Safari et Chrome */
@@ -100,7 +102,7 @@
   }
 
   &__container {
-    margin: 1rem auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -217,6 +219,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     width: 80%;
+    padding-bottom: 1rem;
 
     &-button {
       padding: 0 !important;

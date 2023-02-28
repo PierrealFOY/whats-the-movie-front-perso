@@ -5,20 +5,26 @@
   margin: 0;
   padding: 0;
   background-color: #f4ebd0e1;
-  display: flex;
-  justify-content: center;
+  display: inline-table;
+  // text-align: center;
   font-family: vars.$fontFredoka;
 
   &__container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 80%;
+    height: 100%;
+    margin: 0 auto;
 
     .home__logo {
       margin: 1rem auto;
       width: 100%;
-      max-width: 400px;
+      max-width: 500px;
+
+      @media (max-width: 768px) {
+        max-width: 400px;
+      }
     }
 
     .home__button-container {
