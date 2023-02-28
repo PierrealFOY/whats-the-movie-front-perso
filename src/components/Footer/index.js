@@ -1,18 +1,13 @@
 import './styles.scss'
-import { Button } from 'react-bootstrap';
 
 function Footer() {
   return (
     <>
     <footer className="bg-dark text-center text-white">
       <div className="container p-4 pb-0">
-        <Button
-            className='btn_legalMentions'
-            variant="success"
-            size="md"
-          >
+        <button className="button_top">
           Mentions légales
-          </Button>
+          </button>
       </div>
       <div
         className="text-center p-3"
