@@ -7,6 +7,7 @@ import {
   nextMovie,
   resetGame,
 } from '../../actions/movies';
+
 import Header from '../Header';
 import Accueil from '../Accueil';
 import Results from '../Results';
@@ -54,7 +55,6 @@ function App() {
           {logged ? <Route path="/compte" element={<PersonalSpace />} /> : <Route path="/authentification" element={<LoginPage />} />}
           <Route path="*" element={<Errors />} />
         </Routes>
-       
         <Footer />
       </div>
     </ThemeProvider>
