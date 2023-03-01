@@ -6,7 +6,7 @@ import {
   fetchMovies,
   fetchMoviesResponses,
 } from '../actions/movies';
-import { formatDateForAPI } from '../components/utils';
+import { formatDateForAPI, capitalizeFirstLetter } from '../components/utils';
 
 const apiMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -67,23 +67,36 @@ const apiMiddleware = (store) => (next) => (action) => {
       break;
 
     case SUBMIT_MOVIE:
+      // getting studios id
+      /*const studios = [store.getState().addMovie.productionStudio1];
+      if (store.getState().addMovie.productionStudio2 !== 0)
+        studios.push(store.getState().addMovie.productionStudio2);*/
+
+      
+
       axios.post('http://localhost:8081/api/movies', {
         title: store.getState().addMovie.title,
         synopsis: store.getState().addMovie.synopsis,
         releaseDate: formatDateForAPI(store.getState().addMovie.releaseDate),
-        poster: store.getState().addMovie.poster,
+        poster: '', // store.getState().addMovie.poster,
         status: 0,
-        idGenres: [],
-        idActors: [],
-        idProductionStudios: [],
-        idDirectors: [],
-        idCountries: [],
+        idGenres: store.getState().addMovie.genres,
+        idActors: store.getState().addMovie.actors,
+        idProductionStudios: store.getState().addMovie.productionStudios,
+        idDirectors: store.getState().addMovie.directors,
+        idCountries: store.getState().addMovie.countries,
       })
         .then((response) => {
           console.log('Response : ', response);
         })
         .catch((error) => {
-          console.log('Erreur : ', error);
+          /*console.log('Erreur : ', error);
+          console.log('Test', Object.keys(error.response.data));
+          console.log('Toto', error.response.data[Object.keys(error.response.data)]);*/
+
+          const title = Object.keys(error.response.data)[0];
+          const message = error.response.data[Object.keys(error.response.data)][0];
+          alert(capitalizeFirstLetter(title) + ' : ' + message);
         });
       break;
 

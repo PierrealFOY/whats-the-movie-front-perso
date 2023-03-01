@@ -1,15 +1,13 @@
-
-import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 
 import {
   updateTitle, updateSynopsis, updateReleaseDate,
-  updateProductionStudio1, updateProductionStudio2,
-  updateActor1, updateActor2, updateActor3, updateActor4, updateActor5,
-  updateCountry1, updateCountry2, updateCountry3,
-  updateRealisator1, updateRealisator2,
-  updateGenre1, updateGenre2, updateGenre3,
+  updateProductionStudios,
+  updateActors,
+  updateCountries,
+  updateDirectors,
+  updateGenres,
 } from '../../actions/formActions';
 import { submitMovie } from '../../actions/movies';
 
@@ -41,64 +39,24 @@ function AddMovies() {
     dispatch(updateReleaseDate(e.target.value));
   };
 
-  const handleChangeProductionStudio1 = (e) => {
-    dispatch(updateProductionStudio1(e.value));
+  const handleChangeProductionStudios = (e) => {
+    dispatch(updateProductionStudios(e.value));
   };
 
-  const handleChangeProductionStudio2 = (e) => {
-    dispatch(updateProductionStudio2(e.value));
+  const handleChangeActors = (e) => {
+    dispatch(updateActors(e.value));
   };
 
-  const handleChangeActor1 = (e) => {
-    dispatch(updateActor1(e.value));
+  const handleChangeCountries = (e) => {
+    dispatch(updateCountries(e.value));
   };
 
-  const handleChangeActor2 = (e) => {
-    dispatch(updateActor2(e.value));
+  const handleChangeDirectors = (e) => {
+    dispatch(updateDirectors(e.value));
   };
 
-  const handleChangeActor3 = (e) => {
-    dispatch(updateActor3(e.value));
-  };
-
-  const handleChangeActor4 = (e) => {
-    dispatch(updateActor4(e.value));
-  };
-
-  const handleChangeActor5 = (e) => {
-    dispatch(updateActor5(e.value));
-  };
-
-  const handleChangeCountry1 = (e) => {
-    dispatch(updateCountry1(e.value));
-  };
-
-  const handleChangeCountry2 = (e) => {
-    dispatch(updateCountry2(e.value));
-  };
-
-  const handleChangeCountry3 = (e) => {
-    dispatch(updateCountry3(e.value));
-  };
-
-  const handleChangeDirector1 = (e) => {
-    dispatch(updateRealisator1(e.value));
-  };
-
-  const handleChangeDirector2 = (e) => {
-    dispatch(updateRealisator2(e.value));
-  };
-
-  const handleChangeGenre1 = (e) => {
-    dispatch(updateGenre1(e.value));
-  };
-
-  const handleChangeGenre2 = (e) => {
-    dispatch(updateGenre2(e.value));
-  };
-
-  const handleChangeGenre3 = (e) => {
-    dispatch(updateGenre3(e.value));
+  const handleChangeGenres = (e) => {
+    dispatch(updateGenres(e.value));
   };
 
   const handleSubmit = (e) => {
@@ -115,11 +73,16 @@ function AddMovies() {
     element.classList.remove('invisible');
     // we put the class invisible on the icon for hide it
     evt.target.classList.add('invisible');
+
+    const parentDiv = evt.target.closest('.can-add');
+    if (parentDiv !== undefined) {
+      parentDiv.style.left = "0px";
+    }
   };
 
   return (
     <div className="AddMovies">      
-      <form onSubmit={handleSubmit}>
+      <form className="AddMovies-form" onSubmit={handleSubmit}>
       <h1 className="AddMovies-titre">Ajouter un film</h1>
         <div className="add_new">
           <div className="left">
@@ -135,21 +98,12 @@ function AddMovies() {
               />
             </div>
             <div className="AddMovies--synopsis">
-              {/* <input
-                className="synopsis_input"
-                type="text"
-                placeholder="Synopsis"
-                value={synopsis}
-                onChange={handleChangeSynopsis}
-                required
-                minLength="50"
-              /> */}
               <textarea
                 className="synopsis_input input-movie"
                 value={synopsis}
                 placeholder="Synopsis"
                 onChange={handleChangeSynopsis}
-                minLength="50"
+                minLength={50}
                 required
               />
             </div>
@@ -165,22 +119,23 @@ function AddMovies() {
             </div>
 
             {/* Production Studios */}
-            <div className="AddMovies--studio sudio-input can-add">
+            <div className="AddMovies--studio studio-input can-add">
               <Select
                 className="select-combobox"
-                onChange={handleChangeProductionStudio1}
+                onChange={handleChangeProductionStudios}
                 options={studiosList}
                 placeholder="Studio de production 1"
               />
-              <div className="can-add-icon"><i className="sudio bi bi-plus-circle" onClick={handleClickAdd} /></div>
+              <div className="can-add-icon"><i className="studio bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
-            <div className="AddMovies--studio sudio-input  can-add invisible">
+            <div className="AddMovies--studio studio-input can-add invisible last-select">
               <Select
                 className="select-combobox"
-                onChange={handleChangeProductionStudio2}
+                onChange={handleChangeProductionStudios}
                 options={studiosList}
                 placeholder="Studio de production 2"
               />
+              <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>
             </div>
           </div>
 
@@ -189,7 +144,7 @@ function AddMovies() {
             <div className="AddMovies--acteur actor-input can-add">
               <Select
                 className="select-combobox"
-                onChange={handleChangeActor1}
+                onChange={handleChangeActors}
                 options={actorsList}
                 placeholder="Acteur 1"
               />
@@ -198,7 +153,7 @@ function AddMovies() {
             <div className="AddMovies--acteur actor-input can-add invisible">
               <Select
                 className="select-combobox"
-                onChange={handleChangeActor2}
+                onChange={handleChangeActors}
                 options={actorsList}
                 placeholder="Acteur 2"
               />
@@ -207,7 +162,7 @@ function AddMovies() {
             <div className="AddMovies--acteur actor-input can-add invisible">
               <Select
                 className="select-combobox"
-                onChange={handleChangeActor3}
+                onChange={handleChangeActors}
                 options={actorsList}
                 placeholder="Acteur 3"
               />              
@@ -216,26 +171,27 @@ function AddMovies() {
             <div className="AddMovies--acteur actor-input can-add invisible">
               <Select
                 className="select-combobox"
-                onChange={handleChangeActor4}
+                onChange={handleChangeActors}
                 options={actorsList}
                 placeholder="Acteur 4"
               />            
               <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
-            <div className="AddMovies--acteur actor-input can-add invisible">
+            <div className="AddMovies--acteur actor-input can-add invisible last-select">
               <Select
                 className="select-combobox"
-                onChange={handleChangeActor5}
+                onChange={handleChangeActors}
                 options={actorsList}
                 placeholder="Acteur 5"
-              />              
+              />    
+              <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>          
             </div>
 
             {/* Countries */}
             <div className="AddMovies--country country-input can-add">
               <Select
                 className="select-combobox"
-                onChange={handleChangeCountry1}
+                onChange={handleChangeCountries}
                 options={countriesList}
                 placeholder="Pays 1"
               />               
@@ -244,45 +200,47 @@ function AddMovies() {
             <div className="AddMovies--country country-input can-add invisible">
               <Select
                 className="select-combobox"
-                onChange={handleChangeCountry2}
+                onChange={handleChangeCountries}
                 options={countriesList}
                 placeholder="Pays 2"
               />                  
               <div className="can-add-icon"><i className="country bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
-            <div className="AddMovies--country country-input can-add invisible">
+            <div className="AddMovies--country country-input can-add invisible last-select">
               <Select
                 className="select-combobox"
-                onChange={handleChangeCountry3}
+                onChange={handleChangeCountries}
                 options={countriesList}
                 placeholder="Pays 3"
-              />                  
+              />      
+              <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>            
             </div>
 
             {/* Directors */}
             <div className="AddMovies--realisateur director-input can-add">
               <Select
                 className="select-combobox"
-                onChange={handleChangeDirector1}
+                onChange={handleChangeDirectors}
                 options={directorsList}
                 placeholder="Réalisateur 1"
               />               
               <div className="can-add-icon"><i className="director bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
-            <div className="AddMovies--realisateur director-input can-add invisible">
+            <div className="AddMovies--realisateur director-input can-add invisible last-select">
               <Select
                 className="select-combobox"
-                onChange={handleChangeDirector2}
+                onChange={handleChangeDirectors}
                 options={directorsList}
                 placeholder="Réalisateur 2"
-              />                  
+              />   
+              <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>               
             </div>
 
             {/* Genres */}
             <div className="AddMovies--genre genre-input can-add">
               <Select
                 className="select-combobox"
-                onChange={handleChangeGenre1}
+                onChange={handleChangeGenres}
                 options={genresList}
                 placeholder="Genre 1"
               />                
@@ -291,19 +249,20 @@ function AddMovies() {
             <div className="AddMovies--genre genre-input can-add invisible">
             <Select
                 className="select-combobox"
-                onChange={handleChangeGenre2}
+                onChange={handleChangeGenres}
                 options={genresList}
                 placeholder="Genre 2"
               />  
               <div className="can-add-icon"><i className="genre bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
-            <div className="AddMovies--genre genre-input can-add invisible">
+            <div className="AddMovies--genre genre-input can-add invisible last-select">
             <Select
                 className="select-combobox"
-                onChange={handleChangeGenre3}
+                onChange={handleChangeGenres}
                 options={genresList}
                 placeholder="Genre 3"
               />  
+              <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>
             </div>
           </div>
         </div>

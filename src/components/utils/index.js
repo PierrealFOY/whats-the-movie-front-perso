@@ -18,3 +18,7 @@ export const formatDateForAPI = (date) => {
   const dateToFormat = new Date(date);
   return dateToFormat.toISOString();
 };
+
+export const capitalizeFirstLetter = (text) => {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+};
