@@ -1,17 +1,43 @@
 @use '../../styles/vars';
 
-.AddMovies{
+.AddMovies {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   font-family: vars.$fontFredoka;
+
+  &-titre {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 3rem;
+    padding: 0 0.5rem;
+  }
 }
 
 .add_new{
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+
+    .left, .right {
+      width: 100%;
+      text-align: center;
+    }
+
+    .left {
+      padding-bottom: 0;
+    }
+
+    .right {
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+  }
 }
 
 .button_module{
@@ -19,7 +45,7 @@
   justify-content: space-evenly;
   padding: 10px;
 
-  button{
+  button {
     width: 20%;
     color: white;
     padding: 20px;
@@ -47,6 +73,16 @@
         background-color: #B22222;}
     }
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+
+    button {
+      width: 50%;
+      margin-bottom: 10px;
+    }
+  }
 }
 
 .left {
@@ -55,16 +91,7 @@
   flex-direction: column;
   padding: 5%;
   width: 50%;
-
-  input {
-    width: 80%;
-    margin: 10px;
-    padding: 10px;
-    background-color: white;
-    border: solid 2px darkgrey;
-    border-radius: 2px;
-    }
-
+  
   .synopsis_input{
     height: 90px;
   }
@@ -75,18 +102,7 @@
   justify-content: space-between;
   flex-direction: column;
   padding: 5%;
-  width: 50%;
-
-
-  input {
-    width: 80%;
-    margin: 10px;
-    padding: 10px;
-    background-color: white;
-    border: solid 2px darkgrey;
-    border-radius: 2px;
-    }
-    
+  width: 50%;    
 }
 
 .can-add {
@@ -94,14 +110,22 @@
   display: flex;
   align-items: center;
 
-  i {
-    position: absolute;
-    min-width: 20px;
-    min-height: 20px;
-    right: 10%;
-    font-weight: bold;
-    font-size: 1.5rem;
-    cursor: pointer;
+  &-icon {
+    margin-left: 15px;
+
+    i {
+      min-width: 20px;
+      min-height: 20px;
+      right: 10%;
+      font-weight: bold;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+    left: 10px;
   }
 }
 
@@ -120,4 +144,13 @@
     border: solid 2px darkgrey;
     border-radius: 2px;
   }
+}
+
+.input-movie {
+  width: 80%;
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
+  border: solid 2px darkgrey;
+  border-radius: 2px;
 }

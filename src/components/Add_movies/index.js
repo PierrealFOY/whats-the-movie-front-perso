@@ -118,34 +118,49 @@ function AddMovies() {
   };
 
   return (
-    <div className="AddMovies">
+    <div className="AddMovies">      
       <form onSubmit={handleSubmit}>
+      <h1 className="AddMovies-titre">Ajouter un film</h1>
         <div className="add_new">
           <div className="left">
             <div className="AddMovies--title">
               <input
+                className="input-movie"
                 id="title"
                 type="text"
                 placeholder="Titre"
                 value={title}
                 onChange={handleChangeTitle}
+                required
               />
             </div>
             <div className="AddMovies--synopsis">
-              <input
+              {/* <input
                 className="synopsis_input"
                 type="text"
                 placeholder="Synopsis"
                 value={synopsis}
                 onChange={handleChangeSynopsis}
+                required
+                minLength="50"
+              /> */}
+              <textarea
+                className="synopsis_input input-movie"
+                value={synopsis}
+                placeholder="Synopsis"
+                onChange={handleChangeSynopsis}
+                minLength="50"
+                required
               />
             </div>
             <div className="AddMovies--date">
               <input
+                className="input-movie"
                 type="date"
                 placeholder="Date de sortie"
                 value={releaseDate}
                 onChange={handleChangeReleaseDate}
+                required
               />
             </div>
 
@@ -157,7 +172,7 @@ function AddMovies() {
                 options={studiosList}
                 placeholder="Studio de production 1"
               />
-              <i className="sudio bi bi-plus-circle" onClick={handleClickAdd} />
+              <div className="can-add-icon"><i className="sudio bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
             <div className="AddMovies--studio sudio-input  can-add invisible">
               <Select
@@ -178,7 +193,7 @@ function AddMovies() {
                 options={actorsList}
                 placeholder="Acteur 1"
               />
-              <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
+              <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
             <div className="AddMovies--acteur actor-input can-add invisible">
               <Select
@@ -187,7 +202,7 @@ function AddMovies() {
                 options={actorsList}
                 placeholder="Acteur 2"
               />
-              <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
+              <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
             <div className="AddMovies--acteur actor-input can-add invisible">
               <Select
@@ -196,7 +211,7 @@ function AddMovies() {
                 options={actorsList}
                 placeholder="Acteur 3"
               />              
-              <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
+              <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
             <div className="AddMovies--acteur actor-input can-add invisible">
               <Select
@@ -205,7 +220,7 @@ function AddMovies() {
                 options={actorsList}
                 placeholder="Acteur 4"
               />            
-              <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
+              <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
             <div className="AddMovies--acteur actor-input can-add invisible">
               <Select
@@ -224,7 +239,7 @@ function AddMovies() {
                 options={countriesList}
                 placeholder="Pays 1"
               />               
-              <i className="country bi bi-plus-circle" onClick={handleClickAdd} />
+              <div className="can-add-icon"><i className="country bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
             <div className="AddMovies--country country-input can-add invisible">
               <Select
@@ -233,7 +248,7 @@ function AddMovies() {
                 options={countriesList}
                 placeholder="Pays 2"
               />                  
-              <i className="country bi bi-plus-circle" onClick={handleClickAdd} />
+              <div className="can-add-icon"><i className="country bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
             <div className="AddMovies--country country-input can-add invisible">
               <Select
@@ -252,7 +267,7 @@ function AddMovies() {
                 options={directorsList}
                 placeholder="Réalisateur 1"
               />               
-              <i className="director bi bi-plus-circle" onClick={handleClickAdd} />
+              <div className="can-add-icon"><i className="director bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
             <div className="AddMovies--realisateur director-input can-add invisible">
               <Select
@@ -271,7 +286,7 @@ function AddMovies() {
                 options={genresList}
                 placeholder="Genre 1"
               />                
-              <i className="genre bi bi-plus-circle" onClick={handleClickAdd} />
+              <div className="can-add-icon"><i className="genre bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
             <div className="AddMovies--genre genre-input can-add invisible">
             <Select
@@ -280,7 +295,7 @@ function AddMovies() {
                 options={genresList}
                 placeholder="Genre 2"
               />  
-              <i className="genre bi bi-plus-circle" onClick={handleClickAdd} />
+              <div className="can-add-icon"><i className="genre bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
             <div className="AddMovies--genre genre-input can-add invisible">
             <Select
