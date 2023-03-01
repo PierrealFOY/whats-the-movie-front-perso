@@ -2,6 +2,7 @@ export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const HANDLE_SUCCESSFUL_AUTH = 'HANDLE_SUCCESSFUL_AUTH';
 export const HANDLE_FAILED_AUTH = 'HANDLE_FAILED_AUTH';
 export const HANDLE_LOGOUT = 'HANDLE_LOGOUT';
+export const SHOW_LOGOUT = 'SHOW_LOGOUT';
 
 export const submitEmail = (email) => ({
   type: 'SUBMIT_EMAIL',

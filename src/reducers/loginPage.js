@@ -1,7 +1,10 @@
-import { HANDLE_SUCCESSFUL_AUTH, HANDLE_FAILED_AUTH, HANDLE_LOGOUT } from '../actions/loginPageActions';
+import {
+  HANDLE_SUCCESSFUL_AUTH, HANDLE_FAILED_AUTH, HANDLE_LOGOUT,
+} from '../actions/loginPageActions';
 
 const initialState = {
   logged: false,
+  showLogout: false,
   email: '',
   password: '',
   nickname: '',

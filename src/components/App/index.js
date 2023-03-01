@@ -1,6 +1,7 @@
 import { ThemeProvider } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
 import {
   getMovies,
   nextMovie,
@@ -18,7 +19,6 @@ import './styles.css';
 import RegisterForm from '../Login_register';
 import AddMovies from '../Add_movies';
 import PersonalSpace from '../Personal_space';
-import LogOut from '../Logout';
 
 function App() {
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ function App() {
           <Route path="/inscription" element={<RegisterForm />} />
           <Route path="/results" element={<Results handleResetGame={handleResetGame} handleReplay={handleBeginGame} />} />
           <Route path="/compte/ajout-film" element={<AddMovies />} />
-          {logged ? <Route path="/compte" element={<PersonalSpace />} /> : <Route path="*" element={<LogOut />} />}
+          {logged ? <Route path="/compte" element={<PersonalSpace />} /> : <Route path="/authentification" element={<LoginPage />} />}
           <Route path="*" element={<Errors />} />
         </Routes>
         <Footer />

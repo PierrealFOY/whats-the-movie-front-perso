@@ -69,10 +69,12 @@ function Header({ handleResetGame }) {
                     type="button"
                     onClick={userLogout}
                   >
-                    <span className="nav-link button_top" href="#">
-                      Deconnexion
-                      <span className="sr-only">(current)</span>
-                    </span>
+                    <NavLink to="/authentification">
+                      <span className="nav-link button_top" href="#">
+                        Deconnexion
+                        <span className="sr-only">(current)</span>
+                      </span>
+                    </NavLink>
                   </button>
                 </li>
               )

@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 import { submitEmail, submitPassword, submitLogin } from '../../actions/loginPageActions';
 
 import WTM from '../../assets/WTM.png';
-import PersonalSpace from '../Personal_space';
 import './styles.scss';
 
 function LoginPage() {
@@ -26,7 +25,7 @@ function LoginPage() {
 
   return (
     <div className="LoginPage">
-      {logged ? <PersonalSpace />
+      {logged ? <Navigate to="/compte" replace />
         : (
           <form onSubmit={handleSubmit}>
             <img src={WTM} alt="WTM" />
