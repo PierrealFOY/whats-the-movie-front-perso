@@ -2,9 +2,11 @@
 import axios from 'axios';
 import {
   GET_MOVIES,
+  SUBMIT_MOVIE,
   fetchMovies,
   fetchMoviesResponses,
 } from '../actions/movies';
+import { formatDateForAPI, capitalizeFirstLetter } from '../components/utils';
 
 const apiMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -61,6 +63,30 @@ const apiMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           // error
           console.log('Error : ', error);
+        });
+      break;
+
+    case SUBMIT_MOVIE:
+      axios.post('http://localhost:8081/api/movies', {
+        title: store.getState().addMovie.title,
+        synopsis: store.getState().addMovie.synopsis,
+        releaseDate: formatDateForAPI(store.getState().addMovie.releaseDate),
+        poster: '', // store.getState().addMovie.poster,
+        status: 0,
+        idGenres: store.getState().addMovie.genres,
+        idActors: store.getState().addMovie.actors,
+        idProductionStudios: store.getState().addMovie.productionStudios,
+        idDirectors: store.getState().addMovie.directors,
+        idCountries: store.getState().addMovie.countries,
+      })
+        .then((response) => {
+          console.log('Response : ', response);
+          // TODO vider le formulaire
+        })
+        .catch((error) => {
+          const title = Object.keys(error.response.data)[0];
+          const message = error.response.data[Object.keys(error.response.data)][0];
+          alert(capitalizeFirstLetter(title) + ' : ' + message);
         });
       break;
 

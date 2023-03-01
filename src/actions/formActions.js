@@ -1,89 +1,48 @@
+export const UPDATE_TITLE = 'UPDATE_TITLE';
+export const UPDATE_SYNOPSIS = 'UPDATE_SYNOPSIS';
+export const UPDATE_RELEASE_DATE = 'UPDATE_RELEASE_DATE';
+export const UPDATE_PRODUCTION_STUDIOS = 'UPDATE_PRODUCTION_STUDIOS';
+export const UPDATE_ACTORS = 'UPDATE_ACTORS';
+export const UPDATE_COUNTRIES = 'UPDATE_COUNTRIES';
+export const UPDATE_DIRECTORS = 'UPDATE_DIRECTORS';
+export const UPDATE_GENRES = 'UPDATE_GENRES';
+
 export const updateTitle = (title) => ({
-  type: 'UPDATE_TITLE',
+  type: UPDATE_TITLE,
   payload: title,
 });
 
 export const updateSynopsis = (synopsis) => ({
-  type: 'UPDATE_SYNOPSIS',
+  type: UPDATE_SYNOPSIS,
   payload: synopsis,
 });
 
 export const updateReleaseDate = (releaseDate) => ({
-  type: 'UPDATE_RELEASE_DATE',
+  type: UPDATE_RELEASE_DATE,
   payload: releaseDate,
 });
 
-export const updateProductionStudio1 = (productionStudio) => ({
-  type: 'UPDATE_PRODUCTION_STUDIO_1',
+export const updateProductionStudios = (productionStudio) => ({
+  type: UPDATE_PRODUCTION_STUDIOS,
   payload: productionStudio,
 });
 
-export const updateProductionStudio2 = (productionStudio) => ({
-  type: 'UPDATE_PRODUCTION_STUDIO_2',
-  payload: productionStudio,
-});
-
-export const updateActor1 = (actor) => ({
-  type: 'UPDATE_ACTOR_1',
+export const updateActors = (actor) => ({
+  type: UPDATE_ACTORS,
   payload: actor,
 });
 
-export const updateActor2 = (actor) => ({
-  type: 'UPDATE_ACTOR_2',
-  payload: actor,
-});
-
-export const updateActor3 = (actor) => ({
-  type: 'UPDATE_ACTOR_3',
-  payload: actor,
-});
-
-export const updateActor4 = (actor) => ({
-  type: 'UPDATE_ACTOR_4',
-  payload: actor,
-});
-
-export const updateActor5 = (actor) => ({
-  type: 'UPDATE_ACTOR_5',
-  payload: actor,
-});
-
-export const updateCountry1 = (country) => ({
-  type: 'UPDATE_COUNTRY_1',
+export const updateCountries = (country) => ({
+  type: UPDATE_COUNTRIES,
   payload: country,
 });
 
-export const updateCountry2 = (country) => ({
-  type: 'UPDATE_COUNTRY_2',
-  payload: country,
+export const updateDirectors = (director) => ({
+  type: UPDATE_DIRECTORS,
+  payload: director,
 });
 
-export const updateCountry3 = (country) => ({
-  type: 'UPDATE_COUNTRY_3',
-  payload: country,
-});
-
-export const updateRealisator1 = (realisator) => ({
-  type: 'UPDATE_REALISATOR_1',
-  payload: realisator,
-});
-
-export const updateRealisator2 = (realisator) => ({
-  type: 'UPDATE_REALISATOR_2',
-  payload: realisator,
-});
-
-export const updateGenre1 = (genre) => ({
-  type: 'UPDATE_GENRE_1',
-  payload: genre,
-});
-
-export const updateGenre2 = (genre) => ({
-  type: 'UPDATE_GENRE_2',
-  payload: genre,
-});
-
-export const updateGenre3 = (genre) => ({
-  type: 'UPDATE_GENRE_3',
+export const updateGenres = (genre) => ({
+  type: UPDATE_GENRES,
   payload: genre,
 });

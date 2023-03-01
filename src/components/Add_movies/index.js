@@ -1,77 +1,67 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import Select from 'react-select';
 
 import {
   updateTitle, updateSynopsis, updateReleaseDate,
-  updateProductionStudio1, updateProductionStudio2,
-  updateActor1, updateActor2, updateActor3, updateActor4, updateActor5,
-  updateCountry1, updateCountry2, updateCountry3,
-  updateRealisator1, updateRealisator2,
-  updateGenre1, updateGenre2, updateGenre3,
+  updateProductionStudios,
+  updateActors,
+  updateCountries,
+  updateDirectors,
+  updateGenres,
 } from '../../actions/formActions';
+import { submitMovie } from '../../actions/movies';
 
 import './styles.scss';
 
 function AddMovies() {
-  const [title, setTitle] = useState('');
-  const [synopsis, setSynopsis] = useState('');
-  const [releaseDate, setReleaseDate] = useState('');
-  const [productionStudio1, setProductionStudio1] = useState('');
-  const [productionStudio2, setProductionStudio2] = useState('');
-  const [actor1, setActor1] = useState('');
-  const [actor2, setActor2] = useState('');
-  const [actor3, setActor3] = useState('');
-  const [actor4, setActor4] = useState('');
-  const [actor5, setActor5] = useState('');
-  const [country1, setCountry1] = useState('');
-  const [country2, setCountry2] = useState('');
-  const [country3, setCountry3] = useState('');
-  const [realisator1, setRealisator1] = useState('');
-  const [realisator2, setRealisator2] = useState('');
-  const [genre1, setGenre1] = useState('');
-  const [genre2, setGenre2] = useState('');
-  const [genre3, setGenre3] = useState('');
-
   const dispatch = useDispatch();
+
+  const title = useSelector((state) => state.addMovie.title);
+  const synopsis = useSelector((state) => state.addMovie.synopsis);
+  const releaseDate = useSelector((state) => state.addMovie.releaseDate);
+
+  // lists
+  const actorsList = useSelector((state) => state.addMovie.actorsList);
+  const studiosList = useSelector((state) => state.addMovie.studiosList);
+  const countriesList = useSelector((state) => state.addMovie.countriesList);
+  const directorsList = useSelector((state) => state.addMovie.directorsList);
+  const genresList = useSelector((state) => state.addMovie.genresList);
+
+  const handleChangeTitle = (e) => {
+    dispatch(updateTitle(e.target.value));
+  };
+
+  const handleChangeSynopsis = (e) => {
+    dispatch(updateSynopsis(e.target.value));
+  };
+
+  const handleChangeReleaseDate = (e) => {
+    dispatch(updateReleaseDate(e.target.value));
+  };
+
+  const handleChangeProductionStudios = (e) => {
+    dispatch(updateProductionStudios(e.value));
+  };
+
+  const handleChangeActors = (e) => {
+    dispatch(updateActors(e.value));
+  };
+
+  const handleChangeCountries = (e) => {
+    dispatch(updateCountries(e.value));
+  };
+
+  const handleChangeDirectors = (e) => {
+    dispatch(updateDirectors(e.value));
+  };
+
+  const handleChangeGenres = (e) => {
+    dispatch(updateGenres(e.value));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateTitle(title));
-    dispatch(updateSynopsis(synopsis));
-    dispatch(updateReleaseDate(releaseDate));
-    dispatch(updateProductionStudio1(productionStudio1));
-    dispatch(updateProductionStudio2(productionStudio2));
-    dispatch(updateActor1(actor1));
-    dispatch(updateActor2(actor2));
-    dispatch(updateActor3(actor3));
-    dispatch(updateActor4(actor4));
-    dispatch(updateActor5(actor5));
-    dispatch(updateCountry1(country1));
-    dispatch(updateCountry2(country2));
-    dispatch(updateCountry3(country3));
-    dispatch(updateRealisator1(realisator1));
-    dispatch(updateRealisator2(realisator2));
-    dispatch(updateGenre1(genre1));
-    dispatch(updateGenre2(genre2));
-    dispatch(updateGenre3(genre3));
-    setTitle('');
-    setSynopsis('');
-    setReleaseDate('');
-    setProductionStudio1('');
-    setProductionStudio2('');
-    setActor1('');
-    setActor2('');
-    setActor3('');
-    setActor4('');
-    setActor5('');
-    setCountry1('');
-    setCountry2('');
-    setCountry3('');
-    setRealisator1('');
-    setRealisator2('');
-    setGenre1('');
-    setGenre2('');
-    setGenre3('');
+    dispatch(submitMovie());
   };
 
   const handleClickAdd = (evt) => {
@@ -83,186 +73,203 @@ function AddMovies() {
     element.classList.remove('invisible');
     // we put the class invisible on the icon for hide it
     evt.target.classList.add('invisible');
+
+    const parentDiv = evt.target.closest('.can-add');
+    if (parentDiv !== undefined) {
+      parentDiv.style.left = "0px";
+    }
   };
 
   return (
-    <div className="AddMovies">
-      <form onSubmit={handleSubmit}>
+    <div className="AddMovies">      
+      <form className="AddMovies-form" onSubmit={handleSubmit}>
+      <h1 className="AddMovies-titre">Ajouter un film</h1>
         <div className="add_new">
           <div className="left">
             <div className="AddMovies--title">
               <input
+                className="input-movie"
+                id="title"
                 type="text"
                 placeholder="Titre"
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={handleChangeTitle}
+                required
               />
             </div>
             <div className="AddMovies--synopsis">
-              <input
-                className="synopsis_input"
-                type="text"
-                placeholder="Synopsis"
+              <textarea
+                className="synopsis_input input-movie"
                 value={synopsis}
-                onChange={(e) => setSynopsis(e.target.value)}
+                placeholder="Synopsis"
+                onChange={handleChangeSynopsis}
+                minLength={50}
+                required
               />
             </div>
             <div className="AddMovies--date">
               <input
-                type="text"
+                className="input-movie"
+                type="date"
                 placeholder="Date de sortie"
                 value={releaseDate}
-                onChange={(e) => setReleaseDate(e.target.value)}
+                onChange={handleChangeReleaseDate}
+                required
               />
             </div>
 
             {/* Production Studios */}
-            <div className="AddMovies--studio sudio-input can-add">
-              <input
-                type="text"
-                placeholder="Studio de production"
-                value={productionStudio1}
-                onChange={(e) => setProductionStudio1(e.target.value)}
+            <div className="AddMovies--studio studio-input can-add">
+              <Select
+                className="select-combobox"
+                onChange={handleChangeProductionStudios}
+                options={studiosList}
+                placeholder="Studio de production 1"
               />
-              <i className="sudio bi bi-plus-circle" onClick={handleClickAdd} />
+              <div className="can-add-icon"><i className="studio bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
-            <div className="AddMovies--studio sudio-input  can-add invisible">
-              <input
-                type="text"
+            <div className="AddMovies--studio studio-input can-add invisible last-select">
+              <Select
+                className="select-combobox"
+                onChange={handleChangeProductionStudios}
+                options={studiosList}
                 placeholder="Studio de production 2"
-                value={productionStudio2}
-                onChange={(e) => setProductionStudio2(e.target.value)}
               />
+              <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>
             </div>
           </div>
 
           {/* Actors */}
           <div className="right">
             <div className="AddMovies--acteur actor-input can-add">
-              <input
-                type="text"
+              <Select
+                className="select-combobox"
+                onChange={handleChangeActors}
+                options={actorsList}
                 placeholder="Acteur 1"
-                value={actor1}
-                onChange={(e) => setActor1(e.target.value)}
               />
-              <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
+              <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
             <div className="AddMovies--acteur actor-input can-add invisible">
-              <input
-                type="text"
+              <Select
+                className="select-combobox"
+                onChange={handleChangeActors}
+                options={actorsList}
                 placeholder="Acteur 2"
-                value={actor2}
-                onChange={(e) => setActor2(e.target.value)}
               />
-              <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
+              <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
             <div className="AddMovies--acteur actor-input can-add invisible">
-              <input
-                type="text"
+              <Select
+                className="select-combobox"
+                onChange={handleChangeActors}
+                options={actorsList}
                 placeholder="Acteur 3"
-                value={actor3}
-                onChange={(e) => setActor3(e.target.value)}
-              />
-              <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
+              />              
+              <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
             <div className="AddMovies--acteur actor-input can-add invisible">
-              <input
-                type="text"
+              <Select
+                className="select-combobox"
+                onChange={handleChangeActors}
+                options={actorsList}
                 placeholder="Acteur 4"
-                value={actor4}
-                onChange={(e) => setActor4(e.target.value)}
-              />
-              <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
+              />            
+              <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
-            <div className="AddMovies--acteur actor-input can-add invisible">
-              <input
-                type="text"
+            <div className="AddMovies--acteur actor-input can-add invisible last-select">
+              <Select
+                className="select-combobox"
+                onChange={handleChangeActors}
+                options={actorsList}
                 placeholder="Acteur 5"
-                value={actor5}
-                onChange={(e) => setActor5(e.target.value)}
-              />
+              />    
+              <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>          
             </div>
 
             {/* Countries */}
             <div className="AddMovies--country country-input can-add">
-              <input
-                type="text"
+              <Select
+                className="select-combobox"
+                onChange={handleChangeCountries}
+                options={countriesList}
                 placeholder="Pays 1"
-                value={country1}
-                onChange={(e) => setCountry1(e.target.value)}
-              />
-              <i className="country bi bi-plus-circle" onClick={handleClickAdd} />
+              />               
+              <div className="can-add-icon"><i className="country bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
             <div className="AddMovies--country country-input can-add invisible">
-              <input
-                type="text"
+              <Select
+                className="select-combobox"
+                onChange={handleChangeCountries}
+                options={countriesList}
                 placeholder="Pays 2"
-                value={country2}
-                onChange={(e) => setCountry2(e.target.value)}
-              />
-              <i className="country bi bi-plus-circle" onClick={handleClickAdd} />
+              />                  
+              <div className="can-add-icon"><i className="country bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
-            <div className="AddMovies--country country-input can-add invisible">
-              <input
-                type="text"
+            <div className="AddMovies--country country-input can-add invisible last-select">
+              <Select
+                className="select-combobox"
+                onChange={handleChangeCountries}
+                options={countriesList}
                 placeholder="Pays 3"
-                value={country3}
-                onChange={(e) => setCountry3(e.target.value)}
-              />
+              />      
+              <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>            
             </div>
 
             {/* Directors */}
             <div className="AddMovies--realisateur director-input can-add">
-              <input
-                type="text"
+              <Select
+                className="select-combobox"
+                onChange={handleChangeDirectors}
+                options={directorsList}
                 placeholder="Réalisateur 1"
-                value={realisator1}
-                onChange={(e) => setRealisator1(e.target.value)}
-              />
-              <i className="director bi bi-plus-circle" onClick={handleClickAdd} />
+              />               
+              <div className="can-add-icon"><i className="director bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
-            <div className="AddMovies--realisateur director-input can-add invisible">
-              <input
-                type="text"
+            <div className="AddMovies--realisateur director-input can-add invisible last-select">
+              <Select
+                className="select-combobox"
+                onChange={handleChangeDirectors}
+                options={directorsList}
                 placeholder="Réalisateur 2"
-                value={realisator2}
-                onChange={(e) => setRealisator2(e.target.value)}
-              />
+              />   
+              <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>               
             </div>
 
             {/* Genres */}
             <div className="AddMovies--genre genre-input can-add">
-              <input
-                type="text"
+              <Select
+                className="select-combobox"
+                onChange={handleChangeGenres}
+                options={genresList}
                 placeholder="Genre 1"
-                value={genre1}
-                onChange={(e) => setGenre1(e.target.value)}
-              />
-              <i className="genre bi bi-plus-circle" onClick={handleClickAdd} />
+              />                
+              <div className="can-add-icon"><i className="genre bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
             <div className="AddMovies--genre genre-input can-add invisible">
-              <input
-                type="text"
+            <Select
+                className="select-combobox"
+                onChange={handleChangeGenres}
+                options={genresList}
                 placeholder="Genre 2"
-                value={genre2}
-                onChange={(e) => setGenre2(e.target.value)}
-              />
-              <i className="genre bi bi-plus-circle" onClick={handleClickAdd} />
+              />  
+              <div className="can-add-icon"><i className="genre bi bi-plus-circle" onClick={handleClickAdd} /></div>
             </div>
-            <div className="AddMovies--genre genre-input can-add invisible">
-              <input
-                type="text"
+            <div className="AddMovies--genre genre-input can-add invisible last-select">
+            <Select
+                className="select-combobox"
+                onChange={handleChangeGenres}
+                options={genresList}
                 placeholder="Genre 3"
-                value={genre3}
-                onChange={(e) => setGenre3(e.target.value)}
-              />
+              />  
+              <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>
             </div>
           </div>
         </div>
 
         <div className="button_module">
           <button type="submit">Valider</button>
-          <button type="submit">Annuler</button>
+          <button type="button">Annuler</button>
         </div>
       </form>
     </div>

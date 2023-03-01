@@ -1,62 +1,54 @@
+import {
+  UPDATE_TITLE,
+  UPDATE_SYNOPSIS,
+  UPDATE_RELEASE_DATE,
+  UPDATE_PRODUCTION_STUDIOS,
+  UPDATE_ACTORS,
+  UPDATE_COUNTRIES,
+  UPDATE_DIRECTORS,
+  UPDATE_GENRES,
+} from '../actions/formActions';
+import actors from '../data/actors';
+import countries from '../data/countries';
+import directors from '../data/directors';
+import genres from '../data/genres';
+import studios from '../data/productionStudios';
+
 const initialState = {
   title: '',
   synopsis: '',
   releaseDate: '',
-  productionStudio1: '',
-  productionStudio2: '',
-  actor1: '',
-  actor2: '',
-  actor3: '',
-  actor4: '',
-  actor5: '',
-  country1: '',
-  country2: '',
-  country3: '',
-  realisator1: '',
-  realisator2: '',
-  genre1: '',
-  genre2: '',
-  genre3: '',
+  poster: '',
+  productionStudios: [],
+  actors: [],
+  countries: [],
+  directors: [],
+  genres: [],
+  actorsList: actors,
+  studiosList: studios,
+  countriesList: countries,
+  directorsList: directors,
+  genresList: genres,
 };
 
-export default function formReducer(action, state = initialState) {
+export default function formReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case 'UPDATE_TITLE':
+    case UPDATE_TITLE:
       return { ...state, title: action.payload };
-    case 'UPDATE_SYNOPSIS':
+    case UPDATE_SYNOPSIS:
       return { ...state, synopsis: action.payload };
-    case 'UPDATE_RELEASE_DATE':
+    case UPDATE_RELEASE_DATE:
       return { ...state, releaseDate: action.payload };
-    case 'UPDATE_PRODUCTION_STUDIO_1':
-      return { ...state, productionStudio1: action.payload };
-    case 'UPDATE_PRODUCTION_STUDIO_2':
-      return { ...state, productionStudio2: action.payload };
-    case 'UPDATE_ACTOR_1':
-      return { ...state, actor1: action.payload };
-    case 'UPDATE_ACTOR_2':
-      return { ...state, actor2: action.payload };
-    case 'UPDATE_ACTOR_3':
-      return { ...state, actor3: action.payload };
-    case 'UPDATE_ACTOR_4':
-      return { ...state, actor4: action.payload };
-    case 'UPDATE_ACTOR_5':
-      return { ...state, actor5: action.payload };
-    case 'UPDATE_COUNTRY_1':
-      return { ...state, country1: action.payload };
-    case 'UPDATE_COUNTRY_2':
-      return { ...state, country2: action.payload };
-    case 'UPDATE_COUNTRY_3':
-      return { ...state, country3: action.payload };
-    case 'UPDATE_REALISATOR_1':
-      return { ...state, realisator1: action.payload };
-    case 'UPDATE_REALISATOR_2':
-      return { ...state, realisator2: action.payload };
-    case 'UPDATE_GENRE_1':
-      return { ...state, genre1: action.payload };
-    case 'UPDATE_GENRE_2':
-      return { ...state, genre2: action.payload };
-    case 'UPDATE_GENRE_3':
-      return { ...state, genre3: action.payload };
+    case UPDATE_PRODUCTION_STUDIOS:
+      return { ...state, productionStudios: state.productionStudios.concat(action.payload)}
+    case UPDATE_ACTORS:
+      return { ...state, actors: state.actors.concat(action.payload)}
+    case UPDATE_COUNTRIES:
+      return { ...state, countries: state.countries.concat(action.payload)};
+    case UPDATE_DIRECTORS:
+      return { ...state, directors: state.directors.concat(action.payload)};
+    case UPDATE_GENRES:
+      return { ...state, genres: state.genres.concat(action.payload)};
 
     default:
       return state;
