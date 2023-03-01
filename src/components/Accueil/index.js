@@ -1,9 +1,12 @@
 import './styles.scss';
 import { Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import logo from '../../assets/images/logo-WTM.png';
 
 function Accueil() {
+  const logged = useSelector((state) => state.login.logged);
+
   return (
     // main page
     <main className="home">
@@ -22,13 +25,19 @@ function Accueil() {
             <NavLink to="/jeu" className="home__button-link">Jouer !</NavLink>
           </Button>
           {/* Button Login */}
-          <Button
-            className="home__button login"
-            variant="outline-success"
-            size="lg"
-          >
-            <NavLink to="/authentification" className="home__button-link">Connexion / Inscription</NavLink>
-          </Button>
+          {logged
+            ? (
+              'Bienvenue JC !'
+            )
+            : (
+              <Button
+                className="home__button login"
+                variant="outline-success"
+                size="lg"
+              >
+                <NavLink to="/authentification" className="home__button-link">Connexion / Inscription</NavLink>
+              </Button>
+            )}
         </div>
       </div>
     </main>

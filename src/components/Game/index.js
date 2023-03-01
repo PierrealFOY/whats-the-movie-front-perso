@@ -39,6 +39,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
   useEffect(() => {
     // Initialize the timer variable to null
     let timer = null;
+
     // Check if the 'running' flag is true
     if (running) {
       // If running, set the timer to run every 1 second
@@ -59,6 +60,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
       // If not running, clear the timer
       clearInterval(timer);
     }
+
     // Return a cleanup function that clears the timer
     return () => clearInterval(timer);
   }, [running, time]);
