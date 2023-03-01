@@ -2,50 +2,65 @@
 
 .game {
   height: 100%;
+  width: 100%;
   margin: 0;
-  background-color: #F4EBD0;
-  padding: 1rem 0; 
   font-family: vars.$fontFredoka;
   font-size: 0.9rem;
-  animation: fadein 2s;
-    -moz-animation: fadein 2s; /* Firefox */
-    -webkit-animation: fadein 2s; /* Safari et Chrome */
-    -o-animation: fadein 2s; /* Opera */
+  display: inline-table;
+  padding-top: 1rem;
+  // animation: fadein 2s;
+  //   -moz-animation: fadein 2s; /* Firefox */
+  //   -webkit-animation: fadein 2s; /* Safari et Chrome */
+  //   -o-animation: fadein 2s; /* Opera */
 
-  @keyframes fadein {
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
-  }
-  @-moz-keyframes fadein { /* sur Firefox */
-      from {
-          opacity:0;
-      }
-      to {
-          opacity:1;
-      }
-  }
-  @-webkit-keyframes fadein { /* sur Safari et Chrome */
-      from {
-          opacity:0;
-      }
-      to {
-          opacity:1;
-      }
-  }
-  @-o-keyframes fadein { /* sur Opera */
-      from {
-          opacity:0;
-      }
-      to {
-          opacity: 1;
-      }
+  // @keyframes fadein {
+  //   from {
+  //       opacity:0;
+  //   }
+  //   to {
+  //       opacity:1;
+  //   }
+  // }
+  // @-moz-keyframes fadein { /* sur Firefox */
+  //     from {
+  //         opacity:0;
+  //     }
+  //     to {
+  //         opacity:1;
+  //     }
+  // }
+  // @-webkit-keyframes fadein { /* sur Safari et Chrome */
+  //     from {
+  //         opacity:0;
+  //     }
+  //     to {
+  //         opacity:1;
+  //     }
+  // }
+  // @-o-keyframes fadein { /* sur Opera */
+  //     from {
+  //         opacity:0;
+  //     }
+  //     to {
+  //         opacity: 1;
+  //     }
+  // }
+
+  &__ready {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 3em;
+      
   }
 
-  &__bouton-start {
+  &__ready-text {
+    margin: 1em;
+    font-size: 3em;
+  }
+
+  &__ready-button {
     display: flex;
     justify-content: space-around;
     padding: 12px 24px;
@@ -101,12 +116,13 @@
   }
 
   &__container {
-    border: 1px solid #6b482a63;
-    border-radius: 7px;
-    padding: 0.5rem;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 
     @media (max-width: 1024px) {   
       padding: 0.5rem 1rem;
@@ -146,6 +162,12 @@
       color: red;
     }
   }
+  .masked {
+    display: none;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    animation-play-state: paused;
+  }
 
   &__affiche {
     width: 80%;
@@ -158,6 +180,44 @@
     &-poster {
       max-width: 100%;
       max-height: 100%;
+    }
+
+    .roll-in-blurred-left {
+      -webkit-animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+              animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    }
+
+    @-webkit-keyframes roll-in-blurred-left {
+      0% {
+        -webkit-transform: translateX(-1000px) rotate(-720deg);
+                transform: translateX(-1000px) rotate(-720deg);
+        -webkit-filter: blur(50px);
+                filter: blur(50px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateX(0) rotate(0deg);
+                transform: translateX(0) rotate(0deg);
+        -webkit-filter: blur(0);
+                filter: blur(0);
+        opacity: 1;
+      }
+    }
+    @keyframes roll-in-blurred-left {
+      0% {
+        -webkit-transform: translateX(-1000px) rotate(-720deg);
+                transform: translateX(-1000px) rotate(-720deg);
+        -webkit-filter: blur(50px);
+                filter: blur(50px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateX(0) rotate(0deg);
+                transform: translateX(0) rotate(0deg);
+        -webkit-filter: blur(0);
+                filter: blur(0);
+        opacity: 1;
+      }
     }
   }
 
@@ -188,28 +248,60 @@
     &-item {
       color: #6b482a;
       margin-right: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .reveal {
+      color: #A7001E;
     }
 
     .masked {
+      display: none;
       filter: blur(5px);
       -webkit-filter: blur(5px);
       animation-play-state: paused;
     }
 
-    .unmasked {
-      filter: blur(0px);
-      -webkit-filter: blur(0px);
-      animation: unBlur 0.5s linear forwards;
+    .cover {
+      
     }
 
-    @keyframes unBlur {
+    .roll-in-blurred-left {
+      -webkit-animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+              animation: roll-in-blurred-left 0.65s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    }
+
+    @-webkit-keyframes roll-in-blurred-left {
       0% {
-        filter: blur(5px);
-        -webkit-filter: blur(5px);
+        -webkit-transform: translateX(-1000px) rotate(-720deg);
+                transform: translateX(-1000px) rotate(-720deg);
+        -webkit-filter: blur(50px);
+                filter: blur(50px);
+        opacity: 0;
       }
-      to {
-        filter: blur(0px);
-        -webkit-filter: blur(0px);
+      100% {
+        -webkit-transform: translateX(0) rotate(0deg);
+                transform: translateX(0) rotate(0deg);
+        -webkit-filter: blur(0);
+                filter: blur(0);
+        opacity: 1;
+      }
+    }
+    @keyframes roll-in-blurred-left {
+      0% {
+        -webkit-transform: translateX(-1000px) rotate(-720deg);
+                transform: translateX(-1000px) rotate(-720deg);
+        -webkit-filter: blur(50px);
+                filter: blur(50px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-transform: translateX(0) rotate(0deg);
+                transform: translateX(0) rotate(0deg);
+        -webkit-filter: blur(0);
+                filter: blur(0);
+        opacity: 1;
       }
     }
   }
@@ -220,6 +312,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     width: 80%;
+    padding-bottom: 1rem;
 
     &-button {
       padding: 0 !important;

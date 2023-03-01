@@ -1,19 +1,32 @@
 import PropTypes from 'prop-types';
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../assets/images/logo-WTM.png';
-import { resetTimer, stopTimer } from '../../actions/movies';
-import { useDispatch } from 'react-redux';
+import { resetTimer, stopTimer, gameOff } from '../../actions/movies';
+import { resetScore } from '../../actions/score';
 
 function Results({ handleResetGame, handleReplay }) {
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
+  const finalScore = useSelector((state) => state.score.userScore);
+
   const handleClickReplay = (evt) => {
     evt.preventDefault();
     handleResetGame();
     handleReplay();
     dispatch(resetTimer());
     dispatch(stopTimer());
+    dispatch(resetScore());
+    dispatch(gameOff());
+  };
+
+  const handleBackHome = (evt) => {
+    evt.preventDefault();
+    handleResetGame();
+    dispatch(resetTimer());
+    dispatch(stopTimer());
+    dispatch(resetScore());
+    dispatch(gameOff());
   };
 
   return (
@@ -24,7 +37,7 @@ function Results({ handleResetGame, handleReplay }) {
       <div className="results">
         <span className="results-bravo">Bravo !</span>
         <span className="results-sentence">Voici votre résultat:</span>
-        <span className="results-points">455 points</span>
+        <span className="results-points">{finalScore} points</span>
       </div>
       <div className="ranking">
         <span className="ranking-results">Vous êtes 7ème</span>
@@ -38,7 +51,7 @@ function Results({ handleResetGame, handleReplay }) {
             Rejouer
           </NavLink>
         </button>
-        <button type="button" className="btn-BackHome">
+        <button type="button" className="btn-BackHome" onClick={handleBackHome}>
           <NavLink
             to="/"
           >

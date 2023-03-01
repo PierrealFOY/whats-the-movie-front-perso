@@ -1,0 +1,34 @@
+@use '../../styles/vars';
+
+html, body, #root, .app {
+  height: 100%;
+  overflow: auto;
+}
+
+#root {
+  background: url('../../assets/images/background.svg');
+  background-size: cover;
+  background-position: center;
+  width: 80%;
+}
+
+.app {
+  /* background-color: #f4ebd081; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (min-width: 768px) {
+    padding: 0 10%;
+  }
+  
+  @media (min-width: 1440px) {
+    padding: 0 15%;
+  }  
+
+  .global-container {
+    height: 100%;
+    background-color: vars.$principalColor;
+    display: inline-table;
+  }
+}

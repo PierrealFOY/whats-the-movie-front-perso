@@ -1,14 +1,21 @@
 import PropTypes from 'prop-types';
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import logo from './logo.png';
+import { useDispatch, useSelector, useDispatch } from 'react-redux';
 import { handleLogout } from '../../actions/loginPageActions';
+import { resetScore } from '../../actions/score';
+import { stopTimer, gameOff } from '../../actions/movies';
+
+import logo from './logo.png';
 
 function Header({ handleResetGame }) {
+  const dispatch = useDispatch();
   const handleClickHome = (evt) => {
     evt.preventDefault();
     handleResetGame();
+    dispatch(resetScore());
+    dispatch(stopTimer());
+    dispatch(gameOff());
   };
 
   const dispatch = useDispatch();
@@ -36,7 +43,7 @@ function Header({ handleResetGame }) {
               </button>
             </li>
             <li className="nav-item active">
-              <button type="button">
+              <button type="button" onClick={handleClickHome}>
                 <span className="nav-link button_top" href="#">Quizz<span className="sr-only">(current)</span></span>
               </button>
             </li>

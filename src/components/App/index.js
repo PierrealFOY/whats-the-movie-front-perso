@@ -15,7 +15,7 @@ import Game from '../Game';
 import LoginPage from '../Login_page';
 import Errors from '../Errors';
 
-import './styles.css';
+import './styles.scss';
 import RegisterForm from '../Login_register';
 import AddMovies from '../Add_movies';
 import PersonalSpace from '../Personal_space';
@@ -54,6 +54,7 @@ function App() {
           {logged ? <Route path="/compte" element={<PersonalSpace />} /> : <Route path="/authentification" element={<LoginPage />} />}
           <Route path="*" element={<Errors />} />
         </Routes>
+       
         <Footer />
       </div>
     </ThemeProvider>
