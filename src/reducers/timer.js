@@ -4,12 +4,14 @@ import {
   UPDATE_TIME,
   STOP_TIMER,
   RESET_FALSE_ANSWER,
+  GAME_OFF,
 } from '../actions/movies';
 
 const initialState = {
   time: 60,
   running: false,
   score: 1200,
+  gameStarted: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -20,13 +22,16 @@ const reducer = (state = initialState, action = {}) => {
         time: 60,
         running: true,
         score: 1200,
+        gameStarted: true,
       };
+
     case RESET_TIMER:
       return {
         ...state,
         time: 60,
         running: true,
         score: 1200,
+        gameStarted: true,
       };
 
     case RESET_FALSE_ANSWER:
@@ -35,6 +40,7 @@ const reducer = (state = initialState, action = {}) => {
         time: state.time,
         running: false,
         score: 0,
+        gameStarted: true,
       };
 
     case UPDATE_TIME:
@@ -50,7 +56,14 @@ const reducer = (state = initialState, action = {}) => {
         time: state.time,
         running: false,
         score: state.score,
+        gameStarted: true,
       };
+
+    case GAME_OFF:
+      return {
+        ...state,
+        gameStarted: false,
+      } 
 
     default:
       return state;

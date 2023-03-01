@@ -12,6 +12,7 @@ export const STOP_TIMER = 'STOP_TIMER';
 export const RESET_TIMER = 'RESET_TIMER';
 export const RESET_FALSE_ANSWER = 'RESET_FALSE_ANSWER';
 export const UPDATE_TIME = 'UPDATE_TIME';
+export const GAME_OFF = 'GAME_OFF';
 
 /**
  * Getting movies from the API
@@ -68,6 +69,10 @@ export const resetTimer = () => ({
 export const stopTimer = () => ({
   type: STOP_TIMER,
 });
+
+export const gameOff = () => ({
+  type : GAME_OFF
+})
 
 export const resetFalseAnswer = () => ({
   type: RESET_FALSE_ANSWER,

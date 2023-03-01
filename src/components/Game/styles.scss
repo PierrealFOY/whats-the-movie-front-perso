@@ -46,7 +46,21 @@
   //     }
   // }
 
-  &__bouton-start {
+  &__ready {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 3em;
+      
+  }
+
+  &__ready-text {
+    margin: 1em;
+    font-size: 3em;
+  }
+
+  &__ready-button {
     display: flex;
     justify-content: space-around;
     padding: 12px 24px;
