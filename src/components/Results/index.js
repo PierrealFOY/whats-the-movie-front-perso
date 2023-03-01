@@ -3,7 +3,7 @@ import './styles.scss';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../assets/images/logo-WTM.png';
-import { resetTimer, stopTimer } from '../../actions/movies';
+import { resetTimer, stopTimer, gameOff } from '../../actions/movies';
 import { resetScore } from '../../actions/score';
 
 function Results({ handleResetGame, handleReplay }) {
@@ -17,6 +17,7 @@ function Results({ handleResetGame, handleReplay }) {
     dispatch(resetTimer());
     dispatch(stopTimer());
     dispatch(resetScore());
+    dispatch(gameOff());
   };
 
   const handleBackHome = (evt) => {
@@ -25,6 +26,7 @@ function Results({ handleResetGame, handleReplay }) {
     dispatch(resetTimer());
     dispatch(stopTimer());
     dispatch(resetScore());
+    dispatch(gameOff());
   };
 
   return (

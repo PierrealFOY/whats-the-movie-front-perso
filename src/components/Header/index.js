@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import logo from './logo.png';
 import { resetScore } from '../../actions/score';
+import { stopTimer, gameOff } from '../../actions/movies';
 
 function Header({ handleResetGame }) {
   const dispatch = useDispatch();
@@ -11,6 +12,8 @@ function Header({ handleResetGame }) {
     evt.preventDefault();
     handleResetGame();
     dispatch(resetScore());
+    dispatch(stopTimer());
+    dispatch(gameOff());
   };
   return (
     <header>
@@ -29,12 +32,12 @@ function Header({ handleResetGame }) {
               </button>
             </li>
             <li className="nav-item active">
-              <button type="button">
+              <button type="button" onClick={handleClickHome}>
                 <span className="nav-link button_top" href="#">Quizz<span className="sr-only">(current)</span></span>
               </button>
             </li>
             <li className="nav-item active">
-              <button type="button">
+              <button type="button" onClick={handleClickHome}>
                 <span className="nav-link button_top" href="#">
                   <NavLink to="/authentification">Connexion</NavLink>
                   <span className="sr-only">(current)</span>
