@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { handleLogout } from '../../actions/loginPageActions';
 import { resetScore } from '../../actions/score';
 import { stopTimer, gameOff } from '../../actions/movies';
@@ -17,8 +17,6 @@ function Header({ handleResetGame }) {
     dispatch(stopTimer());
     dispatch(gameOff());
   };
-
-  const dispatch = useDispatch();
 
   const userLogout = () => {
     dispatch(handleLogout());
