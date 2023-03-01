@@ -67,13 +67,6 @@ const apiMiddleware = (store) => (next) => (action) => {
       break;
 
     case SUBMIT_MOVIE:
-      // getting studios id
-      /*const studios = [store.getState().addMovie.productionStudio1];
-      if (store.getState().addMovie.productionStudio2 !== 0)
-        studios.push(store.getState().addMovie.productionStudio2);*/
-
-      
-
       axios.post('http://localhost:8081/api/movies', {
         title: store.getState().addMovie.title,
         synopsis: store.getState().addMovie.synopsis,
@@ -88,12 +81,9 @@ const apiMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log('Response : ', response);
+          // TODO vider le formulaire
         })
         .catch((error) => {
-          /*console.log('Erreur : ', error);
-          console.log('Test', Object.keys(error.response.data));
-          console.log('Toto', error.response.data[Object.keys(error.response.data)]);*/
-
           const title = Object.keys(error.response.data)[0];
           const message = error.response.data[Object.keys(error.response.data)][0];
           alert(capitalizeFirstLetter(title) + ' : ' + message);
