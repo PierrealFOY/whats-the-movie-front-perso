@@ -21,17 +21,20 @@ export default function LoginPageReducer(state = initialState, action = {}) {
         nickname: action.nickname,
         token: action.token,
         password: '',
+
       };
     case HANDLE_FAILED_AUTH:
       return {
         ...state,
         logged: false,
+
       };
 
     case HANDLE_LOGOUT:
       return {
         ...state,
         logged: false,
+
       };
 
     default:

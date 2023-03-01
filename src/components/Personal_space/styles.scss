@@ -1,7 +1,10 @@
+@use '../../styles/vars';
+
 .stats{
   background-color: #F4EBD0;
   box-sizing: border-box;
   padding: 10px;
+  font-family: vars.$fontFredoka;
 
   .game{
     display: flex;
@@ -52,6 +55,7 @@
     margin-top: 5%;
     margin-bottom: 5%;
     font-size: 2em;
+    font-weight: bold;
   }
 
   .ratio:hover{
