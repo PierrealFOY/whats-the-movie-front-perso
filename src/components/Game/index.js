@@ -26,6 +26,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
   // timer
   const time = useSelector((state) => state.timer.time);
   const running = useSelector((state) => state.timer.running);
+  const gameStarted = useSelector((state) => state.timer.gameStarted);
 
   // score
   const score = useSelector((state) => state.timer.score);
@@ -73,15 +74,18 @@ function Game({ handleBeginGame, handleNextMovie }) {
 
   return (
     <div className="game">
-      <div className="game__container">
+      {gameStarted === false ? (
+        <div className='game__ready'>
+          <p className='game__ready-text'>Prêt ?!</p>
+          <button type="button" className="game__ready-button" onClick={handleStartButtonClick}>Cliquez pour commencer</button>
+        </div>
+      ) : (
+        <div className="game__container">
         {
           // if there is movies in the state, we show the elements
           movies.length > 0 && responses.length > 0
             ? (
               <>
-                <div>
-                  <button type="button" className="game__bouton-start" onClick={handleStartButtonClick}>Commencer la partie</button>
-                </div>
                 <div className="game__countdown">
                   <h1 className="game__countdown-timer"><span className="game__countdown-number">{time}</span>
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
@@ -212,6 +216,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
             : <Loader />
         }
       </div>
+      )}
     </div>
   );
 }
