@@ -18,27 +18,37 @@ import {
   UPDATE_GENRE_2,
   UPDATE_GENRE_3,
 } from '../actions/formActions';
+import actors from '../data/actors';
+import countries from '../data/countries';
+import directors from '../data/directors';
+import genres from '../data/genres';
+import studios from '../data/productionStudios';
 
 const initialState = {
   title: '',
   synopsis: '',
   releaseDate: '',
-  productionStudio1: '',
-  productionStudio2: '',
-  actor1: '',
-  actor2: '',
-  actor3: '',
-  actor4: '',
-  actor5: '',
-  country1: '',
-  country2: '',
-  country3: '',
-  realisator1: '',
-  realisator2: '',
-  genre1: '',
-  genre2: '',
-  genre3: '',
-  poster: '',
+  productionStudio1: 0,
+  productionStudio2: 0,
+  actor1: 0,
+  actor2: 0,
+  actor3: 0,
+  actor4: 0,
+  actor5: 0,
+  country1: 0,
+  country2: 0,
+  country3: 0,
+  realisator1: 0,
+  realisator2: 0,
+  genre1: 0,
+  genre2: 0,
+  genre3: 0,
+  poster: 0,
+  actorsList: actors,
+  studiosList: studios,
+  countriesList: countries,
+  directorsList: directors,
+  genresList: genres,
 };
 
 export default function formReducer(state = initialState, action = {}) {

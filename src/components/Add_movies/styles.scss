@@ -49,14 +49,14 @@
   }
 }
 
-.left{
+.left {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
   padding: 5%;
   width: 50%;
 
-  input{
+  input {
     width: 80%;
     margin: 10px;
     padding: 10px;
@@ -70,7 +70,7 @@
   }
 }
 
-.right{
+.right {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -78,7 +78,7 @@
   width: 50%;
 
 
-  input{
+  input {
     width: 80%;
     margin: 10px;
     padding: 10px;
@@ -98,7 +98,7 @@
     position: absolute;
     min-width: 20px;
     min-height: 20px;
-    right: 20%;
+    right: 10%;
     font-weight: bold;
     font-size: 1.5rem;
     cursor: pointer;
@@ -107,4 +107,17 @@
 
 .invisible {
   display: none;
+}
+
+.select-combobox {
+  width: 80%;
+  
+  > div {
+    width: 100%;
+    margin: 10px;
+    padding: 2px;
+    background-color: white;
+    border: solid 2px darkgrey;
+    border-radius: 2px;
+  }
 }

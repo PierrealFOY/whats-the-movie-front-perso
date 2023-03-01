@@ -1,4 +1,7 @@
+
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import Select from 'react-select';
 
 import {
   updateTitle, updateSynopsis, updateReleaseDate,
@@ -14,24 +17,17 @@ import './styles.scss';
 
 function AddMovies() {
   const dispatch = useDispatch();
+
   const title = useSelector((state) => state.addMovie.title);
   const synopsis = useSelector((state) => state.addMovie.synopsis);
   const releaseDate = useSelector((state) => state.addMovie.releaseDate);
-  const productionStudio1 = useSelector((state) => state.addMovie.productionStudio1);
-  const productionStudio2 = useSelector((state) => state.addMovie.productionStudio2);
-  const actor1 = useSelector((state) => state.addMovie.actor1);
-  const actor2 = useSelector((state) => state.addMovie.actor2);
-  const actor3 = useSelector((state) => state.addMovie.actor3);
-  const actor4 = useSelector((state) => state.addMovie.actor4);
-  const actor5 = useSelector((state) => state.addMovie.actor5);
-  const director1 = useSelector((state) => state.addMovie.realisator1);
-  const director2 = useSelector((state) => state.addMovie.realisator2);
-  const country1 = useSelector((state) => state.addMovie.country1);
-  const country2 = useSelector((state) => state.addMovie.country2);
-  const country3 = useSelector((state) => state.addMovie.country3);
-  const genre1 = useSelector((state) => state.addMovie.genre1);
-  const genre2 = useSelector((state) => state.addMovie.genre2);
-  const genre3 = useSelector((state) => state.addMovie.genre3);
+
+  // lists
+  const actorsList = useSelector((state) => state.addMovie.actorsList);
+  const studiosList = useSelector((state) => state.addMovie.studiosList);
+  const countriesList = useSelector((state) => state.addMovie.countriesList);
+  const directorsList = useSelector((state) => state.addMovie.directorsList);
+  const genresList = useSelector((state) => state.addMovie.genresList);
 
   const handleChangeTitle = (e) => {
     dispatch(updateTitle(e.target.value));
@@ -46,63 +42,63 @@ function AddMovies() {
   };
 
   const handleChangeProductionStudio1 = (e) => {
-    dispatch(updateProductionStudio1(e.target.value));
+    dispatch(updateProductionStudio1(e.value));
   };
 
   const handleChangeProductionStudio2 = (e) => {
-    dispatch(updateProductionStudio2(e.target.value));
+    dispatch(updateProductionStudio2(e.value));
   };
 
   const handleChangeActor1 = (e) => {
-    dispatch(updateActor1(e.target.value));
+    dispatch(updateActor1(e.value));
   };
 
   const handleChangeActor2 = (e) => {
-    dispatch(updateActor2(e.target.value));
+    dispatch(updateActor2(e.value));
   };
 
   const handleChangeActor3 = (e) => {
-    dispatch(updateActor3(e.target.value));
+    dispatch(updateActor3(e.value));
   };
 
   const handleChangeActor4 = (e) => {
-    dispatch(updateActor4(e.target.value));
+    dispatch(updateActor4(e.value));
   };
 
   const handleChangeActor5 = (e) => {
-    dispatch(updateActor5(e.target.value));
+    dispatch(updateActor5(e.value));
   };
 
   const handleChangeCountry1 = (e) => {
-    dispatch(updateCountry1(e.target.value));
+    dispatch(updateCountry1(e.value));
   };
 
   const handleChangeCountry2 = (e) => {
-    dispatch(updateCountry2(e.target.value));
+    dispatch(updateCountry2(e.value));
   };
 
   const handleChangeCountry3 = (e) => {
-    dispatch(updateCountry3(e.target.value));
+    dispatch(updateCountry3(e.value));
   };
 
   const handleChangeDirector1 = (e) => {
-    dispatch(updateRealisator1(e.target.value));
+    dispatch(updateRealisator1(e.value));
   };
 
   const handleChangeDirector2 = (e) => {
-    dispatch(updateRealisator2(e.target.value));
+    dispatch(updateRealisator2(e.value));
   };
 
   const handleChangeGenre1 = (e) => {
-    dispatch(updateGenre1(e.target.value));
+    dispatch(updateGenre1(e.value));
   };
 
   const handleChangeGenre2 = (e) => {
-    dispatch(updateGenre2(e.target.value));
+    dispatch(updateGenre2(e.value));
   };
 
   const handleChangeGenre3 = (e) => {
-    dispatch(updateGenre3(e.target.value));
+    dispatch(updateGenre3(e.value));
   };
 
   const handleSubmit = (e) => {
@@ -155,20 +151,20 @@ function AddMovies() {
 
             {/* Production Studios */}
             <div className="AddMovies--studio sudio-input can-add">
-              <input
-                type="text"
-                placeholder="Studio de production"
-                value={productionStudio1}
+              <Select
+                className="select-combobox"
                 onChange={handleChangeProductionStudio1}
+                options={studiosList}
+                placeholder="Studio de production 1"
               />
               <i className="sudio bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
             <div className="AddMovies--studio sudio-input  can-add invisible">
-              <input
-                type="text"
-                placeholder="Studio de production 2"
-                value={productionStudio2}
+              <Select
+                className="select-combobox"
                 onChange={handleChangeProductionStudio2}
+                options={studiosList}
+                placeholder="Studio de production 2"
               />
             </div>
           </div>
@@ -176,123 +172,123 @@ function AddMovies() {
           {/* Actors */}
           <div className="right">
             <div className="AddMovies--acteur actor-input can-add">
-              <input
-                type="text"
-                placeholder="Acteur 1"
-                value={actor1}
+              <Select
+                className="select-combobox"
                 onChange={handleChangeActor1}
+                options={actorsList}
+                placeholder="Acteur 1"
               />
               <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
             <div className="AddMovies--acteur actor-input can-add invisible">
-              <input
-                type="text"
-                placeholder="Acteur 2"
-                value={actor2}
+              <Select
+                className="select-combobox"
                 onChange={handleChangeActor2}
+                options={actorsList}
+                placeholder="Acteur 2"
               />
               <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
             <div className="AddMovies--acteur actor-input can-add invisible">
-              <input
-                type="text"
-                placeholder="Acteur 3"
-                value={actor3}
+              <Select
+                className="select-combobox"
                 onChange={handleChangeActor3}
-              />
+                options={actorsList}
+                placeholder="Acteur 3"
+              />              
               <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
             <div className="AddMovies--acteur actor-input can-add invisible">
-              <input
-                type="text"
-                placeholder="Acteur 4"
-                value={actor4}
+              <Select
+                className="select-combobox"
                 onChange={handleChangeActor4}
-              />
+                options={actorsList}
+                placeholder="Acteur 4"
+              />            
               <i className="actor bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
             <div className="AddMovies--acteur actor-input can-add invisible">
-              <input
-                type="text"
-                placeholder="Acteur 5"
-                value={actor5}
+              <Select
+                className="select-combobox"
                 onChange={handleChangeActor5}
-              />
+                options={actorsList}
+                placeholder="Acteur 5"
+              />              
             </div>
 
             {/* Countries */}
             <div className="AddMovies--country country-input can-add">
-              <input
-                type="text"
-                placeholder="Pays 1"
-                value={country1}
+              <Select
+                className="select-combobox"
                 onChange={handleChangeCountry1}
-              />
+                options={countriesList}
+                placeholder="Pays 1"
+              />               
               <i className="country bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
             <div className="AddMovies--country country-input can-add invisible">
-              <input
-                type="text"
-                placeholder="Pays 2"
-                value={country2}
+              <Select
+                className="select-combobox"
                 onChange={handleChangeCountry2}
-              />
+                options={countriesList}
+                placeholder="Pays 2"
+              />                  
               <i className="country bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
             <div className="AddMovies--country country-input can-add invisible">
-              <input
-                type="text"
-                placeholder="Pays 3"
-                value={country3}
+              <Select
+                className="select-combobox"
                 onChange={handleChangeCountry3}
-              />
+                options={countriesList}
+                placeholder="Pays 3"
+              />                  
             </div>
 
             {/* Directors */}
             <div className="AddMovies--realisateur director-input can-add">
-              <input
-                type="text"
-                placeholder="Réalisateur 1"
-                value={director1}
+              <Select
+                className="select-combobox"
                 onChange={handleChangeDirector1}
-              />
+                options={directorsList}
+                placeholder="Réalisateur 1"
+              />               
               <i className="director bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
             <div className="AddMovies--realisateur director-input can-add invisible">
-              <input
-                type="text"
-                placeholder="Réalisateur 2"
-                value={director2}
+              <Select
+                className="select-combobox"
                 onChange={handleChangeDirector2}
-              />
+                options={directorsList}
+                placeholder="Réalisateur 2"
+              />                  
             </div>
 
             {/* Genres */}
             <div className="AddMovies--genre genre-input can-add">
-              <input
-                type="text"
-                placeholder="Genre 1"
-                value={genre1}
+              <Select
+                className="select-combobox"
                 onChange={handleChangeGenre1}
-              />
+                options={genresList}
+                placeholder="Genre 1"
+              />                
               <i className="genre bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
             <div className="AddMovies--genre genre-input can-add invisible">
-              <input
-                type="text"
-                placeholder="Genre 2"
-                value={genre2}
+            <Select
+                className="select-combobox"
                 onChange={handleChangeGenre2}
-              />
+                options={genresList}
+                placeholder="Genre 2"
+              />  
               <i className="genre bi bi-plus-circle" onClick={handleClickAdd} />
             </div>
             <div className="AddMovies--genre genre-input can-add invisible">
-              <input
-                type="text"
-                placeholder="Genre 3"
-                value={genre3}
+            <Select
+                className="select-combobox"
                 onChange={handleChangeGenre3}
-              />
+                options={genresList}
+                placeholder="Genre 3"
+              />  
             </div>
           </div>
         </div>
