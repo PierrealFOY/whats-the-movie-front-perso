@@ -9,6 +9,7 @@ import { resetScore } from '../../actions/score';
 function Results({ handleResetGame, handleReplay }) {
   const dispatch = useDispatch();
   const finalScore = useSelector((state) => state.score.userScore);
+  const logged = useSelector((state) => state.login.logged);
 
   const handleClickReplay = (evt) => {
     evt.preventDefault();
@@ -39,9 +40,20 @@ function Results({ handleResetGame, handleReplay }) {
         <span className="results-sentence">Voici votre résultat:</span>
         <span className="results-points">{finalScore} points</span>
       </div>
+      {logged ? (
       <div className="ranking">
         <span className="ranking-results">Vous êtes 7ème</span>
       </div>
+      ):(
+        <NavLink 
+          to="/authentification"
+        >
+          <div className="notConnected">
+            <p className="notConnected-text">Inscrivez vous ou connectez vous afin de pouvoir vous classez !</p>
+            <button className="notConnected-subscribe">ICI</button>
+          </div>
+        </NavLink>
+      )}
       <div className="btn">
         <button type="button" className="btn-playAgain" onClick={handleClickReplay}>
           <NavLink
