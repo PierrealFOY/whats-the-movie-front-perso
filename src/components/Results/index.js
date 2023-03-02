@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types';
 import './styles.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../assets/images/logo-WTM.png';
 import { resetTimer, stopTimer, gameOff } from '../../actions/movies';
 import { resetScore } from '../../actions/score';
 
 function Results({ handleResetGame, handleReplay }) {
+  const gameStarted = useSelector((state) => state.timer.gameStarted);
+
+  if (gameStarted) {
   const dispatch = useDispatch();
   const finalScore = useSelector((state) => state.score.userScore);
   const logged = useSelector((state) => state.login.logged);
@@ -73,6 +76,12 @@ function Results({ handleResetGame, handleReplay }) {
       </div>
     </div>
   );
+  }
+  else {
+    return (
+      <Navigate to="/error" replace />
+    );
+  }
 }
 
 Results.propTypes = {

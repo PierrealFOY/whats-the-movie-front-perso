@@ -34,7 +34,7 @@ function Header({ handleResetGame }) {
           <ul className="navbar-nav">
             <li className="nav-item active">
               <button type="button" onClick={handleClickHome}>
-                <span className="nav-link button_top" href="#">
+                <span className="nav-link button_top">
                   <NavLink to="/">Accueil</NavLink>
                   <span className="sr-only">(current)</span>
                 </span>
@@ -42,14 +42,14 @@ function Header({ handleResetGame }) {
             </li>
             <li className="nav-item active">
               <button type="button" onClick={handleClickHome}>
-                <span className="nav-link button_top" href="#">Quizz<span className="sr-only">(current)</span></span>
+                <span className="nav-link button_top">Quizz<span className="sr-only">(current)</span></span>
               </button>
             </li>
             {logged
               ? (
                 <li className="nav-item active">
                   <button type="button">
-                    <span className="nav-link button_top" href="#">
+                    <span className="nav-link button_top">
                       <NavLink to="/compte">Mon compte</NavLink>
                       <span className="sr-only">(current)</span>
                     </span>
@@ -59,7 +59,7 @@ function Header({ handleResetGame }) {
               : (
                 <li className="nav-item active">
                   <button type="button">
-                    <span className="nav-link button_top" href="#">
+                    <span className="nav-link button_top">
                       <NavLink to="/authentification">Connexion</NavLink>
                       <span className="sr-only">(current)</span>
                     </span>
@@ -74,8 +74,8 @@ function Header({ handleResetGame }) {
                     type="button"
                     onClick={userLogout}
                   >
-                    <NavLink to="/authentification">
-                      <span className="nav-link button_top" href="#">
+                    <NavLink to="/">
+                      <span className="nav-link button_top">
                         Deconnexion
                         <span className="sr-only">(current)</span>
                       </span>
