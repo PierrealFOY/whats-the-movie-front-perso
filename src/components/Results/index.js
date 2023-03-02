@@ -44,6 +44,7 @@ function Results({ handleResetGame, handleReplay }) {
         <span className="results-points">{finalScore} points</span>
       </div>
       {logged ? (
+        // if the user is connected he's going to see his ranking
       <div className="ranking">
         <span className="ranking-results">Vous êtes 7ème</span>
       </div>
