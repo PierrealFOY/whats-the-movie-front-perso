@@ -6,6 +6,7 @@ import logo from '../../assets/images/logo-WTM.png';
 
 function Accueil() {
   const logged = useSelector((state) => state.login.logged);
+  
 
   return (
     // main page
