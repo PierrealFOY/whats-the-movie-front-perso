@@ -26,12 +26,12 @@ function NextMovieButton({ tour, handleNextMovie, userResponse }) {
         tour !== 4
           ? (
             userResponse === 'T'
-              ? <p className="responses__button-text">Bonne réponse !<br />Film suivant</p>
-              : <p className="responses__button-text">Mauvaise Réponse !<br />Film suivant</p>
+              ? <p className="responses__button-text win">Bonne réponse !<br />Film suivant</p>
+              : <p className="responses__button-text loose">Mauvaise Réponse !<br />Film suivant</p>
           )
           : (
             <NavLink to="/results">
-              <p className="responses__button-text">{userResponse === 'T' ? 'Bonne réponse !' : 'Mauvaise Réponse !'}<br />Voir les résultats</p>
+              <p className={`responses__button-text ${userResponse === 'T' ? 'win' : 'loose' }`}>{userResponse === 'T' ? 'Bonne réponse !' : 'Mauvaise Réponse !'}<br />Voir les résultats</p>
             </NavLink>
           )
       }
