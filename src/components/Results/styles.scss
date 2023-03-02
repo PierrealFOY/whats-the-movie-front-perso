@@ -154,5 +154,30 @@
       }
     }
   }
+
+  .notConnected {
+    display: block;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+    &-subscribe {
+      padding: 10px 22px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-align: center;
+      background-color: #6b482a;
+      color: #fff;
+      margin-top: 10px;
+
+      &:hover {
+        background-color: #1E0F1C;
+      }
+    }
+  }
 }
 
