@@ -30,6 +30,7 @@ function Header({ handleResetGame }) {
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
         </button>
+        <img className="logo" src={logo} alt="logo" />
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item active">
@@ -40,11 +41,11 @@ function Header({ handleResetGame }) {
                 </span>
               </button>
             </li>
-            <li className="nav-item active">
+            {/* <li className="nav-item active">
               <button type="button" onClick={handleClickHome}>
                 <span className="nav-link button_top">Quizz<span className="sr-only">(current)</span></span>
               </button>
-            </li>
+            </li> */}
             {logged
               ? (
                 <li className="nav-item active">
@@ -85,8 +86,7 @@ function Header({ handleResetGame }) {
               )
               : null}
           </ul>
-        </div>
-        <img className="logo" src={logo} alt="logo" />
+        </div>        
       </nav>
     </header>
   );

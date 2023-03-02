@@ -11,6 +11,15 @@ header {
       margin: 1em;
     }
 
+    &-collapse {
+      width: 90%;
+    }
+
+    &-nav {
+      width: 100%;
+      justify-content: space-evenly;
+    }
+
     button {
       /* Variables */
      --button_radius: 0.75em;
