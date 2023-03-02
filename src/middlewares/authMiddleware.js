@@ -12,13 +12,11 @@ const authMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          //Token
-          store.dispatch(handleSuccessfulAuth(response.data.nickname, response.data.token));
-          //Get ID
-          store.dispatch(handleSuccessfulAuth(response.data.data.id));
+          //Token & ID
+          store.dispatch(handleSuccessfulAuth(response.data.token, response.data.data.id));
         })
         .catch((error) => {
-          store.dispatch(handleFailedAuth(error.response.data.nickname, error.response.data.token));
+          store.dispatch(handleFailedAuth(error.response.data.token));
         });
 
       break;

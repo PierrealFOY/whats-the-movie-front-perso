@@ -7,8 +7,8 @@ const initialState = {
   showLogout: false,
   email: '',
   password: '',
-  nickname: '',
   token: '',
+  id: '',
 };
 
 export default function LoginPageReducer(state = initialState, action = {}) {
@@ -21,10 +21,9 @@ export default function LoginPageReducer(state = initialState, action = {}) {
       return {
         ...state,
         logged: true,
-        nickname: action.nickname,
-        token: action.token,
         password: '',
-
+        token: action.token,
+        id: action.id,
       };
     case HANDLE_FAILED_AUTH:
       return {
