@@ -1,0 +1,21 @@
+.error-buttons {
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+
+  @media (max-width: 1440px) {
+    justify-content: space-between;
+  }
+
+  @media (max-width: 1024px) {
+    .btn-error {
+      padding: 10px 20px;
+      font-size: 1.2em;
+    }
+  } 
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}

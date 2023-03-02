@@ -20,6 +20,7 @@ import './styles.scss';
 import RegisterForm from '../Login_register';
 import AddMovies from '../Add_movies';
 import PersonalSpace from '../Personal_space';
+import ErrorLogin from '../Errors/ErrorLogin';
 
 function App() {
   const dispatch = useDispatch();
@@ -50,10 +51,12 @@ function App() {
               <Route path="/" element={<Accueil />} />
               <Route path="/jeu" element={<Game handleBeginGame={handleBeginGame} handleNextMovie={handleNextMovie} />} />
               <Route path="/authentification" element={<LoginPage />} />
+              <Route path="/compte" element={<PersonalSpace />} />
+              <Route path="/no-login" element={<ErrorLogin />} />
               <Route path="/inscription" element={<RegisterForm />} />
               <Route path="/results" element={<Results handleResetGame={handleResetGame} handleReplay={handleBeginGame} />} />
               <Route path="/compte/ajout-film" element={<AddMovies />} />
-              {logged ? <Route path="/compte" element={<PersonalSpace />} /> : <Route path="/authentification" element={<LoginPage />} />}
+              {/* {logged ? <Route path="/compte" element={<PersonalSpace />} /> : <Route path="/authentification" element={<LoginPage />} />} */}
               <Route path="*" element={<Errors />} />
             </Routes>
           </div>
