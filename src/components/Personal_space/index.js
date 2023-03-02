@@ -1,4 +1,4 @@
-import styles from './styles.scss';
+import './styles.scss';
 
 function PersonalSpace() {
   return (
