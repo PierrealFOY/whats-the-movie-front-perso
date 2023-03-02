@@ -1,3 +1,5 @@
+import { CHANGE_EMAIL } from "../actions/registerPageActions";
+
 const initialState = {
   email: '',
   pseudo: '',
@@ -6,9 +8,9 @@ const initialState = {
   confirmPassword: '',
 };
 
-export default function LoginPageReducer(action, state = initialState) {
+export default function LoginPageReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case 'SUBMIT_EMAIL':
+    case CHANGE_EMAIL:
       return { ...state, email: action.payload };
     case 'SUBMIT_PSEUDO':
       return { ...state, pseudo: action.payload };

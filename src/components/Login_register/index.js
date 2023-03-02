@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux';
 import WTM from '../../assets/WTM.png';
 
 import {
-  submitEmail, submitPseudo, submitPicture, submitPassword, submitConfirmPassword,
+  changeEmail, submitPseudo, submitPicture, submitPassword, submitConfirmPassword,
 } from '../../actions/registerPageActions';
 
 import './styles.scss';
+import { useSelector } from 'react-redux';
 
 function RegisterForm() {
-  const [email, setEmail] = useState('');
   const [pseudo, setPseudo] = useState('');
   const [picture, setPicture] = useState('');
   const [password, setPassword] = useState('');
@@ -17,9 +17,13 @@ function RegisterForm() {
 
   const dispatch = useDispatch();
 
+  const email = useSelector((state) => state.register.email);
+  const handleChangeEmail = (evt) => {
+    dispatch(changeEmail(evt.target.value));
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(submitEmail(email));
     dispatch(submitPseudo(pseudo));
     dispatch(submitPicture(picture));
     dispatch(submitPassword(password));
@@ -42,7 +46,7 @@ function RegisterForm() {
             id="exampleInputEmail1"
             placeholder="Identifiant"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleChangeEmail}
           />
         </div>
         <div className="form-group">
