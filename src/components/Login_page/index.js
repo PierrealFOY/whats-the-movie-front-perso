@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, NavLink } from 'react-router-dom';
-import { submitEmail, submitPassword, submitLogin } from '../../actions/loginPageActions';
+import { submitEmail, submitPassword, submitLogin, handleSuccessGetRole } from '../../actions/loginPageActions';
 
 import WTM from '../../assets/WTM.png';
 import './styles.scss';
@@ -17,11 +17,13 @@ function LoginPage() {
     dispatch(submitEmail(email));
     dispatch(submitPassword(password));
     dispatch(submitLogin());
+    dispatch(handleSuccessGetRole(role));
     setEmail('');
     setPassword('');
   };
 
   const logged = useSelector((state) => state.login.logged);
+  const role = useSelector((state) => state.login.role);
 
   return (
     <div className="LoginPage">
