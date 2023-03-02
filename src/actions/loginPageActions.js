@@ -3,8 +3,8 @@ export const HANDLE_SUCCESSFUL_AUTH = 'HANDLE_SUCCESSFUL_AUTH';
 export const HANDLE_FAILED_AUTH = 'HANDLE_FAILED_AUTH';
 export const HANDLE_LOGOUT = 'HANDLE_LOGOUT';
 export const SHOW_LOGOUT = 'SHOW_LOGOUT';
-export const GET_ROLE = 'GET_ROLE';
-export const GET_ROLE_FAILED = 'GET_ROLE_FAILED';
+export const GET_DATA = 'GET_DATA';
+export const GET_DATA_FAILED = 'GET_DATA_FAILED';
 
 export const submitEmail = (email) => ({
   type: 'SUBMIT_EMAIL',
@@ -35,12 +35,10 @@ export const handleLogout = () => ({
   type: HANDLE_LOGOUT,
 });
 
-export const handleSuccessGetRole = (token, role) => ({
-  type: GET_ROLE,
-  token: token,
-  role: role,
+export const handleSuccessGetData = () => ({
+  type: GET_DATA,
 })
 
-export const handleFailedGetRole = () => ({
-  type: GET_ROLE_FAILED,
+export const handleFailedGetData = () => ({
+  type: GET_DATA_FAILED,
 })

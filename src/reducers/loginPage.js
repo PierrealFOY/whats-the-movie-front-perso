@@ -1,6 +1,6 @@
 import {
   HANDLE_SUCCESSFUL_AUTH, HANDLE_FAILED_AUTH, HANDLE_LOGOUT,
-  GET_ROLE,
+  GET_DATA,
 } from '../actions/loginPageActions';
 
 const initialState = {
@@ -10,7 +10,7 @@ const initialState = {
   password: '',
   token: '',
   id: '',
-  role: '',
+  data: '',
 };
 
 export default function LoginPageReducer(state = initialState, action = {}) {
@@ -44,10 +44,9 @@ export default function LoginPageReducer(state = initialState, action = {}) {
 
       };
 
-    case GET_ROLE:
+    case GET_DATA:
       return {
         ...state,
-        role: action.role,
         token: action.token,
       };
 

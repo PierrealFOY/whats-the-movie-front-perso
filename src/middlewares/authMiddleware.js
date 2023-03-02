@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { 
       handleSuccessfulAuth, handleFailedAuth, SUBMIT_LOGIN,
-      handleSuccessGetRole,handleFailedGetRole,  GET_ROLE,
+      handleSuccessGetData,handleFailedGetData,  GET_DATA,
 } from '../actions/loginPageActions';
 
 const authMiddleware = (store) => (next) => (action) => {
@@ -24,19 +24,19 @@ const authMiddleware = (store) => (next) => (action) => {
         });
       break;
 
-    case GET_ROLE:
-      axios.get(
-        'http://localhost:8081/api/users/1',
-      )
-      .then((response) => {
-        console.log(response);
-        store.dispatch(handleSuccessGetRole(response.data.token))
-      })
-      .catch((error) => {
-        console.log(error);
-        store.dispatch(handleFailedGetRole(error.response.data.token))
-      })
-      break;
+      case GET_DATA:
+        axios.get(
+          'http://localhost:8081/api/users/user',
+        )
+        .then((response) => {
+          console.log(response);
+          //store.dispatch(handleSuccessGetData(response.data))
+        })
+        .catch((error) => {
+          console.log(error);
+          //store.dispatch(handleFailedGetData(error.response.data))
+        })
+        break;
 
     default:
   }
