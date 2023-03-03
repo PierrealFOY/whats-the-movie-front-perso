@@ -23,7 +23,7 @@ export const initialState = {
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case FETCH_MOVIES:
-      // put the movies from the API in the state
+      // put the movies from gthe API in the state
       return {
         ...state,
         movies: action.data,

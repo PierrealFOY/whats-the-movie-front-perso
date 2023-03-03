@@ -6,6 +6,7 @@ import logo from '../../assets/images/logo-WTM.png';
 
 function Accueil() {
   const logged = useSelector((state) => state.login.logged);
+  const userName = useSelector((state) => state.login.name)
 
   return (
     // main page
@@ -27,7 +28,7 @@ function Accueil() {
           {/* Button Login */}
           {logged
             ? (
-              'Bienvenue JC !'
+              'Bienvenue'  + ' ' + userName + ' !'
             )
             : (
               <Button
@@ -38,6 +39,7 @@ function Accueil() {
                 <NavLink to="/authentification" className="home__button-link">Connexion / Inscription</NavLink>
               </Button>
             )}
+            {console.log(userName)}
         </div>
       </div>
     </main>

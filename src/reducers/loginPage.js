@@ -9,6 +9,7 @@ const initialState = {
   password: '',
   token: '',
   id: '',
+  name: '',
 };
 
 export default function LoginPageReducer(state = initialState, action = {}) {
@@ -26,6 +27,7 @@ export default function LoginPageReducer(state = initialState, action = {}) {
         password: '',
         token: action.token,
         id: action.id,
+        name: action.name,
       };
 
     case HANDLE_FAILED_AUTH:
