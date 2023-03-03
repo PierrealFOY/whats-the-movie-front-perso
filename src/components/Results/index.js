@@ -3,7 +3,7 @@ import './styles.scss';
 import { NavLink, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../assets/images/logo-WTM.png';
-import { resetTimer, stopTimer, gameOff } from '../../actions/movies';
+import { resetTimer, stopTimer, gameOff, saveGame } from '../../actions/movies';
 import { resetScore } from '../../actions/score';
 
 function Results({ handleResetGame, handleReplay }) {
@@ -13,6 +13,12 @@ function Results({ handleResetGame, handleReplay }) {
   const dispatch = useDispatch();
   const finalScore = useSelector((state) => state.score.userScore);
   const logged = useSelector((state) => state.login.logged);
+
+  if (logged) {
+    // if a user is logged,
+    // we save the datas of the game
+    dispatch(saveGame());
+  }
 
   const handleClickReplay = (evt) => {
     evt.preventDefault();
@@ -53,7 +59,7 @@ function Results({ handleResetGame, handleReplay }) {
           to="/authentification"
         >
           <div className="notConnected">
-            <p className="notConnected-text">Inscrivez vous ou connectez vous afin de pouvoir vous classez !</p>
+            <p className="notConnected-text">Inscrivez-vous ou connectez-vous afin de pouvoir<br/>enregistrer vos prochains scores et vous classer !</p>
             <button className="notConnected-subscribe">ICI</button>
           </div>
         </NavLink>

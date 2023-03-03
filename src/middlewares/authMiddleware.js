@@ -21,7 +21,6 @@ const authMiddleware = (store) => (next) => (action) => {
             response.data.data.picture, response.data.data.role[0], 
             ))
           })
-
         .catch((error) => {
           store.dispatch(handleFailedAuth(
             error.response.data))
