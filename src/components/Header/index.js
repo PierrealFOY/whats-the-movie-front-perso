@@ -23,6 +23,7 @@ function Header({ handleResetGame }) {
   };
 
   const logged = useSelector((state) => state.login.logged);
+  const userName = useSelector((state) => state.login.name);
   const userRole = useSelector((state) => state.login.role);
   const userAdmin = 'ROLE_ADMIN';
 
@@ -37,7 +38,7 @@ function Header({ handleResetGame }) {
         logged
           ? (
             <div className="nav-user">
-              <span className="nav-user-name">Bonjour<br/>JC !</span>
+              <span className="nav-user-name">Bonjour<br/>{userName} !</span>
             </div>
             )
           : undefined
