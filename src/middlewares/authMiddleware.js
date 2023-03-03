@@ -17,7 +17,9 @@ const authMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           store.dispatch(handleSuccessfulAuth(
             response.data.token, response.data.data.id, response.data.data.name, 
-            response.data.data.numberGame, response.data.data.score, response.data.data.picture))
+            response.data.data.numberGame, response.data.data.score, 
+            response.data.data.picture, response.data.data.role[0], 
+            ))
           })
 
         .catch((error) => {

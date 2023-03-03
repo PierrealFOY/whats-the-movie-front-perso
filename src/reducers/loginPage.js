@@ -17,6 +17,7 @@ const initialState = {
   game: '',
   score: '',
   picture: '',
+  role:'',
 };
 
 export default function LoginPageReducer(state = initialState, action = {}) {
@@ -38,6 +39,7 @@ export default function LoginPageReducer(state = initialState, action = {}) {
         game: action.game,
         score: action.score,
         picture: action.picture,
+        role: action.role,
       };
 
     case HANDLE_FAILED_AUTH:
