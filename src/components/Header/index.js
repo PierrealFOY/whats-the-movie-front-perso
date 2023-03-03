@@ -106,7 +106,7 @@ function Header({ handleResetGame }) {
                   <button
                     type="button"
                   >
-                    <NavLink to="http://localhost:8081/">
+                    <NavLink to="http://localhost:8081/" target="_blank">
                       <span className="nav-link button_top">
                         Accéder au back-office
                         <span className="sr-only">(current)</span>
