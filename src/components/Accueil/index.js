@@ -6,7 +6,7 @@ import logo from '../../assets/images/logo-WTM.png';
 
 function Accueil() {
   const logged = useSelector((state) => state.login.logged);
-  
+  const userName = useSelector((state) => state.login.name)
 
   return (
     // main page
@@ -28,8 +28,8 @@ function Accueil() {
           {/* Button Login */}
           {logged
             ? (
-              // 'Bienvenue JC !'
-              undefined
+
+              'Bienvenue'  + ' ' + userName + ' !'
             )
             : (
               <Button

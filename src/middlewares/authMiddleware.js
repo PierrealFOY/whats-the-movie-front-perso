@@ -1,8 +1,10 @@
 import axios from 'axios';
+
 import { handleSuccessfulAuth, handleFailedAuth, SUBMIT_LOGIN } from '../actions/loginPageActions';
 import { SUBMIT_REGISTER, handleSuccessfulRegister } from '../actions/registerPageActions';
 
 const authMiddleware = (store) => (next) => (action) => {
+
   switch (action.type) {
     case SUBMIT_LOGIN:
       axios.post(
@@ -13,14 +15,17 @@ const authMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log(response.data);
-          store.dispatch(handleSuccessfulAuth(response.data.nickname, response.data.token));
-        })
-        .catch((error) => {
-          store.dispatch(handleFailedAuth(error.response.data.nickname, error.response.data.token));
-        });
+          store.dispatch(handleSuccessfulAuth(
+            response.data.token, response.data.data.id, response.data.data.name, 
+            response.data.data.numberGame, response.data.data.score, response.data.data.picture))
+          })
 
+        .catch((error) => {
+          store.dispatch(handleFailedAuth(
+            error.response.data))
+          });
       break;
+
 
     case SUBMIT_REGISTER:
       axios.post(
