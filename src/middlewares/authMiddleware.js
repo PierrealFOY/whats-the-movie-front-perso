@@ -13,6 +13,7 @@ const authMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
+          console.log(response.data);
           store.dispatch(handleSuccessfulAuth(response.data.nickname, response.data.token));
         })
         .catch((error) => {

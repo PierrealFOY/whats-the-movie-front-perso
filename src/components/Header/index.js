@@ -31,6 +31,15 @@ function Header({ handleResetGame }) {
           <span className="navbar-toggler-icon" />
         </button>
         <img className="logo" src={logo} alt="logo" />
+        {
+        logged
+          ? (
+            <div className="nav-user">
+              <span className="nav-user-name">Bonjour<br/>JC !</span>
+            </div>
+            )
+          : undefined
+        }         
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item active">
@@ -46,7 +55,8 @@ function Header({ handleResetGame }) {
                 <span className="nav-link button_top">Quizz<span className="sr-only">(current)</span></span>
               </button>
             </li> */}
-            {logged
+            {
+            logged
               ? (
                 <li className="nav-item active">
                   <button type="button">
@@ -66,9 +76,10 @@ function Header({ handleResetGame }) {
                     </span>
                   </button>
                 </li>
-              )}
-
-            {logged
+              )
+            }
+            {
+              logged
               ? (
                 <li className="nav-item active">
                   <button
@@ -84,10 +95,11 @@ function Header({ handleResetGame }) {
                   </button>
                 </li>
               )
-              : null}
-          </ul>
+              : undefined
+            }
+          </ul>         
         </div>        
-      </nav>
+      </nav>      
     </header>
   );
 }

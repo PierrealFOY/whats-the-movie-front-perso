@@ -28,7 +28,8 @@ function Accueil() {
           {/* Button Login */}
           {logged
             ? (
-              'Bienvenue JC !'
+              // 'Bienvenue JC !'
+              undefined
             )
             : (
               <Button

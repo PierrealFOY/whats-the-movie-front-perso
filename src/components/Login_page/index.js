@@ -1,24 +1,29 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, NavLink } from 'react-router-dom';
-import { submitEmail, submitPassword, submitLogin } from '../../actions/loginPageActions';
+import { changeEmail, changePassword, submitLogin } from '../../actions/loginPageActions';
 
 import WTM from '../../assets/WTM.png';
 import './styles.scss';
 
 function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
   const dispatch = useDispatch();
+
+  const email = useSelector((state) => state.login.email);
+  const handleChangeEmail = (evt) => {
+    dispatch(changeEmail(evt.target.value));
+  }
+
+  const password = useSelector((state) => state.login.password);
+  const handleChangePassword = (evt) => {
+    dispatch(changePassword(evt.target.value));
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(submitEmail(email));
-    dispatch(submitPassword(password));
     dispatch(submitLogin());
-    setEmail('');
-    setPassword('');
+    dispatch(changeEmail(''));
+    dispatch(changePassword(''));
   };
 
   const logged = useSelector((state) => state.login.logged);
@@ -40,10 +45,10 @@ function LoginPage() {
                 type="email"
                 className="form-control"
                 id="exampleInputEmail1"
-                aria-describedby="emailHel p"
+                aria-describedby="emailHelp"
                 placeholder="Identifiant"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={handleChangeEmail}
               />
             </div>
             <div className="form-group">
@@ -53,7 +58,7 @@ function LoginPage() {
                 id="exampleInputPassword1"
                 placeholder="Mot de passe"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={handleChangePassword}
               />
               <a className="small-p" href="#">Mot de passe oublié ?</a>
             </div>
