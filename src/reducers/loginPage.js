@@ -11,25 +11,37 @@ const initialState = {
   showLogout: false,
   email: '',
   password: '',
-  nickname: '',
   token: '',
+  id: '',
+  name: '',
+  game: '',
+  score: '',
+  picture: '',
+  role:'',
 };
 
 export default function LoginPageReducer(state = initialState, action = {}) {
   switch (action.type) {
     case CHANGE_EMAIL:
       return { ...state, email: action.payload };
+
     case CHANGE_PASSWORD:
       return { ...state, password: action.payload };
+
     case HANDLE_SUCCESSFUL_AUTH:
       return {
         ...state,
         logged: true,
-        nickname: action.nickname,
-        token: action.token,
         password: '',
-
+        token: action.token,
+        id: action.id,
+        name: action.name,
+        game: action.game,
+        score: action.score,
+        picture: action.picture,
+        role: action.role,
       };
+
     case HANDLE_FAILED_AUTH:
       return {
         ...state,
