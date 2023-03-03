@@ -179,5 +179,13 @@
       }
     }
   }
-}
 
+  a:hover {
+    color: #fff;
+    text-decoration: none;
+
+    .notConnected-text {
+      color: #000;
+    }
+  }
+}
