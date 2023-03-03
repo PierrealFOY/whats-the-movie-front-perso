@@ -28,6 +28,7 @@ function Accueil() {
           {/* Button Login */}
           {logged
             ? (
+
               'Bienvenue'  + ' ' + userName + ' !'
             )
             : (

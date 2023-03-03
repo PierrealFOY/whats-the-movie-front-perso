@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-import { 
-      handleSuccessfulAuth, handleFailedAuth, SUBMIT_LOGIN,
-} from '../actions/loginPageActions';
+import { handleSuccessfulAuth, handleFailedAuth, SUBMIT_LOGIN } from '../actions/loginPageActions';
+import { SUBMIT_REGISTER, handleSuccessfulRegister } from '../actions/registerPageActions';
 
 const authMiddleware = (store) => (next) => (action) => {
 
@@ -26,6 +25,26 @@ const authMiddleware = (store) => (next) => (action) => {
             error.response.data))
           });
       break;
+
+
+    case SUBMIT_REGISTER:
+      axios.post(
+        'http://localhost:8081/api/users',
+        {
+          email: store.getState().register.email,
+          name: store.getState().register.pseudo,
+          password: store.getState().register.password,
+          // picture: '',
+        },
+      )
+        .then((response) => {
+          store.dispatch(handleSuccessfulRegister(true));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      break;
+
     default:
   }
 

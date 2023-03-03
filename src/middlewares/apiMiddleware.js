@@ -78,6 +78,7 @@ const apiMiddleware = (store) => (next) => (action) => {
         idProductionStudios: store.getState().addMovie.productionStudios,
         idDirectors: store.getState().addMovie.directors,
         idCountries: store.getState().addMovie.countries,
+        // idUser: 
       })
         .then((response) => {
           console.log('Response : ', response);

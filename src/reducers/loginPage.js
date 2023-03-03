@@ -1,5 +1,9 @@
 import {
-  HANDLE_SUCCESSFUL_AUTH, HANDLE_FAILED_AUTH, HANDLE_LOGOUT,
+  HANDLE_SUCCESSFUL_AUTH,
+  HANDLE_FAILED_AUTH,
+  HANDLE_LOGOUT,
+  CHANGE_EMAIL,
+  CHANGE_PASSWORD,
 } from '../actions/loginPageActions';
 
 const initialState = {
@@ -17,10 +21,10 @@ const initialState = {
 
 export default function LoginPageReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case 'SUBMIT_EMAIL':
+    case CHANGE_EMAIL:
       return { ...state, email: action.payload };
 
-    case 'SUBMIT_PASSWORD':
+    case CHANGE_PASSWORD:
       return { ...state, password: action.payload };
 
     case HANDLE_SUCCESSFUL_AUTH:

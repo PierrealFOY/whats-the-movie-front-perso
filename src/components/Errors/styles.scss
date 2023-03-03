@@ -7,8 +7,9 @@ $error-color: #226D68;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   font-family: vars.$fontFredoka;
+  padding: 0 0.5rem;
 
   .error-logo {
     width: 10em;
@@ -50,14 +51,14 @@ $error-color: #226D68;
 
   h2 {
     font-size: 2em;
-    margin: 0;
+    margin-bottom: 0.5rem;
     color: #2c3e50;
   }
 
   p {
     font-size: 1.5em;
     margin: 0 0 30px;
-    color: #95a5a6;
+    color: #686e6e;
     text-align: center;
   }
 
@@ -70,6 +71,7 @@ $error-color: #226D68;
     text-transform: uppercase;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    margin-bottom: 1rem;
 
     &:hover {
       background-color: darken($error-color, 10%);

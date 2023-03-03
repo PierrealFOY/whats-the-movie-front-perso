@@ -1,16 +1,17 @@
+export const CHANGE_EMAIL = 'CHANGE_EMAIL';
+export const CHANGE_PASSWORD = 'CHANGE_PASSWORD'
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const HANDLE_SUCCESSFUL_AUTH = 'HANDLE_SUCCESSFUL_AUTH';
 export const HANDLE_FAILED_AUTH = 'HANDLE_FAILED_AUTH';
 export const HANDLE_LOGOUT = 'HANDLE_LOGOUT';
-export const SHOW_LOGOUT = 'SHOW_LOGOUT';
 
-export const submitEmail = (email) => ({
-  type: 'SUBMIT_EMAIL',
+export const changeEmail = (email) => ({
+  type: CHANGE_EMAIL,
   payload: email,
 });
 
-export const submitPassword = (password) => ({
-  type: 'SUBMIT_PASSWORD',
+export const changePassword = (password) => ({
+  type: CHANGE_PASSWORD,
   payload: password,
 });
 

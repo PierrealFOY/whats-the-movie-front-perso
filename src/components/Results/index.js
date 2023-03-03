@@ -1,14 +1,18 @@
 import PropTypes from 'prop-types';
 import './styles.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../assets/images/logo-WTM.png';
 import { resetTimer, stopTimer, gameOff } from '../../actions/movies';
 import { resetScore } from '../../actions/score';
 
 function Results({ handleResetGame, handleReplay }) {
+  const gameStarted = useSelector((state) => state.timer.gameStarted);
+
+  if (gameStarted) {
   const dispatch = useDispatch();
   const finalScore = useSelector((state) => state.score.userScore);
+  const logged = useSelector((state) => state.login.logged);
 
   const handleClickReplay = (evt) => {
     evt.preventDefault();
@@ -39,9 +43,21 @@ function Results({ handleResetGame, handleReplay }) {
         <span className="results-sentence">Voici votre résultat:</span>
         <span className="results-points">{finalScore} points</span>
       </div>
+      {logged ? (
+        // if the user is connected he's going to see his ranking
       <div className="ranking">
         <span className="ranking-results">Vous êtes 7ème</span>
       </div>
+      ):(
+        <NavLink 
+          to="/authentification"
+        >
+          <div className="notConnected">
+            <p className="notConnected-text">Inscrivez vous ou connectez vous afin de pouvoir vous classez !</p>
+            <button className="notConnected-subscribe">ICI</button>
+          </div>
+        </NavLink>
+      )}
       <div className="btn">
         <button type="button" className="btn-playAgain" onClick={handleClickReplay}>
           <NavLink
@@ -61,6 +77,12 @@ function Results({ handleResetGame, handleReplay }) {
       </div>
     </div>
   );
+  }
+  else {
+    return (
+      <Navigate to="/error" replace />
+    );
+  }
 }
 
 Results.propTypes = {
