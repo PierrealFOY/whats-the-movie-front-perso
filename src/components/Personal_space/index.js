@@ -4,8 +4,15 @@ import './styles.scss';
 
 function PersonalSpace() {
 
+
+  //Number of game played
   const numberGame = useSelector((state) => state.login.game)
+
+  //User's score
   const scoreUser = useSelector((state) => state.login.score)
+
+  //User's picture
+  const userPicture = useSelector((state) => state.login.picture)
 
   return (
     <div className="stats">
