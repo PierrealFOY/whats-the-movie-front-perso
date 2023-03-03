@@ -99,8 +99,9 @@ function Header({ handleResetGame }) {
               )
               : undefined
             }
+
             {
-              userRole === userAdmin ?
+              logged && userRole === userAdmin ?
               (
                 <li className="nav-item active">
                   <button
