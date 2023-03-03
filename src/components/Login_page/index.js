@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, NavLink } from 'react-router-dom';
-import { submitEmail, submitPassword, submitLogin, handleSuccessGetData } from '../../actions/loginPageActions';
+import { submitEmail, submitPassword, submitLogin } from '../../actions/loginPageActions';
 
 import WTM from '../../assets/WTM.png';
 import './styles.scss';
@@ -17,7 +17,6 @@ function LoginPage() {
     dispatch(submitEmail(email));
     dispatch(submitPassword(password));
     dispatch(submitLogin());
-    dispatch(handleSuccessGetData());
     setEmail('');
     setPassword('');
   };
