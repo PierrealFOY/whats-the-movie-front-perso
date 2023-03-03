@@ -23,6 +23,8 @@ function Header({ handleResetGame }) {
   };
 
   const logged = useSelector((state) => state.login.logged);
+  const userRole = useSelector((state) => state.login.role);
+  const userAdmin = 'ROLE_ADMIN';
 
   return (
     <header>
@@ -89,6 +91,24 @@ function Header({ handleResetGame }) {
                     <NavLink to="/">
                       <span className="nav-link button_top">
                         Deconnexion
+                        <span className="sr-only">(current)</span>
+                      </span>
+                    </NavLink>
+                  </button>
+                </li>
+              )
+              : undefined
+            }
+            {
+              userRole === userAdmin ?
+              (
+                <li className="nav-item active">
+                  <button
+                    type="button"
+                  >
+                    <NavLink to="http://localhost:8081/">
+                      <span className="nav-link button_top">
+                        Accéder au back-office
                         <span className="sr-only">(current)</span>
                       </span>
                     </NavLink>
