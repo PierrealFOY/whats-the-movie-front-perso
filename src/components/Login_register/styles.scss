@@ -1,0 +1,124 @@
+@use '../../styles/vars';
+
+.LoginPage{
+  width: 100%;
+  height: 100%;
+  font-family: vars.$fontFredoka;
+
+  &-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    text-decoration: underline;
+  }
+
+  &-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 2rem;
+  
+    @-webkit-keyframes scale-in-center {
+      0% {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+        opacity: 1;
+      }
+      100% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+        opacity: 1;
+      }
+    }
+    @keyframes scale-in-center {
+      0% {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+        opacity: 1;
+      }
+      100% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    img {
+      width: 30%;
+      margin: 0 auto 2rem auto;
+      -webkit-animation: scale-in-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+              animation: scale-in-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    .login-icon{
+      display: flex;
+      justify-content: center;
+      margin: 20px;
+    }
+  
+    .form-group{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 40%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 2%;
+      -webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  
+  
+      .small-p{
+        color: gray;
+        text-decoration: underline;
+        margin: 10px;
+      }
+  
+    }
+  
+    .btn{
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 1%;
+      background-color: #46b290;
+      color: white;
+      -webkit-animation: scale-in-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: scale-in-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+  
+    .btn:hover {
+     transform: translateY(-0.33em);
+     background-color: #006666;
+     color: white;
+    }
+  
+    .btn:active {
+     transform: translateY(0);
+    }
+  
+    hr{
+      width: 30%;
+      border: solid 1px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    @media screen and (max-width: 600px) {
+      .btn{
+        text-align: center;
+        font-size: 0.5em;
+      }
+      .small-p{
+        font-size: 0.5em;
+      }
+    }
+    @media screen and (max-width: 300px) {
+      .btn{
+        text-align: center;
+        font-size: 0.2em;
+      }
+      .small-p{
+        font-size: 0.2em;
+      }
+    }
+  }
+}

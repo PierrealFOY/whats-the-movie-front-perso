@@ -1,0 +1,108 @@
+@use '../../styles/vars';
+
+.home {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: inline-table;
+  font-family: vars.$fontFredoka;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+
+    .home__logo {
+      margin: 1rem auto;
+      width: 100%;
+      max-width: 500px;
+      -webkit-animation: scale-in-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	            animation: scale-in-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;      
+
+      @media (max-width: 768px) {
+      max-width: 400px;
+      }
+    }
+
+    @-webkit-keyframes scale-in-center {
+      0% {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+        opacity: 1;
+      }
+      100% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+        opacity: 1;
+      }
+    }
+    @keyframes scale-in-center {
+      0% {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+        opacity: 1;
+      }
+      100% {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .home__button-container {
+      display: flex;
+      flex-direction: column;      
+      text-align: center;
+      -webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	            animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+      .home__button {
+        margin: 1rem auto;
+        width: 90%;
+        box-shadow: 8px 8px 31px -3px rgba(0,0,0,0.72);
+        max-width: 400px;
+        padding: 0;
+    
+        &.play {
+          background-color: #B97335;
+          border: 1px solid #6b482a;
+
+          &:hover {
+            background-color: #6b482a;          
+          }
+        }
+    
+        &.login {
+          border: 1px solid #6b482a;
+          color: #6b482a;
+
+          &:hover {
+            background-color: #6b482a;
+            color: #fff;
+          }
+        }
+
+        &-link {
+          width: 100%;
+          display: block;
+          padding: 0.5rem;
+
+          &:hover {
+            color: #fff;
+            text-decoration: none;
+          }
+        }
+      } 
+    }   
+  }
+}
+
+@media (max-width: 320px) {
+  .home__button {
+    font-size: 1rem;
+  }
+}
