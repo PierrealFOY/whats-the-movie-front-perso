@@ -1,9 +1,7 @@
 import { FETCH_CLASSEMENT_FAILURE, FETCH_CLASSEMENT_SUCCESS } from "../actions/ranking";
 
 const initialState = {
-  name: '',
-  score: '',
-  numberGame: '',
+  classement: []
 };
 
 const rankingReducer = (state = initialState, action) => {
@@ -11,13 +9,7 @@ const rankingReducer = (state = initialState, action) => {
     case FETCH_CLASSEMENT_SUCCESS:
       return {
         ...state,
-        name: action.name,
-        score: action.score,
-        numberGame: action.numberGame,
-      };
-    case FETCH_CLASSEMENT_FAILURE:
-      return {
-        ...state,
+        classement: action.data, // mettre à jour le tableau de données
       };
     default:
       return state;

@@ -19,13 +19,14 @@ function PersonalSpace() {
   const userPicture = useSelector((state) => state.login.picture)
 
   //All users
-  const ranking = useSelector((state) => state.ranking.name);
+  const ranking = useSelector((state) => state.ranking.classement);
   console.log(ranking)
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchClassementRequest());
-  }, [ranking]);
+  }, []);
 
 if (logged) {
   return (
@@ -36,18 +37,15 @@ if (logged) {
         <div className="game--score">Votre score est de {scoreUser === null ? 0 : scoreUser} points</div>
        </div>
       <div className="ranking">
-      <ul>
-        {/* {ranking.map((player) => (
-          <li key={player.id}>
-            <p>Email: {player.email}</p>
-            <p>Rôle: {player.roles}</p>
-            <p>Nom: {player.name}</p>
-            <p>Parties: {player.games}</p>
-            <p>Score: {player.score}</p>
-            <p>Nombre de parties: {player.numberGames}</p>
-          </li>
-        ))} */}
-      </ul>
+      <ol>
+      {ranking.map((player) => (
+        <li key={player.id}>
+          <p>Nom: {player.name}</p>
+          <p>Score: {player.score}</p>
+          <p>Nombre de parties: {player.numberGame}</p>
+        </li>
+      ))}
+      </ol>
       </div>
      </div>
     );

@@ -8,7 +8,7 @@ const rankingMiddleware = (store) => (next) => (action) => {
       axios
       .get('http://localhost:8081/api/users/classement?limit=10')
       .then((response) => {
-        store.dispatch(fetchClassementSuccess(response.data.name, response.data.score, response.data.numberGame));
+        store.dispatch(fetchClassementSuccess(response.data));
         console.log(response)
       })
       .catch((error) => {

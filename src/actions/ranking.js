@@ -3,11 +3,9 @@ export const FETCH_CLASSEMENT_FAILURE = 'FETCH_CLASSEMENT_FAILURE';
 export const FETCH_CLASSEMENT_REQUEST = 'FETCH_CLASSEMENT_REQUEST'
 
 
-export const fetchClassementSuccess = (name, score, numberGame) => ({
+export const fetchClassementSuccess = (data) => ({
   type: FETCH_CLASSEMENT_SUCCESS,
-  name: name,
-  score: score,
-  numberGame: numberGame,
+  data: data,
 });
 
 export const fetchClassementRequest = () => ({
