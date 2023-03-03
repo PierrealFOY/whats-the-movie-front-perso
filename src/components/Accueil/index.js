@@ -39,7 +39,6 @@ function Accueil() {
                 <NavLink to="/authentification" className="home__button-link">Connexion / Inscription</NavLink>
               </Button>
             )}
-            {console.log(userName)}
         </div>
       </div>
     </main>

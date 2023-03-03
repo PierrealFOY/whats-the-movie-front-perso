@@ -18,11 +18,12 @@ export const submitLogin = () => ({
   type: SUBMIT_LOGIN,
 });
 
-export const handleSuccessfulAuth = (token, id, name) => ({
+export const handleSuccessfulAuth = (token, id, name, game) => ({
   type: HANDLE_SUCCESSFUL_AUTH,
   token: token,
   id: id,
   name: name,
+  game: game,
 });
 
 export const handleFailedAuth = () => ({
