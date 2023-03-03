@@ -11,6 +11,7 @@ const initialState = {
   id: '',
   name: '',
   game: '',
+  socre: '',
 };
 
 export default function LoginPageReducer(state = initialState, action = {}) {
@@ -30,6 +31,7 @@ export default function LoginPageReducer(state = initialState, action = {}) {
         id: action.id,
         name: action.name,
         game: action.game,
+        score: action.score
       };
 
     case HANDLE_FAILED_AUTH:
