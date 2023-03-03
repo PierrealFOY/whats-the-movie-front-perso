@@ -15,6 +15,7 @@ function PersonalSpace() {
 
   //User's picture
   const userPicture = useSelector((state) => state.login.picture)
+
 if (logged) {
   return (
     <div className="stats">
