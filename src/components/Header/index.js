@@ -61,6 +61,7 @@ function Header({ handleResetGame }) {
             {
             logged
               ? (
+                <>
                 <li className="nav-item active">
                   <button type="button">
                     <span className="nav-link button_top">
@@ -69,6 +70,15 @@ function Header({ handleResetGame }) {
                     </span>
                   </button>
                 </li>
+                <li className="nav-item active">
+                  <button type="button">
+                    <span className="nav-link button_top">
+                      <NavLink to="/compte/ajout-film">Ajouter un film</NavLink>
+                      <span className="sr-only">(current)</span>
+                    </span>
+                  </button>
+                </li>
+                </>
               )
               : (
                 <li className="nav-item active">
