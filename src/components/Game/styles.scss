@@ -419,13 +419,14 @@
       border: none !important;
       width: 100% !important;
 
-      .game__affiche {
+      .game__affiche.blurred {
         display: none;
       }
     }   
     
     .game__indices {
       width: 100% !important;
+      margin-top: 3rem;
     }    
   }
 }

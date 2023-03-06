@@ -109,6 +109,8 @@ function Game({ handleBeginGame, handleNextMovie }) {
                     <h1>{movie.title}</h1>
                   </div>
                 </div>
+
+                {/* INDICES */}
                 <div className="game__indices">
                   <div className="game__indices-container">
                     <p className="game__indices-title">Réalisateur(s) : </p>
