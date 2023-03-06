@@ -88,24 +88,29 @@ function Game({ handleBeginGame, handleNextMovie }) {
           movies.length > 0 && responses.length > 0
             ? (
               <>
-                <div className="game__countdown">
-                  <h1 className="game__countdown-timer"><span className="game__countdown-number">{time}</span>
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
-                      <style>{'@keyframes rotate{0%{transform:rotate(0)}to{transform:rotate(360deg)}}'}</style>
-                      <rect width="19" height="19" x="1" y="3" stroke="#0A0A30" strokeWidth="1.5" rx="8" />
-                      <path stroke="#0A0A30" strokeLinecap="round" strokeWidth="1.5" d="M12.021 12l2.325 2.325" />
-                      <path stroke="#265BFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12.021 12V6.84" style={running ? { animation: 'rotate 2s linear infinite both', transformOrigin: 'center' } : {}} />
-                    </svg>
-                  </h1>
+              <div className="game__movie-infos">
+                <div className="game__poster-score">
+                  <div className="game__countdown">
+                    <h1 className="game__countdown-timer"><span className="game__countdown-number">{time}</span>
+                      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
+                        <style>{'@keyframes rotate{0%{transform:rotate(0)}to{transform:rotate(360deg)}}'}</style>
+                        <rect width="19" height="19" x="1" y="3" stroke="#0A0A30" strokeWidth="1.5" rx="8" />
+                        <path stroke="#0A0A30" strokeLinecap="round" strokeWidth="1.5" d="M12.021 12l2.325 2.325" />
+                        <path stroke="#265BFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12.021 12V6.84" style={running ? { animation: 'rotate 2s linear infinite both', transformOrigin: 'center' } : {}} />
+                      </svg>
+                    </h1>
+                  </div>
+                  <div className="game__score">
+                    <h1 className="game__score-text">Score : <span className={`game__${running === true ? 'score-number' : 'score-number-validated'}`}>{score}</span></h1>
+                  </div>
+                  <div className={`game__affiche ${time <= 0 || running === false ? 'roll-in-blurred-left' : 'blurred'}`}>
+                    <img className="game__affiche-poster"
+                    src={movie.poster} alt="Movie Poster" />
+                    <h1>{movie.title}</h1>
+                  </div>
                 </div>
-                <div className="game__score">
-                  <h1 className="game__score-text">Score : <span className={`game__${running === true ? 'score-number' : 'score-number-validated'}`}>{score}</span></h1>
-                </div>
-                <div className={`game__affiche ${time <= 0 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
-                  <img className="game__affiche-poster"
-                   src={movie.poster} alt="Movie Poster" />
-                  <h1>{movie.title}</h1>
-                </div>
+
+                {/* INDICES */}
                 <div className="game__indices">
                   <div className="game__indices-container">
                     <p className="game__indices-title">Réalisateur(s) : </p>
@@ -125,7 +130,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                     <p className="game__indices-title">Date de sortie : </p>
                     <p className={`game__indices-item ${time <= 50 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
                       {
-                        formatDate(movie.realeaseDate) 
+                        formatDate(movie.releaseDate)
                       }
                     </p>
                   </div>
@@ -183,10 +188,11 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       <p className={`game__indices-item ${time <= 10 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>{movie.synopsys}</p>
                     </div>
                   </div>
-                </div>
+                </div> 
+              </div>             
                 {
                   // no response given yet
-                  userResponse === ''
+                  userResponse === '' && time !== 0
                     ? (
                       <div className="game__responses">
                         {
@@ -209,6 +215,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                           tour={tour}
                           handleNextMovie={handleNextMovie}
                           userResponse={userResponse}
+                          timer={time}
                         />
                       </div>
                     )
