@@ -21,6 +21,9 @@ function PersonalSpace() {
   //All users
   const ranking = useSelector((state) => state.ranking.classement);
   console.log(ranking)
+
+  //User's name
+  const userName = useSelector((state) => state.login.name)
   
   const dispatch = useDispatch();
 
@@ -38,11 +41,9 @@ if (logged) {
        </div>
       <div className="ranking">
       <ol>
-      {ranking.map((player) => (
-        <li key={player.id}>
-          <p>Nom: {player.name}</p>
-          <p>Score: {player.score}</p>
-          <p>Nombre de parties: {player.numberGame}</p>
+      {ranking.map((player, index) => (
+        <li key={player.id} className={`ranking--player ${player.name === userName ? 'display' : ''}`}>
+          <p className="ranking--line">{index+1}. {player.name} <span>Score: {player.score}</span> <span>Nombre de parties: {player.numberGame}</span></p>
         </li>
       ))}
       </ol>
