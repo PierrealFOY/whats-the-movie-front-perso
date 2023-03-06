@@ -26,6 +26,7 @@ function LoginPage() {
   };
 
   const logged = useSelector((state) => state.login.logged);
+  const message = useSelector((state) => state.login.message);
 
   return (
     <div className="LoginPage">
@@ -59,7 +60,7 @@ function LoginPage() {
                 value={password}
                 onChange={handleChangePassword}
               />
-              <a className="small-p" href="#">Mot de passe oublié ?</a>
+            <div className="form-message">{message}</div>
             </div>
             <button type="submit" className="btn">SE CONNECTER</button>
             <hr />
