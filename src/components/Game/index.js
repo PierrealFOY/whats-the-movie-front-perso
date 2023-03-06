@@ -88,6 +88,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
           movies.length > 0 && responses.length > 0
             ? (
               <>
+              <div className="game__movie-infos">
                 <div className="game__poster-score">
                   <div className="game__countdown">
                     <h1 className="game__countdown-timer"><span className="game__countdown-number">{time}</span>
@@ -102,7 +103,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                   <div className="game__score">
                     <h1 className="game__score-text">Score : <span className={`game__${running === true ? 'score-number' : 'score-number-validated'}`}>{score}</span></h1>
                   </div>
-                  <div className={`game__affiche ${time <= 0 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
+                  <div className={`game__affiche ${time <= 0 || running === false ? 'roll-in-blurred-left' : 'blurred'}`}>
                     <img className="game__affiche-poster"
                     src={movie.poster} alt="Movie Poster" />
                     <h1>{movie.title}</h1>
@@ -127,7 +128,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                     <p className="game__indices-title">Date de sortie : </p>
                     <p className={`game__indices-item ${time <= 50 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
                       {
-                        formatDate(movie.realeaseDate) 
+                        formatDate(movie.releaseDate)
                       }
                     </p>
                   </div>
@@ -185,7 +186,8 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       <p className={`game__indices-item ${time <= 10 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>{movie.synopsys}</p>
                     </div>
                   </div>
-                </div>
+                </div> 
+              </div>             
                 {
                   // no response given yet
                   userResponse === '' && time !== 0
@@ -211,6 +213,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                           tour={tour}
                           handleNextMovie={handleNextMovie}
                           userResponse={userResponse}
+                          timer={time}
                         />
                       </div>
                     )

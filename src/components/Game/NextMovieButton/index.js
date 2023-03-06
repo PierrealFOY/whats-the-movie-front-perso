@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { resetTimer } from '../../../actions/movies';
 
-function NextMovieButton({ tour, handleNextMovie, userResponse }) {
+function NextMovieButton({ tour, handleNextMovie, userResponse, timer }) {
   const dispatch = useDispatch();
 
   const handleButtonClick = (evt) => {
@@ -27,7 +27,7 @@ function NextMovieButton({ tour, handleNextMovie, userResponse }) {
           ? (
             userResponse === 'T'
               ? <p className="responses__button-text win">Bonne réponse !<br />Film suivant</p>
-              : <p className="responses__button-text loose">Mauvaise Réponse !<br />Film suivant</p>
+              : <p className="responses__button-text loose">{timer === 0 ? 'Temps écoulé !' : 'Mauvaise Réponse !'}<br />Film suivant</p>
           )
           : (
             <NavLink to="/results">
@@ -43,6 +43,7 @@ NextMovieButton.propTypes = {
   tour: PropTypes.number.isRequired,
   handleNextMovie: PropTypes.func.isRequired,
   userResponse: PropTypes.string.isRequired,
+  timer: PropTypes.number.isRequired,
 };
 
 export default NextMovieButton;
