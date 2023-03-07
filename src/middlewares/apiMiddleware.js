@@ -14,7 +14,7 @@ const apiMiddleware = (store) => (next) => (action) => {
     // Get 20 random movies in the database
     case GET_MOVIES:
       // call the endpoint on the API to get 20 random movies
-      axios.get('http://localhost:8081/api/movies/games?limit=20')
+      axios.get('https://jean-christophemartin-server.eddi.cloud/api/movies/games?limit=20')
         .then((responseMovies) => {
           // array who will receive the 5 movies of the game
           const arrayMovie = [];
@@ -70,7 +70,7 @@ const apiMiddleware = (store) => (next) => (action) => {
 
     // Submitting a movie
     case SUBMIT_MOVIE:
-      axios.post('http://localhost:8081/api/movies', {
+      axios.post('https://jean-christophemartin-server.eddi.cloud/api/movies', {
         title: store.getState().addMovie.title,
         synopsis: store.getState().addMovie.synopsis,
         releaseDate: formatDateForAPI(store.getState().addMovie.releaseDate),
@@ -101,7 +101,7 @@ const apiMiddleware = (store) => (next) => (action) => {
       store.getState().movies.movies.map((movie) => {
         idMovies.push(movie.id);
       });
-      axios.post('http://localhost:8081/api/games', {
+      axios.post('https://jean-christophemartin-server.eddi.cloud/api/games', {
         userId: 1, // user id
         score: store.getState().score.userScore, // user score
         moviesId: idMovies, // id of the movies the user had to guess

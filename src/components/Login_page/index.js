@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, NavLink } from 'react-router-dom';
 import { changeEmail, changePassword, submitLogin } from '../../actions/loginPageActions';
@@ -27,6 +26,7 @@ function LoginPage() {
   };
 
   const logged = useSelector((state) => state.login.logged);
+  const message = useSelector((state) => state.login.message);
 
   return (
     <div className="LoginPage">
@@ -60,6 +60,7 @@ function LoginPage() {
                 value={password}
                 onChange={handleChangePassword}
               />
+            <div className="form-message">{message}</div>
             </div>
             <button type="submit" className="btn">SE CONNECTER</button>
             <hr />

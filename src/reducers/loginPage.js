@@ -18,6 +18,7 @@ const initialState = {
   score: '',
   picture: '',
   role:'',
+  message: '',
 };
 
 export default function LoginPageReducer(state = initialState, action = {}) {
@@ -40,13 +41,14 @@ export default function LoginPageReducer(state = initialState, action = {}) {
         score: action.score,
         picture: action.picture,
         role: action.role,
+        message: '',
       };
 
     case HANDLE_FAILED_AUTH:
       return {
         ...state,
         logged: false,
-
+        message: 'Oups...mauvais identifiants',
       };
 
     case HANDLE_LOGOUT:

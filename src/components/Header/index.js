@@ -48,7 +48,7 @@ function Header({ handleResetGame }) {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item active">              
-              <button type="button" onClick={handleClickHome}>
+              <button type="button" data-toggle="collapse" data-target="#navbarNavDropdown" onClick={handleClickHome}>
                 <NavLink to="/">
                   <span className="nav-link button_top">
                     Accueil
@@ -63,19 +63,9 @@ function Header({ handleResetGame }) {
                 <>
                 <li className="nav-item active">
                   <NavLink to="/compte">
-                    <button type="button">
+                    <button type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
                       <span className="nav-link button_top">
                         Mon compte
-                        <span className="sr-only">(current)</span>
-                      </span>
-                    </button>
-                  </NavLink>
-                </li>
-                <li className="nav-item active">
-                  <NavLink to="/compte/ajout-film">
-                    <button type="button">
-                      <span className="nav-link button_top">
-                        Ajouter un film
                         <span className="sr-only">(current)</span>
                       </span>
                     </button>
@@ -86,7 +76,7 @@ function Header({ handleResetGame }) {
               : (
                 <li className="nav-item active">
                   <NavLink to="/authentification">
-                    <button type="button">
+                    <button type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
                       <span className="nav-link button_top">
                         Connexion
                         <span className="sr-only">(current)</span>
@@ -103,6 +93,8 @@ function Header({ handleResetGame }) {
                   <NavLink to="/">
                     <button
                       type="button"
+                      data-toggle="collapse"
+                      data-target="#navbarNavDropdown"
                       onClick={userLogout}
                     >
                       
@@ -121,8 +113,10 @@ function Header({ handleResetGame }) {
               logged && userRole === userAdmin ?
               (
                 <li className="nav-item active">
-                  <NavLink to="http://localhost:8081/" target="_blank">
+                  <NavLink to="https://jean-christophemartin-server.eddi.cloud/" target="_blank">
                     <button
+                      data-toggle="collapse"
+                      data-target="#navbarNavDropdown"
                       type="button"
                     >                    
                         <span className="nav-link button_top">

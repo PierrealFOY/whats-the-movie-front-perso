@@ -1,0 +1,29 @@
+@use '../../styles/vars';
+
+.copyright{
+  font-family: vars.$fontFredoka;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-animation: scale-in-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: scale-in-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;      
+
+  h1{
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    color: #00ba8b;
+  }
+
+  &--img{
+    width: 15%;
+    height: 15%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+p{
+  margin: 2%;
+}
+
