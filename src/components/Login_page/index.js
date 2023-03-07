@@ -60,7 +60,6 @@ function LoginPage() {
                 value={password}
                 onChange={handleChangePassword}
               />
-              <a className="small-p" href="#">Mot de passe oublié ?</a>
             </div>
             <button type="submit" className="btn">SE CONNECTER</button>
             <hr />

@@ -5,17 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { handleLogout } from '../../actions/loginPageActions';
 import { resetScore } from '../../actions/score';
 import { stopTimer, gameOff } from '../../actions/movies';
-import { toggleMenu } from '../../actions/menu';
 
 import logo from './logo.png';
 
 function Header({ handleResetGame }) {
-  const expanded = useSelector((state) => state.menu.expanded);
   const dispatch = useDispatch();
 
   const handleClickHome = (evt) => {
     evt.preventDefault();
-    dispatch(toggleMenu(false));
     handleResetGame();
     dispatch(resetScore());
     dispatch(stopTimer());
@@ -23,21 +20,9 @@ function Header({ handleResetGame }) {
   };
 
   const userLogout = () => {
-    dispatch(toggleMenu(false));
     dispatch(handleLogout());    
   };
   
-  const handleExpandMenu = (evt) => {
-    if (evt.currentTarget.classList.contains('collapsed')) {
-      console.log(evt.currentTarget.classList);
-      dispatch(toggleMenu(true));
-    }
-    else {
-      console.log(evt.currentTarget.classList);
-      dispatch(toggleMenu(false));
-    }
-  };  
-
   const logged = useSelector((state) => state.login.logged);
   const userName = useSelector((state) => state.login.name);
   const userRole = useSelector((state) => state.login.role);
@@ -46,8 +31,8 @@ function Header({ handleResetGame }) {
   return (
     <header>
       <nav className="navbar navbar-expand-sm navbar-light">
-        <button className={`navbar-toggler ${expanded ? '' : 'collapsed'}`} type="button" data-toggle="collapse"
-        aria-controls="navbarNavDropdown" aria-expanded={expanded} aria-label="Toggle navigation" onClick={handleExpandMenu}>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
         </button>
         <img className="logo" src={logo} alt="logo" />
@@ -60,7 +45,7 @@ function Header({ handleResetGame }) {
             )
           : undefined
         }         
-        <div className={`collapse navbar-collapse ${expanded ? 'show' : ''}`} id="navbarNavDropdown">
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item active">              
               <button type="button" onClick={handleClickHome}>
@@ -78,7 +63,7 @@ function Header({ handleResetGame }) {
                 <>
                 <li className="nav-item active">
                   <NavLink to="/compte">
-                    <button type="button" onClick={() => dispatch(toggleMenu(false))}>
+                    <button type="button">
                       <span className="nav-link button_top">
                         Mon compte
                         <span className="sr-only">(current)</span>
@@ -88,7 +73,7 @@ function Header({ handleResetGame }) {
                 </li>
                 <li className="nav-item active">
                   <NavLink to="/compte/ajout-film">
-                    <button type="button" onClick={() => dispatch(toggleMenu(false))}>
+                    <button type="button">
                       <span className="nav-link button_top">
                         Ajouter un film
                         <span className="sr-only">(current)</span>
@@ -99,7 +84,7 @@ function Header({ handleResetGame }) {
                 </>
               )
               : (
-                <li className="nav-item active" onClick={() => dispatch(toggleMenu(false))}>
+                <li className="nav-item active">
                   <NavLink to="/authentification">
                     <button type="button">
                       <span className="nav-link button_top">
@@ -139,7 +124,6 @@ function Header({ handleResetGame }) {
                   <NavLink to="http://localhost:8081/" target="_blank">
                     <button
                       type="button"
-                      onClick={() => dispatch(toggleMenu(false))}
                     >                    
                         <span className="nav-link button_top">
                           Accéder au back-office
