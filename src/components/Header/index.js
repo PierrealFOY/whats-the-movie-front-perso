@@ -45,49 +45,52 @@ function Header({ handleResetGame }) {
         }         
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
-            <li className="nav-item active">
+            <li className="nav-item active">              
               <button type="button" onClick={handleClickHome}>
-                <span className="nav-link button_top">
-                  <NavLink to="/">Accueil</NavLink>
-                  <span className="sr-only">(current)</span>
-                </span>
+                <NavLink to="/">
+                  <span className="nav-link button_top">
+                    Accueil
+                    <span className="sr-only">(current)</span>
+                  </span>
+                </NavLink>
               </button>
             </li>
-            {/* <li className="nav-item active">
-              <button type="button" onClick={handleClickHome}>
-                <span className="nav-link button_top">Quizz<span className="sr-only">(current)</span></span>
-              </button>
-            </li> */}
             {
             logged
               ? (
                 <>
                 <li className="nav-item active">
-                  <button type="button">
-                    <span className="nav-link button_top">
-                      <NavLink to="/compte">Mon compte</NavLink>
-                      <span className="sr-only">(current)</span>
-                    </span>
-                  </button>
+                  <NavLink to="/compte">
+                    <button type="button">
+                      <span className="nav-link button_top">
+                        Mon compte
+                        <span className="sr-only">(current)</span>
+                      </span>
+                    </button>
+                  </NavLink>
                 </li>
                 <li className="nav-item active">
-                  <button type="button">
-                    <span className="nav-link button_top">
-                      <NavLink to="/compte/ajout-film">Ajouter un film</NavLink>
-                      <span className="sr-only">(current)</span>
-                    </span>
-                  </button>
+                  <NavLink to="/compte/ajout-film">
+                    <button type="button">
+                      <span className="nav-link button_top">
+                        Ajouter un film
+                        <span className="sr-only">(current)</span>
+                      </span>
+                    </button>
+                  </NavLink>
                 </li>
                 </>
               )
               : (
                 <li className="nav-item active">
-                  <button type="button">
-                    <span className="nav-link button_top">
-                      <NavLink to="/authentification">Connexion</NavLink>
-                      <span className="sr-only">(current)</span>
-                    </span>
-                  </button>
+                  <NavLink to="/authentification">
+                    <button type="button">
+                      <span className="nav-link button_top">
+                        Connexion
+                        <span className="sr-only">(current)</span>
+                      </span>
+                    </button>
+                  </NavLink>
                 </li>
               )
             }
@@ -95,17 +98,18 @@ function Header({ handleResetGame }) {
               logged
               ? (
                 <li className="nav-item active">
-                  <button
-                    type="button"
-                    onClick={userLogout}
-                  >
-                    <NavLink to="/">
-                      <span className="nav-link button_top">
-                        Deconnexion
-                        <span className="sr-only">(current)</span>
-                      </span>
-                    </NavLink>
-                  </button>
+                  <NavLink to="/">
+                    <button
+                      type="button"
+                      onClick={userLogout}
+                    >
+                      
+                        <span className="nav-link button_top">
+                          Deconnexion
+                          <span className="sr-only">(current)</span>
+                        </span>                    
+                    </button>
+                  </NavLink>
                 </li>
               )
               : undefined
@@ -115,16 +119,16 @@ function Header({ handleResetGame }) {
               logged && userRole === userAdmin ?
               (
                 <li className="nav-item active">
-                  <button
-                    type="button"
-                  >
-                    <NavLink to="http://localhost:8081/" target="_blank">
-                      <span className="nav-link button_top">
-                        Accéder au back-office
-                        <span className="sr-only">(current)</span>
-                      </span>
-                    </NavLink>
-                  </button>
+                  <NavLink to="http://localhost:8081/" target="_blank">
+                    <button
+                      type="button"
+                    >                    
+                        <span className="nav-link button_top">
+                          Accéder au back-office
+                          <span className="sr-only">(current)</span>
+                        </span>                    
+                    </button>
+                  </NavLink>
                 </li>
               )
               : undefined
