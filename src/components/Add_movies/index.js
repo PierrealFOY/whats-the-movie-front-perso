@@ -126,15 +126,18 @@ function AddMovies() {
               <div className="AddMovies--studio studio-input can-add">
                 <Select
                   className="select-combobox"
+                  classNamePrefix="select-combobox"
                   onChange={handleChangeProductionStudios}
                   options={studiosList}
                   placeholder="Studio de production 1"
+                  required
                 />
                 <div className="can-add-icon"><i className="studio bi bi-plus-circle" onClick={handleClickAdd} /></div>
               </div>
               <div className="AddMovies--studio studio-input can-add invisible last-select">
                 <Select
                   className="select-combobox"
+                  classNamePrefix="select-combobox"
                   onChange={handleChangeProductionStudios}
                   options={studiosList}
                   placeholder="Studio de production 2"
@@ -148,15 +151,18 @@ function AddMovies() {
               <div className="AddMovies--acteur actor-input can-add">
                 <Select
                   className="select-combobox"
+                  classNamePrefix="select-combobox"
                   onChange={handleChangeActors}
                   options={actorsList}
                   placeholder="Acteur 1"
+                  required
                 />
                 <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
               </div>
               <div className="AddMovies--acteur actor-input can-add invisible">
                 <Select
                   className="select-combobox"
+                  classNamePrefix="select-combobox"
                   onChange={handleChangeActors}
                   options={actorsList}
                   placeholder="Acteur 2"
@@ -166,15 +172,17 @@ function AddMovies() {
               <div className="AddMovies--acteur actor-input can-add invisible">
                 <Select
                   className="select-combobox"
+                  classNamePrefix="select-combobox"
                   onChange={handleChangeActors}
                   options={actorsList}
                   placeholder="Acteur 3"
                 />              
                 <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
               </div>
-              <div className="AddMovies--acteur actor-input can-add invisible">
+              {/* <div className="AddMovies--acteur actor-input can-add invisible">
                 <Select
                   className="select-combobox"
+                  classNamePrefix="select-combobox"
                   onChange={handleChangeActors}
                   options={actorsList}
                   placeholder="Acteur 4"
@@ -184,26 +192,30 @@ function AddMovies() {
               <div className="AddMovies--acteur actor-input can-add invisible last-select">
                 <Select
                   className="select-combobox"
+                  classNamePrefix="select-combobox"
                   onChange={handleChangeActors}
                   options={actorsList}
                   placeholder="Acteur 5"
                 />    
                 <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>          
-              </div>
+              </div> */}
 
               {/* Countries */}
               <div className="AddMovies--country country-input can-add">
                 <Select
-                  className="select-combobox"
+                  className="select-combobox" 
+                  classNamePrefix="select-combobox"                 
                   onChange={handleChangeCountries}
                   options={countriesList}
                   placeholder="Pays 1"
+                  required
                 />               
                 <div className="can-add-icon"><i className="country bi bi-plus-circle" onClick={handleClickAdd} /></div>
               </div>
               <div className="AddMovies--country country-input can-add invisible">
                 <Select
                   className="select-combobox"
+                  classNamePrefix="select-combobox"
                   onChange={handleChangeCountries}
                   options={countriesList}
                   placeholder="Pays 2"
@@ -213,6 +225,7 @@ function AddMovies() {
               <div className="AddMovies--country country-input can-add invisible last-select">
                 <Select
                   className="select-combobox"
+                  classNamePrefix="select-combobox"
                   onChange={handleChangeCountries}
                   options={countriesList}
                   placeholder="Pays 3"
@@ -224,15 +237,18 @@ function AddMovies() {
               <div className="AddMovies--realisateur director-input can-add">
                 <Select
                   className="select-combobox"
+                  classNamePrefix="select-combobox"
                   onChange={handleChangeDirectors}
                   options={directorsList}
                   placeholder="Réalisateur 1"
+                  required
                 />               
                 <div className="can-add-icon"><i className="director bi bi-plus-circle" onClick={handleClickAdd} /></div>
               </div>
               <div className="AddMovies--realisateur director-input can-add invisible last-select">
                 <Select
                   className="select-combobox"
+                  classNamePrefix="select-combobox"
                   onChange={handleChangeDirectors}
                   options={directorsList}
                   placeholder="Réalisateur 2"
@@ -244,15 +260,18 @@ function AddMovies() {
               <div className="AddMovies--genre genre-input can-add">
                 <Select
                   className="select-combobox"
+                  classNamePrefix="select-combobox"
                   onChange={handleChangeGenres}
                   options={genresList}
                   placeholder="Genre 1"
+                  required
                 />                
                 <div className="can-add-icon"><i className="genre bi bi-plus-circle" onClick={handleClickAdd} /></div>
               </div>
               <div className="AddMovies--genre genre-input can-add invisible">
               <Select
                   className="select-combobox"
+                  classNamePrefix="select-combobox"
                   onChange={handleChangeGenres}
                   options={genresList}
                   placeholder="Genre 2"
@@ -262,6 +281,7 @@ function AddMovies() {
               <div className="AddMovies--genre genre-input can-add invisible last-select">
               <Select
                   className="select-combobox"
+                  classNamePrefix="select-combobox"
                   onChange={handleChangeGenres}
                   options={genresList}
                   placeholder="Genre 3"

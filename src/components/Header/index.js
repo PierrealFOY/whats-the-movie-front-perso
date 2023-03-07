@@ -10,6 +10,7 @@ import logo from './logo.png';
 
 function Header({ handleResetGame }) {
   const dispatch = useDispatch();
+
   const handleClickHome = (evt) => {
     evt.preventDefault();
     handleResetGame();
@@ -19,9 +20,9 @@ function Header({ handleResetGame }) {
   };
 
   const userLogout = () => {
-    dispatch(handleLogout());
+    dispatch(handleLogout());    
   };
-
+  
   const logged = useSelector((state) => state.login.logged);
   const userName = useSelector((state) => state.login.name);
   const userRole = useSelector((state) => state.login.role);
@@ -30,7 +31,8 @@ function Header({ handleResetGame }) {
   return (
     <header>
       <nav className="navbar navbar-expand-sm navbar-light">
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
         </button>
         <img className="logo" src={logo} alt="logo" />

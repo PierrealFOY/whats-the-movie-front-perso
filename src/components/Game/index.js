@@ -118,7 +118,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.directors !== []
                           ? movie.directors.map((director) => (
-                            <p key={director.lastname} className={`game__indices-item ${time <= 60 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
+                            <p key={director.id} className={`game__indices-item ${time <= 60 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
                               {director.firstname} {director.lastname}
                             </p> 
                           ))
@@ -185,7 +185,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
                   <div className="game__indices-container">
                     <p className="game__indices-title">Synopsis : </p>
                     <div className="game__indices-items">
-                      <p className={`game__indices-item ${time <= 10 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>{movie.synopsys}</p>
+                      <p className={`game__indices-item ${time <= 10 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>{movie.synopsis}</p>
                     </div>
                   </div>
                 </div> 
