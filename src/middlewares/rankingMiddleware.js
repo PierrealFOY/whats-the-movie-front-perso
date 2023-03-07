@@ -6,7 +6,7 @@ const rankingMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_CLASSEMENT_REQUEST:
       axios
-      .get('http://jean-christophemartin-server.eddi.cloud/api/users/classement?limit=50')
+      .get('https://jean-christophemartin-server.eddi.cloud/api/users/classement?limit=50')
       .then((response) => {
         store.dispatch(fetchClassementSuccess(response.data));
         console.log(response)
