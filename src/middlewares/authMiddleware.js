@@ -8,7 +8,7 @@ const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_LOGIN:
       axios.post(
-        'http://jean-christophemartin-server.eddi.cloud/api/login_check',
+        'https://jean-christophemartin-server.eddi.cloud/api/login_check',
         {
           username: store.getState().login.email,
           password: store.getState().login.password,
@@ -30,7 +30,7 @@ const authMiddleware = (store) => (next) => (action) => {
 
     case SUBMIT_REGISTER:
       axios.post(
-        'http://jean-christophemartin-server.eddi.cloud/api/users',
+        'https://jean-christophemartin-server.eddi.cloud/api/users',
         {
           email: store.getState().register.email,
           name: store.getState().register.pseudo,
