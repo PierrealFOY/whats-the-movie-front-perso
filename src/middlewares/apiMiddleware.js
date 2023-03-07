@@ -5,14 +5,16 @@ import {
   SUBMIT_MOVIE,
   fetchMovies,
   fetchMoviesResponses,
+  SAVE_GAME,
 } from '../actions/movies';
 import { formatDateForAPI, capitalizeFirstLetter } from '../components/utils';
 
 const apiMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
+    // Get 20 random movies in the database
     case GET_MOVIES:
       // call the endpoint on the API to get 20 random movies
-      axios.get('http://localhost:8081/api/movies/games?limit=20')
+      axios.get('http://jean-christophemartin-server.eddi.cloud/api/movies/games?limit=20')
         .then((responseMovies) => {
           // array who will receive the 5 movies of the game
           const arrayMovie = [];
@@ -66,8 +68,9 @@ const apiMiddleware = (store) => (next) => (action) => {
         });
       break;
 
+    // Submitting a movie
     case SUBMIT_MOVIE:
-      axios.post('http://localhost:8081/api/movies', {
+      axios.post('http://jean-christophemartin-server.eddi.cloud/api/movies', {
         title: store.getState().addMovie.title,
         synopsis: store.getState().addMovie.synopsis,
         releaseDate: formatDateForAPI(store.getState().addMovie.releaseDate),
@@ -88,6 +91,27 @@ const apiMiddleware = (store) => (next) => (action) => {
           const title = Object.keys(error.response.data)[0];
           const message = error.response.data[Object.keys(error.response.data)][0];
           alert(capitalizeFirstLetter(title) + ' : ' + message);
+        });
+      break;
+
+    // save the datas of the game played by a connected user
+    case SAVE_GAME:
+      // getting ths ids of the movies the user had to guess
+      const idMovies = [];
+      store.getState().movies.movies.map((movie) => {
+        idMovies.push(movie.id);
+      });
+      axios.post('http://jean-christophemartin-server.eddi.cloud/api/games', {
+        userId: 1, // user id
+        score: store.getState().score.userScore, // user score
+        moviesId: idMovies, // id of the movies the user had to guess
+      })
+        .then((response) => {
+          // console.log('Response : ', response.data);
+          // nothing to do here
+        })
+        .catch((error) => {
+          console.log('Error : ', error);
         });
       break;
 

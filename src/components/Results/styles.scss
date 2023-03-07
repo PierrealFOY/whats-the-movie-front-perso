@@ -3,14 +3,18 @@
 /* Conteneur principal */
 .results-container {
   margin: 0 auto;
-  padding: 40px;
+  padding: 35px;
   color: black;
   font-family: vars.$fontFredoka;
-  background-color: vars.$principalColor;
   
 /* Propriétés pour positionner votre container */
   position: relative;
   z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 
   /* Logo */
   .logo {
@@ -25,10 +29,16 @@
   .results {
     text-align: center;
     margin-bottom: 40px;
-    background-color: white;
+    background-color: vars.$secondaryColor;
+    border: solid black 1px;
     border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    box-shadow: vars.$boxShadow;
     padding: 4em;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     -webkit-animation-name: fadeInOpacity;
 	        animation-name: fadeInOpacity;
     -webkit-animation-iteration-count: 1;
@@ -73,10 +83,16 @@
       font-size: 48px;
       font-weight: bold;
       padding: 1em;
+      margin-bottom: 1em;
       background-color: #226D68;
       color: white;
       box-shadow: vars.$boxShadow;
       animation: wiggle 2s linear infinite;
+
+      @media (max-width: 375px) {
+        padding: 1em 0;
+        width: 60%;
+      }
     }
 
     @keyframes wiggle {
@@ -104,9 +120,20 @@
     }
 
     @media (max-width: 768px) {
+      padding: 3em;
+
       .results-points {
-        font-size: 24px;
+        font-size: 24px;        
       }
+    }
+
+    @media (max-width: 425px) {
+      padding: 2em;
+      width: 90%;
+    }
+
+    @media (max-width: 375px) {
+      padding: 0.5em;
     }
   }
 
@@ -123,7 +150,8 @@
   /* Boutons */
   .btn {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    width: 100%;
 
     .btn-playAgain,
     .btn-BackHome {
@@ -143,6 +171,10 @@
       &:hover {
         background-color: #1E0F1C;
       }
+
+      @media (max-width: 425px) {
+        margin-bottom: 0.5rem;
+      }
     }
 
     .btn-BackHome {
@@ -152,6 +184,10 @@
       &:hover {
         background-color: #1E0F1C;
       }
+    }
+
+    @media (max-width: 425px) {
+      flex-direction: column;
     }
   }
 
@@ -179,5 +215,17 @@
       }
     }
   }
-}
 
+  a:hover {
+    color: #fff;
+    text-decoration: none;
+
+    .notConnected-text {
+      color: #000;
+    }
+  }
+
+  @media (max-width: 375px) {
+    padding: 0.5rem;
+  }
+}

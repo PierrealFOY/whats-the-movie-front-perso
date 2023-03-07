@@ -8,7 +8,7 @@ const authMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_LOGIN:
       axios.post(
-        'http://localhost:8081/api/login_check',
+        'http://jean-christophemartin-server.eddi.cloud/api/login_check',
         {
           username: store.getState().login.email,
           password: store.getState().login.password,
@@ -21,7 +21,6 @@ const authMiddleware = (store) => (next) => (action) => {
             response.data.data.picture, response.data.data.role[0], 
             ))
           })
-
         .catch((error) => {
           store.dispatch(handleFailedAuth(
             error.response.data))
@@ -31,7 +30,7 @@ const authMiddleware = (store) => (next) => (action) => {
 
     case SUBMIT_REGISTER:
       axios.post(
-        'http://localhost:8081/api/users',
+        'http://jean-christophemartin-server.eddi.cloud/api/users',
         {
           email: store.getState().register.email,
           name: store.getState().register.pseudo,

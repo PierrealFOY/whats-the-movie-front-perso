@@ -8,18 +8,17 @@ header {
   display: flex;
 
   .navbar {
-    width: 85%;
+    width: 100%;
     .nav-item {
       margin: 1em;
     }
-
+    
     &-collapse {
       width: 90%;
     }
 
     &-nav {
       width: 100%;
-      justify-content: space-evenly;
     }
 
     button {
@@ -63,7 +62,7 @@ header {
     }
 
     @media (max-width: 425px) {
-      width: 80%;
+      width: 100%;
     }
   }
 

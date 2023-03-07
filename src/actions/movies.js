@@ -14,6 +14,9 @@ export const RESET_FALSE_ANSWER = 'RESET_FALSE_ANSWER';
 export const UPDATE_TIME = 'UPDATE_TIME';
 export const GAME_OFF = 'GAME_OFF';
 
+// Saving game infos
+export const SAVE_GAME = 'SAVE_GAME';
+
 /**
  * Getting movies from the API
  */
@@ -80,4 +83,8 @@ export const resetFalseAnswer = () => ({
 
 export const submitMovie = () => ({
   type: SUBMIT_MOVIE,
+});
+
+export const saveGame = () => ({
+  type: SAVE_GAME,
 });
