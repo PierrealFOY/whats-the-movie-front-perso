@@ -22,6 +22,9 @@ function PersonalSpace() {
 
   //All users
   const ranking = useSelector((state) => state.ranking.classement);
+  if (ranking !== []) {
+    console.log(ranking);
+  }
 
   //User's name
   const userName = useSelector((state) => state.login.name)

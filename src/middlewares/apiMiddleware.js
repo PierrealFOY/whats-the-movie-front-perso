@@ -102,7 +102,7 @@ const apiMiddleware = (store) => (next) => (action) => {
         idMovies.push(movie.id);
       });
       axios.post('https://jean-christophemartin-server.eddi.cloud/api/games', {
-        userId: 1, // user id
+        userId: store.getState().login.id,
         score: store.getState().score.userScore, // user score
         moviesId: idMovies, // id of the movies the user had to guess
       })
