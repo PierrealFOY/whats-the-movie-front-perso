@@ -21,7 +21,7 @@ function PersonalSpace() {
   const userPicture = useSelector((state) => state.login.picture)
 
   //All users
-  const ranking = useSelector((state) => state.ranking.classement);
+  const ranking = useSelector((state) => state.ranking.classement[0]);
   if (ranking !== []) {
     console.log(ranking);
   }
