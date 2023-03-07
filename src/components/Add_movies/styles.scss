@@ -160,3 +160,36 @@
 .last-select {
   left: 0;
 }
+
+@media (max-width: 768px) {
+  .left, .right {
+    padding: 5%;
+
+    .left > div,
+    .right > div {
+      width: 100%;
+    }
+
+    .input-movie {
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    .select-combobox {
+      width: 90%;
+
+      &__control {
+        margin-left: 0;
+      }
+    }
+
+    .can-add {
+      left: 0;
+
+      &-icon {
+        width: 10%;
+        margin-left: 5px;
+      }      
+    }
+  }
+}
