@@ -65,6 +65,11 @@ form{
     margin-right: auto;
   }
 
+  .form-message{
+    margin: 10px;
+    color: red;
+  }
+
   @media screen and (max-width: 600px) {
     .btn{
       text-align: center;

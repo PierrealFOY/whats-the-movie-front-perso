@@ -21,6 +21,7 @@ import RegisterForm from '../Login_register';
 import AddMovies from '../Add_movies';
 import PersonalSpace from '../Personal_space';
 import ErrorLogin from '../Errors/ErrorLogin';
+import Copyright from '../Copyright/copyright';
 
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ function App() {
           <div className="global-container">
             <Routes>
               <Route path="/" element={<Accueil />} />
+              <Route path="/copyright" element={<Copyright />} />
               <Route path="/jeu" element={<Game handleBeginGame={handleBeginGame} handleNextMovie={handleNextMovie} />} />
               <Route path="/authentification" element={<LoginPage />} />
               <Route path="/compte" element={<PersonalSpace />} />
