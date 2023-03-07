@@ -27,9 +27,7 @@ function Accueil() {
           </Button>
           {/* Button Login */}
           {logged
-            ? (
-              'Bienvenue'  + ' ' + userName + ' !'
-            )
+            ? undefined
             : (
               <Button
                 className="home__button login"

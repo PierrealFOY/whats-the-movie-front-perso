@@ -14,7 +14,7 @@ const apiMiddleware = (store) => (next) => (action) => {
     // Get 20 random movies in the database
     case GET_MOVIES:
       // call the endpoint on the API to get 20 random movies
-      axios.get('http://localhost:8081/api/movies/games?limit=20')
+      axios.get('http://localhost:8081/api/movies/game?limit=20')
         .then((responseMovies) => {
           // array who will receive the 5 movies of the game
           const arrayMovie = [];
