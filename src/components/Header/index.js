@@ -111,7 +111,7 @@ function Header({ handleResetGame }) {
               logged && userRole === userAdmin ?
               (
                 <li className="nav-item active">
-                  <NavLink to="http://jean-christophemartin-server.eddi.cloud/" target="_blank">
+                  <NavLink to="https://jean-christophemartin-server.eddi.cloud/" target="_blank">
                     <button
                       data-toggle="collapse"
                       data-target="#navbarNavDropdown"
