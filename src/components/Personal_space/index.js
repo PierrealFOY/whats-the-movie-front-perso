@@ -23,12 +23,13 @@ function PersonalSpace() {
   const ranking = useSelector((state) => state.ranking.classement[0]);
 
   if (ranking !== undefined) {
+    // we find the user connected in the ranking
     let user = ranking.find(rank => rank.id === idPlayer);
     if (user !== undefined) {
+      // we get his number of games and his score
       numberGame = user.numberGame;
-      scoreUser = user.scoreUser;
+      scoreUser = user.score;
     }
-    // TODO tester ça
   }
 
   //User's name
