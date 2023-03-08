@@ -11,20 +11,29 @@ function PersonalSpace() {
 
   const logged = useSelector((state) => state.login.logged);
 
+  const idPlayer = useSelector((state) => state.login.id);
+
   //Number of game played
-  const numberGame = useSelector((state) => state.login.game)
+  let numberGame = useSelector((state) => state.login.game);
 
   //User's score
-  const scoreUser = useSelector((state) => state.login.score)
-
-  //User's picture
-  const userPicture = useSelector((state) => state.login.picture)
+  let scoreUser = useSelector((state) => state.login.score);
 
   //All users
   const ranking = useSelector((state) => state.ranking.classement[0]);
 
+  if (ranking !== undefined) {
+    // we find the user connected in the ranking
+    let user = ranking.find(rank => rank.id === idPlayer);
+    if (user !== undefined) {
+      // we get his number of games and his score
+      numberGame = user.numberGame;
+      scoreUser = user.score;
+    }
+  }
+
   //User's name
-  const userName = useSelector((state) => state.login.name)
+  const userName = useSelector((state) => state.login.name);
   
   const dispatch = useDispatch();
 
