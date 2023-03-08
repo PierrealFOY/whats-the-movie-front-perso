@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import Select from 'react-select';
@@ -10,15 +11,21 @@ import {
   updateDirectors,
   updateGenres,
 } from '../../actions/formActions';
-import { submitMovie } from '../../actions/movies';
+import { getListsForMovie, submitMovie } from '../../actions/movies';
+import Loader from '../Loader';
 
 import './styles.scss';
 
 function AddMovies() {
+
   const logged = useSelector((state) => state.login.logged);
 
   if (logged) {
     const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(getListsForMovie());
+    }, []);    
 
     const title = useSelector((state) => state.addMovie.title);
     const synopsis = useSelector((state) => state.addMovie.synopsis);
@@ -85,7 +92,15 @@ function AddMovies() {
     };
 
     return (
-      <div className="AddMovies">      
+      <div className="AddMovies">  
+      {    
+        (actorsList.length > 0
+          && studiosList.length > 0
+          && countriesList.length > 0
+          && directorsList.length > 0
+          && genresList.length > 0
+          )
+        ? (
         <form className="AddMovies-form" onSubmit={handleSubmit}>
         <h1 className="AddMovies-titre">Ajouter un film</h1>
           <div className="add_new">
@@ -296,6 +311,9 @@ function AddMovies() {
             <button type="button">Annuler</button>
           </div>
         </form>
+        )
+        : <Loader />
+      }
       </div>
     );
   }

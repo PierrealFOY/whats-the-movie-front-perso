@@ -17,6 +17,10 @@ export const GAME_OFF = 'GAME_OFF';
 // Saving game infos
 export const SAVE_GAME = 'SAVE_GAME';
 
+// Getting list of directors, studios, actors, etc...
+export const GET_LISTS_FOR_MOVIE = 'GET_LISTS_FOR_MOVIE';
+export const SET_LISTS_FOR_MOVIE = 'SET_LISTS_FOR_MOVIE';
+
 /**
  * Getting movies from the API
  */
@@ -87,4 +91,17 @@ export const submitMovie = () => ({
 
 export const saveGame = () => ({
   type: SAVE_GAME,
+});
+
+export const getListsForMovie = () => ({
+  type: GET_LISTS_FOR_MOVIE,
+});
+
+export const setListsForMovie = (actors, countries, directors, genres, productionStudios) => ({
+  type: SET_LISTS_FOR_MOVIE,
+  actors: actors,
+  countries: countries,
+  directors: directors,
+  genres: genres,
+  productionStudios: productionStudios,
 });

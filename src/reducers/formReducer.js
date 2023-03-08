@@ -8,11 +8,12 @@ import {
   UPDATE_DIRECTORS,
   UPDATE_GENRES,
 } from '../actions/formActions';
-import actors from '../data/actors';
+import { SET_LISTS_FOR_MOVIE } from '../actions/movies';
+/*import actors from '../data/actors';
 import countries from '../data/countries';
 import directors from '../data/directors';
 import genres from '../data/genres';
-import studios from '../data/productionStudios';
+import studios from '../data/productionStudios';*/
 
 const initialState = {
   title: '',
@@ -24,11 +25,11 @@ const initialState = {
   countries: [],
   directors: [],
   genres: [],
-  actorsList: actors,
-  studiosList: studios,
-  countriesList: countries,
-  directorsList: directors,
-  genresList: genres,
+  actorsList: [],
+  studiosList: [],
+  countriesList: [],
+  directorsList: [],
+  genresList: [],
 };
 
 export default function formReducer(state = initialState, action = {}) {
@@ -49,6 +50,15 @@ export default function formReducer(state = initialState, action = {}) {
       return { ...state, directors: state.directors.concat(action.payload)};
     case UPDATE_GENRES:
       return { ...state, genres: state.genres.concat(action.payload)};
+    case SET_LISTS_FOR_MOVIE:
+      return {
+        ...state,
+        actorsList: action.actors,
+        countriesList: action.countries,
+        directorsList: action.directors,
+        genresList: action.genres,
+        studiosList: action.productionStudios,
+      };
 
     default:
       return state;
