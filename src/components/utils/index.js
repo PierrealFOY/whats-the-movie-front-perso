@@ -22,3 +22,12 @@ export const formatDateForAPI = (date) => {
 export const capitalizeFirstLetter = (text) => {
   return text.charAt(0).toUpperCase() + text.slice(1);
 };
+
+export const toggleValue = (array, value) => {
+  var index = array.indexOf(value);
+  if (index === -1) {
+    array.concat(value);
+  } else {
+    array.splice(index, 1);
+  }
+};

@@ -6,9 +6,8 @@ import {
   fetchMovies,
   fetchMoviesResponses,
   SAVE_GAME,
-  GET_LISTS_FOR_MOVIE,
-  setListsForMovie,
 } from '../actions/movies';
+import { GET_LISTS_FOR_MOVIE, resetFilmsInfos, setListsForMovie } from '../actions/formActions';
 import { formatDateForAPI, capitalizeFirstLetter } from '../components/utils';
 
 const apiMiddleware = (store) => (next) => (action) => {
@@ -87,7 +86,8 @@ const apiMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           console.log('Response : ', response);
-          // TODO vider le formulaire
+          // we reset the movies infos
+          store.dispatch(resetFilmsInfos());
         })
         .catch((error) => {
           console.log(error);
@@ -115,6 +115,9 @@ const apiMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log('Error : ', error);
+          const title = Object.keys(error.response.data)[0];
+          const message = error.response.data[Object.keys(error.response.data)][0];
+          alert(capitalizeFirstLetter(title) + ' : ' + message);          
         });
       break;
 

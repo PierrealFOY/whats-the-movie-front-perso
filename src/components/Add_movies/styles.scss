@@ -49,7 +49,7 @@
   justify-content: space-evenly;
   padding: 10px;
 
-  button {
+  &-btn {
     width: 20%;
     color: white;
     padding: 20px;
@@ -72,9 +72,21 @@
 
     &:last-child{
       background-color: red;
+      padding: 0;
 
       &:hover{
         background-color: #B22222;}
+    }
+
+    &-link {
+      display: block;
+      width: 100%;
+      height: auto;
+      padding: 20px;
+      &:hover {
+        text-decoration: none;
+        color: #fff;
+      }
     }
   }
 

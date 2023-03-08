@@ -5,6 +5,14 @@
   padding: 10px;
   font-family: vars.$fontFredoka;
 
+  &__link-add {
+    width: 100%;
+    &:hover {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+
   .title {
     display: flex;
     justify-content: center;

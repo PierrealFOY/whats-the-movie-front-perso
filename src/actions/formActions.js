@@ -7,6 +7,11 @@ export const UPDATE_COUNTRIES = 'UPDATE_COUNTRIES';
 export const UPDATE_DIRECTORS = 'UPDATE_DIRECTORS';
 export const UPDATE_GENRES = 'UPDATE_GENRES';
 
+// Getting list of directors, studios, actors, etc...
+export const GET_LISTS_FOR_MOVIE = 'GET_LISTS_FOR_MOVIE';
+export const SET_LISTS_FOR_MOVIE = 'SET_LISTS_FOR_MOVIE';
+export const RESET_MOVIES_INFOS = 'RESET_MOVIES_INFOS';
+
 export const updateTitle = (title) => ({
   type: UPDATE_TITLE,
   payload: title,
@@ -45,4 +50,21 @@ export const updateDirectors = (director) => ({
 export const updateGenres = (genre) => ({
   type: UPDATE_GENRES,
   payload: genre,
+});
+
+export const getListsForMovie = () => ({
+  type: GET_LISTS_FOR_MOVIE,
+});
+
+export const setListsForMovie = (actors, countries, directors, genres, productionStudios) => ({
+  type: SET_LISTS_FOR_MOVIE,
+  actors: actors,
+  countries: countries,
+  directors: directors,
+  genres: genres,
+  productionStudios: productionStudios,
+});
+
+export const resetFilmsInfos = () => ({
+  type: RESET_MOVIES_INFOS,
 });

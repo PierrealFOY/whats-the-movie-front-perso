@@ -7,13 +7,10 @@ import {
   UPDATE_COUNTRIES,
   UPDATE_DIRECTORS,
   UPDATE_GENRES,
+  SET_LISTS_FOR_MOVIE,
+  RESET_MOVIES_INFOS,
 } from '../actions/formActions';
-import { SET_LISTS_FOR_MOVIE } from '../actions/movies';
-/*import actors from '../data/actors';
-import countries from '../data/countries';
-import directors from '../data/directors';
-import genres from '../data/genres';
-import studios from '../data/productionStudios';*/
+import { toggleValue } from '../components/utils';
 
 const initialState = {
   title: '',
@@ -41,7 +38,8 @@ export default function formReducer(state = initialState, action = {}) {
     case UPDATE_RELEASE_DATE:
       return { ...state, releaseDate: action.payload };
     case UPDATE_PRODUCTION_STUDIOS:
-      return { ...state, productionStudios: state.productionStudios.concat(action.payload)}
+      return { ...state, productionStudios: toggleValue(state.productionStudios, action.payload)};
+      //return { ...state, productionStudios: state.productionStudios.concat(action.payload)};
     case UPDATE_ACTORS:
       return { ...state, actors: state.actors.concat(action.payload)}
     case UPDATE_COUNTRIES:
@@ -58,6 +56,18 @@ export default function formReducer(state = initialState, action = {}) {
         directorsList: action.directors,
         genresList: action.genres,
         studiosList: action.productionStudios,
+      };
+    case RESET_MOVIES_INFOS:
+      return {
+        ...state,
+        title: '',
+        synopsis: '',
+        releaseDate: '',
+        productionStudios: [],
+        actors: [],
+        countries: [],
+        directors: [],
+        genres: [],
       };
 
     default:
