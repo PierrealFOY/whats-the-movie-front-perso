@@ -7,6 +7,9 @@
 
   &__link-add {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     &:hover {
       text-decoration: none;
       color: #fff;

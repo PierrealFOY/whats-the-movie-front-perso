@@ -47,6 +47,17 @@ function Results({ handleResetGame, handleReplay }) {
       <div className="results">
         <span className="results-bravo">Bravo !</span>
         <span className="results-sentence">Voici votre résultat:</span>
+        <div className="results-explosion">
+          <lottie-player 
+            src="https://assets6.lottiefiles.com/packages/lf20_me3fdS.json"
+            background="transparent"
+            speed={1}
+            style={{ width: 70, height: 70 }}
+            loop
+            autoplay
+          >
+          </lottie-player>
+        </div>
         <span className="results-points">{finalScore} points</span>
       </div>
       {logged ? (

@@ -66,6 +66,13 @@
           }
         }
 
+    .results-explosion {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+    }
+
     .results-bravo {
       font-size: 36px;
       font-weight: bold;
@@ -165,11 +172,13 @@
     }
 
     .btn-playAgain {
-      background-color: #A7001E;
-      color: #fff;
+      border: 1px solid #6b482a;
+      color: #6b482a;
+      box-shadow: 8px 8px 31px -3px rgba(0,0,0,0.72);
 
       &:hover {
-        background-color: #1E0F1C;
+        background-color: #6b482a;
+        color: #fff;
       }
 
       @media (max-width: 425px) {
@@ -178,11 +187,13 @@
     }
 
     .btn-BackHome {
-      background-color: #317AC1;
-      color: #fff;
+      border: 1px solid #6b482a;
+      color: #6b482a;
+      box-shadow: 8px 8px 31px -3px rgba(0,0,0,0.72);
 
       &:hover {
-        background-color: #1E0F1C;
+        background-color: #6b482a;
+        color: #fff;
       }
     }
 
@@ -206,9 +217,10 @@
       text-transform: uppercase;
       cursor: pointer;
       text-align: center;
-      background-color: #6b482a;
+      background-color: rgb(117, 30, 30);
       color: #fff;
       margin-top: 10px;
+      box-shadow: 8px 8px 31px -3px rgba(0,0,0,0.72);
 
       &:hover {
         background-color: #1E0F1C;
