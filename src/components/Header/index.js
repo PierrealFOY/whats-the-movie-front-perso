@@ -30,7 +30,7 @@ function Header({ handleResetGame }) {
 
   return (
     <header>
-      <nav className="navbar navbar-expand-sm navbar-light">
+      <nav className={`navbar navbar-expand-${logged === true ? "md" : "sm"} navbar-light`}>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
