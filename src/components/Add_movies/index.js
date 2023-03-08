@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 import Select from 'react-select';
 
 import {
@@ -9,16 +10,23 @@ import {
   updateCountries,
   updateDirectors,
   updateGenres,
+  getListsForMovie,
 } from '../../actions/formActions';
 import { submitMovie } from '../../actions/movies';
+import Loader from '../Loader';
 
 import './styles.scss';
 
 function AddMovies() {
+
   const logged = useSelector((state) => state.login.logged);
 
   if (logged) {
     const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(getListsForMovie());
+    }, []);    
 
     const title = useSelector((state) => state.addMovie.title);
     const synopsis = useSelector((state) => state.addMovie.synopsis);
@@ -85,7 +93,15 @@ function AddMovies() {
     };
 
     return (
-      <div className="AddMovies">      
+      <div className="AddMovies">  
+      {    
+        (actorsList.length > 0
+          && studiosList.length > 0
+          && countriesList.length > 0
+          && directorsList.length > 0
+          && genresList.length > 0
+          )
+        ? (
         <form className="AddMovies-form" onSubmit={handleSubmit}>
         <h1 className="AddMovies-titre">Ajouter un film</h1>
           <div className="add_new">
@@ -177,7 +193,7 @@ function AddMovies() {
                   options={actorsList}
                   placeholder="Acteur 3"
                 />              
-                <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
+                {/* <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div> */}
               </div>
               {/* <div className="AddMovies--acteur actor-input can-add invisible">
                 <Select
@@ -292,10 +308,13 @@ function AddMovies() {
           </div>
 
           <div className="button_module">
-            <button type="submit">Valider</button>
-            <button type="button">Annuler</button>
+            <button className="button_module-btn" type="submit">Valider</button>
+            <button className="button_module-btn" type="button"><NavLink to="/compte" className="button_module-btn-link">Annuler</NavLink></button>
           </div>
         </form>
+        )
+        : <Loader />
+      }
       </div>
     );
   }

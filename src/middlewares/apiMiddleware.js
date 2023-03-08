@@ -7,6 +7,7 @@ import {
   fetchMoviesResponses,
   SAVE_GAME,
 } from '../actions/movies';
+import { GET_LISTS_FOR_MOVIE, resetFilmsInfos, setListsForMovie } from '../actions/formActions';
 import { formatDateForAPI, capitalizeFirstLetter } from '../components/utils';
 
 const apiMiddleware = (store) => (next) => (action) => {
@@ -81,13 +82,15 @@ const apiMiddleware = (store) => (next) => (action) => {
         idProductionStudios: store.getState().addMovie.productionStudios,
         idDirectors: store.getState().addMovie.directors,
         idCountries: store.getState().addMovie.countries,
-        // idUser: 
+        idUser: store.getState().login.id,
       })
         .then((response) => {
           console.log('Response : ', response);
-          // TODO vider le formulaire
+          // we reset the movies infos
+          store.dispatch(resetFilmsInfos());
         })
         .catch((error) => {
+          console.log(error);
           const title = Object.keys(error.response.data)[0];
           const message = error.response.data[Object.keys(error.response.data)][0];
           alert(capitalizeFirstLetter(title) + ' : ' + message);
@@ -112,8 +115,20 @@ const apiMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log('Error : ', error);
+          const title = Object.keys(error.response.data)[0];
+          const message = error.response.data[Object.keys(error.response.data)][0];
+          alert(capitalizeFirstLetter(title) + ' : ' + message);          
         });
       break;
+
+    case GET_LISTS_FOR_MOVIE:
+      axios.get('https://jean-christophemartin-server.eddi.cloud/api/forms')
+        .then((response) => {
+          store.dispatch(setListsForMovie(response.data.actor, response.data.countries, response.data.directors, response.data.genres, response.data.productionStudios));
+        })
+        .catch((error) => {
+          console.log('Error : ', error);
+        })
 
     default:
   }

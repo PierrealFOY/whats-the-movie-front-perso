@@ -5,6 +5,14 @@
   padding: 10px;
   font-family: vars.$fontFredoka;
 
+  &__link-add {
+    width: 100%;
+    &:hover {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+
   .title {
     display: flex;
     justify-content: center;
@@ -371,6 +379,11 @@
     color: red;
     -webkit-animation: blink-1 1s both infinite;
 	        animation: blink-1 5s both infinite;
+
+    .ranking--info,
+    .ranking--label {
+      color: #fff;
+    }    
   }
 
   @-webkit-keyframes blink-1 {
@@ -388,12 +401,13 @@
     0%,
     50%,
     100% {
-      opacity: 1;
+      //opacity: 1;
       background-color: blue;
     }
     25%,
     75% {
-      opacity: 0;
+      //opacity: 0;
+      background-color: rgba(0, 0, 255, 0);
     }
   }
   

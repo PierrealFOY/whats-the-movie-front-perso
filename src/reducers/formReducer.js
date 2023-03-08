@@ -7,12 +7,10 @@ import {
   UPDATE_COUNTRIES,
   UPDATE_DIRECTORS,
   UPDATE_GENRES,
+  SET_LISTS_FOR_MOVIE,
+  RESET_MOVIES_INFOS,
 } from '../actions/formActions';
-import actors from '../data/actors';
-import countries from '../data/countries';
-import directors from '../data/directors';
-import genres from '../data/genres';
-import studios from '../data/productionStudios';
+import { toggleValue } from '../components/utils';
 
 const initialState = {
   title: '',
@@ -24,11 +22,11 @@ const initialState = {
   countries: [],
   directors: [],
   genres: [],
-  actorsList: actors,
-  studiosList: studios,
-  countriesList: countries,
-  directorsList: directors,
-  genresList: genres,
+  actorsList: [],
+  studiosList: [],
+  countriesList: [],
+  directorsList: [],
+  genresList: [],
 };
 
 export default function formReducer(state = initialState, action = {}) {
@@ -40,7 +38,8 @@ export default function formReducer(state = initialState, action = {}) {
     case UPDATE_RELEASE_DATE:
       return { ...state, releaseDate: action.payload };
     case UPDATE_PRODUCTION_STUDIOS:
-      return { ...state, productionStudios: state.productionStudios.concat(action.payload)}
+      return { ...state, productionStudios: toggleValue(state.productionStudios, action.payload)};
+      //return { ...state, productionStudios: state.productionStudios.concat(action.payload)};
     case UPDATE_ACTORS:
       return { ...state, actors: state.actors.concat(action.payload)}
     case UPDATE_COUNTRIES:
@@ -49,6 +48,27 @@ export default function formReducer(state = initialState, action = {}) {
       return { ...state, directors: state.directors.concat(action.payload)};
     case UPDATE_GENRES:
       return { ...state, genres: state.genres.concat(action.payload)};
+    case SET_LISTS_FOR_MOVIE:
+      return {
+        ...state,
+        actorsList: action.actors,
+        countriesList: action.countries,
+        directorsList: action.directors,
+        genresList: action.genres,
+        studiosList: action.productionStudios,
+      };
+    case RESET_MOVIES_INFOS:
+      return {
+        ...state,
+        title: '',
+        synopsis: '',
+        releaseDate: '',
+        productionStudios: [],
+        actors: [],
+        countries: [],
+        directors: [],
+        genres: [],
+      };
 
     default:
       return state;

@@ -17,6 +17,8 @@ export const GAME_OFF = 'GAME_OFF';
 // Saving game infos
 export const SAVE_GAME = 'SAVE_GAME';
 
+
+
 /**
  * Getting movies from the API
  */
