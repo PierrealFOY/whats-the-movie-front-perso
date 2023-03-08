@@ -38,8 +38,6 @@ function App() {
     dispatch(getMovies());
   };
 
-  const logged = useSelector((state) => state.login.logged);
-
   return (
     <ThemeProvider
       breakpoints={['xl', 'md', 'xs']}
@@ -58,7 +56,6 @@ function App() {
               <Route path="/inscription" element={<RegisterForm />} />
               <Route path="/results" element={<Results handleResetGame={handleResetGame} handleReplay={handleBeginGame} />} />
               <Route path="/compte/ajout-film" element={<AddMovies />} />
-              {/* {logged ? <Route path="/compte" element={<PersonalSpace />} /> : <Route path="/authentification" element={<LoginPage />} />} */}
               <Route path="*" element={<Errors />} />
             </Routes>
           </div>

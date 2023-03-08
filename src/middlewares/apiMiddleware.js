@@ -9,6 +9,7 @@ import {
 } from '../actions/movies';
 import { GET_LISTS_FOR_MOVIE, resetFilmsInfos, setListsForMovie } from '../actions/formActions';
 import { formatDateForAPI, capitalizeFirstLetter } from '../components/utils';
+import { fetchClassementRequest } from '../actions/ranking';
 
 const apiMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -111,10 +112,11 @@ const apiMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           // console.log('Response : ', response.data);
-          // nothing to do here
+          // we update the ranking of the user
+          store.dispatch(fetchClassementRequest());
         })
         .catch((error) => {
-          console.log('Error : ', error);
+          console.log('Error apiMiddleware SAVE_GAME : ', error);
           const title = Object.keys(error.response.data)[0];
           const message = error.response.data[Object.keys(error.response.data)][0];
           alert(capitalizeFirstLetter(title) + ' : ' + message);          

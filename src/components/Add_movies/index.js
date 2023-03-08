@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Navigate } from 'react-router-dom';
+import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 import Select from 'react-select';
 
 import {
@@ -71,9 +71,11 @@ function AddMovies() {
       dispatch(updateGenres(e.value));
     };
 
+    let navigate = useNavigate();
     const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(submitMovie());
+      dispatch(submitMovie());      
+      navigate('/compte');
     };
 
     const handleClickAdd = (evt) => {
