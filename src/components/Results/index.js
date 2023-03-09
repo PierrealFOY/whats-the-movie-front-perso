@@ -6,6 +6,7 @@ import logo from '../../assets/images/logo-WTM.png';
 import { resetTimer, stopTimer, gameOff, saveGame } from '../../actions/movies';
 import { resetScore } from '../../actions/score';
 import { useEffect } from 'react';
+import { isLogged } from '../utils';
 
 function Results({ handleResetGame, handleReplay }) {
   const gameStarted = useSelector((state) => state.timer.gameStarted);
@@ -13,7 +14,8 @@ function Results({ handleResetGame, handleReplay }) {
   if (gameStarted) {
   const dispatch = useDispatch();
   const finalScore = useSelector((state) => state.score.userScore);
-  const logged = useSelector((state) => state.login.logged);
+  //const logged = useSelector((state) => state.login.logged);
+  const logged = isLogged();
   let userRanking = 0;
   if (logged) {
     // if a user is logged,

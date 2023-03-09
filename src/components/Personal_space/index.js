@@ -8,6 +8,7 @@ import { resetScore } from '../../actions/score';
 
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
+import { isLogged } from '../utils';
 
 function PersonalSpace() {
 
@@ -19,7 +20,7 @@ function PersonalSpace() {
     dispatch(gameOff());
   };
 
-  const logged = useSelector((state) => state.login.logged);
+  const logged = isLogged();
 
   const idPlayer = useSelector((state) => state.login.id);
 
@@ -115,7 +116,7 @@ if (logged) {
       </div>
      </div>
     );
-  }
+}
   else {
     return (
       <Navigate to="/no-login" replace />

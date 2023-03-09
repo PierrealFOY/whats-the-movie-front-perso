@@ -14,12 +14,14 @@ import {
 } from '../../actions/formActions';
 import { submitMovie } from '../../actions/movies';
 import Loader from '../Loader';
+import { isLogged } from '../utils';
 
 import './styles.scss';
 
 function AddMovies() {
 
-  const logged = useSelector((state) => state.login.logged);
+  //const logged = useSelector((state) => state.login.logged);
+  const logged = isLogged();
 
   if (logged) {
     const dispatch = useDispatch();
