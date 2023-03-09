@@ -5,16 +5,33 @@
   padding: 10px;
   font-family: vars.$fontFredoka;
 
+  &--btn {
+    display: flex;
+    justify-content: space-between;
+    margin: 1em;
+  }
+
   &__link-add {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    &:hover {
-      text-decoration: none;
-      color: #fff;
-    }
+      &:hover {
+        text-decoration: none;
+        color: #fff;
+      }
   }
+
+  &__link-play {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+      &:hover {
+        text-decoration: none;
+        color: #fff;
+      }
+    }
 
   .title {
     display: flex;
@@ -481,6 +498,11 @@
         &--player {
           font-size: 12px;
         }
+      }
+
+      .stats--btn {
+        justify-content: center;
+        flex-direction: column;
       }
     
   }
