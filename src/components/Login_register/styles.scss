@@ -79,8 +79,9 @@
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 1%;
-      background-color: #46b290;
-      color: white;
+      box-shadow: 8px 8px 31px -3px rgba(0,0,0,0.72);
+      border: 1px solid #6b482a;
+      color: #6b482a;
       -webkit-animation: scale-in-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
             animation: scale-in-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
