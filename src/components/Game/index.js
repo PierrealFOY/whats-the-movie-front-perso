@@ -1,10 +1,10 @@
 /* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
 import './styles.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { startTimer, updateTime, stopTimer } from '../../actions/movies';
-import { formatDate } from '../utils';
+import { formatDate, shuffleArray, sliceArray } from '../utils';
 import ResponseButton from './ResponseButton';
 import NextMovieButton from './NextMovieButton';
 import Loader from '../Loader';
@@ -26,7 +26,7 @@ function Game({ handleBeginGame, handleNextMovie }) {
   // timer
   const time = useSelector((state) => state.timer.time);
   const running = useSelector((state) => state.timer.running);
-  const gameStarted = useSelector((state) => state.timer.gameStarted);
+  const gameStarted = useSelector((state) => state.timer.gameStarted); 
 
   // score
   const score = useSelector((state) => state.timer.score);
@@ -65,6 +65,45 @@ function Game({ handleBeginGame, handleNextMovie }) {
     return () => clearInterval(timer);
   }, [running, time]);
 
+  /* ==================================
+       RANDOMIZATION OF THE HINTS
+  =====================================*/
+  // array who will reveive the time interval
+  const [array, setArray] = useState([]);
+  // index for accessing the values of the array
+  let index = -1;
+  // this use effect will be fired everytime the state of 'running' changes
+  useEffect(() => {  
+    // we get all the element with the class 'game__indices-item' -> it's all the hints
+    const nbIndices = [...document.querySelectorAll('.game__indices-item')];
+    // variable for the periodicity of reveal
+    let periodiciteIndices = 0;
+    // if there is at less 1 hint
+    if (nbIndices.length > 0) {
+      // setting the periodicity of revealing hints :
+      // 60 seconds dividing by number of hints
+      periodiciteIndices = Math.floor(60 / nbIndices.length);
+      // variable used to know after how many seconds the clue is revealed
+      let timePassed = 60;
+      // we shuffle the hints elements
+      shuffleArray(nbIndices); 
+      // temporary array, to store the values
+      const arrayTemp = []; 
+      // browsing the hints elements    
+      for (let i = 0; i < nbIndices.length; i++) {
+        // we put in the temps array the number of seconds for revealing the clue
+        arrayTemp.push(timePassed); 
+        // we subtract the periodicity
+        timePassed = timePassed - periodiciteIndices;
+      }
+      // we randomize the values
+      shuffleArray(arrayTemp);
+      // and put it in the final array
+      setArray(arrayTemp);
+    }
+  }, [running]); 
+
+
   // possible responses
   const responses = useSelector((state) => state.movies.responses);
   const response = responses[tour];
@@ -72,8 +111,8 @@ function Game({ handleBeginGame, handleNextMovie }) {
   // current movie
   const movie = movies[tour];
 
-  const userResponse = useSelector((state) => state.movies.userResponse);
-
+  const userResponse = useSelector((state) => state.movies.userResponse); 
+  
   return (
     <div className="game">
       {gameStarted === false ? (
@@ -117,9 +156,10 @@ function Game({ handleBeginGame, handleNextMovie }) {
                     <div className="game__indices-items">
                       {
                         movie.directors !== []
-                          ? movie.directors.map((director) => (
-                            <p key={director.id} className={`game__indices-item ${time <= 60 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
-                              {director.firstname} {director.lastname}
+                          ? movie.directors.map((director) => ( 
+                            // everytime we render a hint, we inscrease the index of the array of the reveal timing                           
+                            <p key={director.id} className={`game__indices-item ${time <= array[++index] || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
+                               {director.firstname} {director.lastname}
                             </p> 
                           ))
                           : undefined
@@ -128,7 +168,8 @@ function Game({ handleBeginGame, handleNextMovie }) {
                   </div>
                   <div className="game__indices-container">
                     <p className="game__indices-title">Date de sortie : </p>
-                    <p className={`game__indices-item ${time <= 50 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
+                    {/* everytime we render a hint, we inscrease the index of the array of the reveal timing */}
+                    <p className={`game__indices-item ${time <= array[++index] || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
                       {
                         formatDate(movie.releaseDate)
                       }
@@ -140,7 +181,10 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.countries !== []
                           ? movie.countries.map((country) => (
-                            <p key={country.name} className={`game__indices-item ${time <= 40 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>{country.name}</p>
+                            // everytime we render a hint, we inscrease the index of the array of the reveal timing
+                            <p key={country.name} className={`game__indices-item ${time <= array[++index] || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
+                              {country.name}
+                            </p>
                           ))
                           : undefined
                       }
@@ -152,7 +196,10 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.actors !== []
                           ? movie.actors.map((actor) => (
-                            <p key={actor.lastname} className={`game__indices-item ${time <= 35 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>{actor.firstname} {actor.lastname}</p>
+                            // everytime we render a hint, we inscrease the index of the array of the reveal timing
+                            <p key={actor.lastname} className={`game__indices-item ${time <= array[++index] || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
+                              {actor.firstname} {actor.lastname}
+                            </p>
                           ))
                           : undefined
                       }
@@ -164,7 +211,10 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.productionStudios !== []
                           ? movie.productionStudios.map((studio) => (
-                            <p key={studio.name} className={`game__indices-item ${time <= 30 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>{studio.name}</p>
+                            // everytime we render a hint, we inscrease the index of the array of the reveal timing
+                            <p key={studio.name} className={`game__indices-item ${time <= array[++index] || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
+                              {studio.name}
+                            </p>
                           ))
                           : undefined
                       }
@@ -176,7 +226,10 @@ function Game({ handleBeginGame, handleNextMovie }) {
                       {
                         movie.genres !== []
                           ? movie.genres.map((genre) => (
-                            <p key={genre.name} className={`game__indices-item ${time <= 20 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>{genre.name}</p>
+                            // everytime we render a hint, we inscrease the index of the array of the reveal timing
+                            <p key={genre.name} className={`game__indices-item ${time <= array[++index] || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
+                              {genre.name}
+                            </p>
                           ))
                           : undefined
                       }
@@ -185,7 +238,10 @@ function Game({ handleBeginGame, handleNextMovie }) {
                   <div className="game__indices-container">
                     <p className="game__indices-title">Synopsis : </p>
                     <div className="game__indices-items">
-                      <p className={`game__indices-item ${time <= 10 || running === false ? 'roll-in-blurred-left' : 'masked'}`}>{movie.synopsis}</p>
+                      {/* everytime we render a hint, we inscrease the index of the array of the reveal timing */}
+                      <p className={`game__indices-item ${time <= array[++index] || running === false ? 'roll-in-blurred-left' : 'masked'}`}>
+                        {movie.synopsis}
+                      </p>
                     </div>
                   </div>
                 </div> 
