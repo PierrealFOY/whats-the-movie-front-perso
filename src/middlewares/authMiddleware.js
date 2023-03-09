@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import { handleSuccessfulAuth, handleFailedAuth, SUBMIT_LOGIN } from '../actions/loginPageActions';
 import { SUBMIT_REGISTER, handleSuccessfulRegister } from '../actions/registerPageActions';
+import { capitalizeFirstLetter } from '../components/utils';
 
 const authMiddleware = (store) => (next) => (action) => {
 
@@ -43,6 +44,9 @@ const authMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          const title = Object.keys(error.response.data)[0];
+          const message = error.response.data[Object.keys(error.response.data)][0];
+          alert(capitalizeFirstLetter(title) + ' : ' + message);          
         });
       break;
 

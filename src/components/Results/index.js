@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../assets/images/logo-WTM.png';
 import { resetTimer, stopTimer, gameOff, saveGame } from '../../actions/movies';
 import { resetScore } from '../../actions/score';
+import { useEffect } from 'react';
 
 function Results({ handleResetGame, handleReplay }) {
   const gameStarted = useSelector((state) => state.timer.gameStarted);
@@ -13,11 +14,22 @@ function Results({ handleResetGame, handleReplay }) {
   const dispatch = useDispatch();
   const finalScore = useSelector((state) => state.score.userScore);
   const logged = useSelector((state) => state.login.logged);
-
+  let userRanking = 0;
   if (logged) {
     // if a user is logged,
     // we save the datas of the game
-    dispatch(saveGame());
+    const idUser = useSelector((state) => state.login.id);
+    useEffect(() => {
+      dispatch(saveGame());
+    }, []);
+
+    const ranking = useSelector((state) => state.ranking.classement[0]);    
+    if (ranking !== undefined) {
+      let user = ranking.find(rank => rank.id === idUser);
+      if (user !== undefined) {
+        userRanking = ranking.indexOf(user) + 1;
+      }
+    }
   }
 
   const handleClickReplay = (evt) => {
@@ -47,12 +59,23 @@ function Results({ handleResetGame, handleReplay }) {
       <div className="results">
         <span className="results-bravo">Bravo !</span>
         <span className="results-sentence">Voici votre résultat:</span>
+        <div className="results-explosion">
+          <lottie-player 
+            src="https://assets6.lottiefiles.com/packages/lf20_me3fdS.json"
+            background="transparent"
+            speed={1}
+            style={{ width: 70, height: 70 }}
+            loop
+            autoplay
+          >
+          </lottie-player>
+        </div>
         <span className="results-points">{finalScore} points</span>
       </div>
-      {logged ? (
+      {logged && userRanking !== 0 ? (
         // if the user is connected he's going to see his ranking
       <div className="ranking">
-        <span className="ranking-results">Vous êtes 7ème</span>
+        <span className="ranking-results">Vous êtes {userRanking}{userRanking === 1 ? 'er' : 'ème'}</span>
       </div>
       ):(
         <NavLink 
