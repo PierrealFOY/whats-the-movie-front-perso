@@ -3,11 +3,21 @@ import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { fetchClassementRequest } from '../../actions/ranking';
 import { Button } from 'react-bootstrap';
+import { stopTimer, gameOff, resetGame } from '../../actions/movies';
+import { resetScore } from '../../actions/score';
 
 import './styles.scss';
 import { NavLink } from 'react-router-dom';
 
 function PersonalSpace() {
+
+  const handleClickPlay = (evt) => {
+    evt.preventDefault();
+    dispatch(resetGame());
+    dispatch(resetScore());
+    dispatch(stopTimer());
+    dispatch(gameOff());
+  };
 
   const logged = useSelector((state) => state.login.logged);
 
@@ -49,6 +59,7 @@ if (logged) {
           className="Button"
           variant="success"
           size="lg"
+          onClick={handleClickPlay}
           >
           <NavLink to="/jeu" className="stats__link-play">
             <span>Jouer</span>
