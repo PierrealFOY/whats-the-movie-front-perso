@@ -17,7 +17,8 @@ export const GAME_OFF = 'GAME_OFF';
 // Saving game infos
 export const SAVE_GAME = 'SAVE_GAME';
 
-
+export const GET_ARRAY_TIME = 'GET_ARRAY_TIME';
+export const SET_ARRAY_TIME = 'SET_ARRAY_TIME';
 
 /**
  * Getting movies from the API
@@ -89,4 +90,13 @@ export const submitMovie = () => ({
 
 export const saveGame = () => ({
   type: SAVE_GAME,
+});
+
+export const getArrayTime = () => ({
+  type: GET_ARRAY_TIME,
+});
+
+export const setArrayTime = (array) => ({
+  type: SET_ARRAY_TIME,
+  array: array,
 });
