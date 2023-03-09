@@ -23,6 +23,7 @@ function Header({ handleResetGame }) {
     dispatch(handleLogout());    
   };
   
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   const logged = useSelector((state) => state.login.logged);
   const userName = useSelector((state) => state.login.name);
   const userRole = useSelector((state) => state.login.role);
@@ -48,7 +49,7 @@ function Header({ handleResetGame }) {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item active">              
-              <button type="button" data-toggle="collapse" data-target="#navbarNavDropdown" onClick={handleClickHome}>
+              <button type="button" data-toggle={isMobile ? "collapse" : ""} data-target=".navbar-collapse.show" onClick={handleClickHome}>
                 <NavLink to="/">
                   <span className="nav-link button_top">
                     Accueil
@@ -63,7 +64,7 @@ function Header({ handleResetGame }) {
                 <>
                 <li className="nav-item active">
                   <NavLink to="/compte">
-                    <button type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
+                    <button type="button" data-toggle={isMobile ? "collapse" : ""} data-target=".navbar-collapse.show">
                       <span className="nav-link button_top">
                         Mon compte
                         <span className="sr-only">(current)</span>
@@ -76,7 +77,7 @@ function Header({ handleResetGame }) {
               : (
                 <li className="nav-item active">
                   <NavLink to="/authentification">
-                    <button type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
+                    <button type="button" data-toggle={isMobile ? "collapse" : ""} data-target=".navbar-collapse.show">
                       <span className="nav-link button_top">
                         Connexion
                         <span className="sr-only">(current)</span>
@@ -93,8 +94,8 @@ function Header({ handleResetGame }) {
                   <NavLink to="/">
                     <button
                       type="button"
-                      data-toggle="collapse"
-                      data-target="#navbarNavDropdown"
+                      data-toggle={isMobile ? "collapse" : ""} 
+                      data-target=".navbar-collapse.show"
                       onClick={userLogout}
                     >
                       
@@ -115,8 +116,8 @@ function Header({ handleResetGame }) {
                 <li className="nav-item active">
                   <NavLink to="https://jean-christophemartin-server.eddi.cloud/" target="_blank">
                     <button
-                      data-toggle="collapse"
-                      data-target="#navbarNavDropdown"
+                      data-toggle={isMobile ? "collapse" : ""} 
+                      data-target=".navbar-collapse.show"
                       type="button"
                     >                    
                         <span className="nav-link button_top">
