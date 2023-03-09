@@ -24,7 +24,7 @@ function Results({ handleResetGame, handleReplay }) {
     }, []);
 
     // getting the full ranking
-    const ranking = useSelector((state) => state.ranking.classement[0]);    
+    const ranking = useSelector((state) => state.ranking.classement);    
     if (ranking !== undefined) {
       // getting the current user in the ranking
       let user = ranking.find(rank => rank.id === idUser);
