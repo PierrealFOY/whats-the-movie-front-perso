@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import './styles.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { handleLogout } from '../../actions/loginPageActions';
 import { resetScore } from '../../actions/score';
 import { stopTimer, gameOff } from '../../actions/movies';
 
 import logo from './logo.png';
+import { getUserRole } from '../utils';
 
 function Header({ handleResetGame }) {
   const dispatch = useDispatch();
@@ -18,15 +19,19 @@ function Header({ handleResetGame }) {
     dispatch(stopTimer());
     dispatch(gameOff());
   };
-
-  const userLogout = () => {
+  
+  let navigate = useNavigate();
+  const userLogout = (e) => {
+    e.preventDefault();
+    localStorage.clear();
     dispatch(handleLogout());    
+    navigate('/logout');
   };
   
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   const logged = useSelector((state) => state.login.logged);
   const userName = useSelector((state) => state.login.name);
-  const userRole = useSelector((state) => state.login.role);
+  const userRole = getUserRole();
   const userAdmin = 'ROLE_ADMIN';
 
   return (
@@ -97,12 +102,11 @@ function Header({ handleResetGame }) {
                       data-toggle={isMobile ? "collapse" : ""} 
                       data-target=".navbar-collapse.show"
                       onClick={userLogout}
-                    >
-                      
-                        <span className="nav-link button_top">
-                          Deconnexion
-                          <span className="sr-only">(current)</span>
-                        </span>                    
+                    >                      
+                      <span className="nav-link button_top">
+                        Deconnexion
+                        <span className="sr-only">(current)</span>
+                      </span>                    
                     </button>
                   </NavLink>
                 </li>

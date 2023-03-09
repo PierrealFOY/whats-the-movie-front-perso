@@ -39,3 +39,21 @@ export const sliceArray = (array) => {
   array.slice(0, 1);
   return value;
 };
+
+export const isLogged = () => {
+  let isUserLogged = false;
+  const loginInfos = JSON.parse(localStorage.getItem('loginInfos'));
+  if (loginInfos) {
+    isUserLogged = loginInfos.logged;
+  }
+  return isUserLogged;
+};
+
+export const getUserRole = () => {
+  let userRole = "";
+  const loginInfos = JSON.parse(localStorage.getItem('loginInfos'));
+  if (loginInfos) {
+    userRole = loginInfos.role;
+  }
+  return userRole;
+};

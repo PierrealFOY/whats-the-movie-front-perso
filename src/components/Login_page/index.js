@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, NavLink } from 'react-router-dom';
 import { changeEmail, changePassword, submitLogin } from '../../actions/loginPageActions';
@@ -27,6 +28,11 @@ function LoginPage() {
 
   const logged = useSelector((state) => state.login.logged);
   const message = useSelector((state) => state.login.message);
+  const loginInfos = useSelector((state) => state.login);
+
+  useEffect(() => {
+    localStorage.setItem('loginInfos', JSON.stringify(loginInfos));
+  }, [logged]);
 
   return (
     <div className="LoginPage">
