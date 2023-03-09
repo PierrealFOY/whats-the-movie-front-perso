@@ -225,6 +225,10 @@
       justify-content: space-between;
       display: flex;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: linear-gradient(180deg,#3a404d,#181c26);      
   
       & svg {
         position: relative;
@@ -315,21 +319,24 @@
           height: 100%;
           background: #fa6855;
           box-shadow: 0 3px 0 rgba(0, 0, 0, .08);
-          // transform: scaleX(1.06) scaleY(1.03);
           transition: all .3s ease-in-out;
           opacity: 0;
         }
   
         &:nth-child(1) {
-          background: #fa6855;
+          background-color: rgb(189, 163, 14);
           color: black;
           &::after {
             background: #fa6855;
           }
+
+          &.display {
+            animation: blink-first 5s both infinite !important;
+          }
         }
   
         &:nth-child(2) {
-          background: #e0574f;
+          background-color: rgb(145, 144, 144);
           color: black;
           &::after {
             background: #e0574f;
@@ -342,10 +349,14 @@
               bottom: -7px;
             }
           }
+
+          &.display {
+            animation: blink-second 5s both infinite !important;
+          }
         }
   
         &:nth-child(3) {
-          background: #d7514d;
+          background-color: rgb(155, 82, 22);
           color: black;
           &::after {
             background: #d7514d;
@@ -358,6 +369,16 @@
               bottom: -3px;
             }
           }
+
+          &.display {
+            animation: blink-third 5s both infinite !important;
+          }
+        }
+
+        &:nth-child(n + 4) {
+          &.display {
+            animation: blink-1 5s both infinite !important;
+          }          
         }
       }
   
@@ -377,16 +398,16 @@
           }
         }
       }
-  
+    }
+
+    mark.ranking--info {
+      font-size: 1.2em;
+      text-decoration: underline;
     }
   }
   
 
   .display {
-    color: red;
-    -webkit-animation: blink-1 1s both infinite;
-	        animation: blink-1 5s both infinite;
-
     .ranking--info,
     .ranking--label {
       color: #fff;
@@ -396,12 +417,12 @@
   @-webkit-keyframes blink-1 {
     0%,
     50%,
-    100% {
-      opacity: 1;
+    100% {      
+      background: blue;
     }
     25%,
-    75% {
-      opacity: 0;
+    75% {      
+      background: rgba(0, 0, 255, 0);
     }
   }
   @keyframes blink-1 {
@@ -409,12 +430,51 @@
     50%,
     100% {
       //opacity: 1;
-      background-color: blue;
+      background: blue;
     }
     25%,
     75% {
       //opacity: 0;
-      background-color: rgba(0, 0, 255, 0);
+      background: rgba(0, 0, 255, 0);
+    }
+  }
+  @keyframes blink-first {
+    0%,
+    50%,
+    100% {
+      //opacity: 1;
+      background: blue;
+    }
+    25%,
+    75% {
+      //opacity: 0;
+      background: rgb(189, 163, 14);
+    }
+  }
+  @keyframes blink-second {
+    0%,
+    50%,
+    100% {
+      //opacity: 1;
+      background: blue;
+    }
+    25%,
+    75% {
+      //opacity: 0;
+      background: rgb(145, 144, 144);
+    }
+  }
+  @keyframes blink-third {
+    0%,
+    50%,
+    100% {
+      //opacity: 1;
+      background: blue;
+    }
+    25%,
+    75% {
+      //opacity: 0;
+      background: rgb(155, 82, 22);
     }
   }
   

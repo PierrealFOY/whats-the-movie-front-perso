@@ -129,7 +129,7 @@ const apiMiddleware = (store) => (next) => (action) => {
           store.dispatch(setListsForMovie(response.data.actor, response.data.countries, response.data.directors, response.data.genres, response.data.productionStudios));
         })
         .catch((error) => {
-          console.log('Error : ', error);
+          console.log('Error GET_LISTS_FOR_MOVIE : ', error);
         })
 
     default:

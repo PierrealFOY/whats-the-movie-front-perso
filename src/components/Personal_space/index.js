@@ -20,7 +20,7 @@ function PersonalSpace() {
   let scoreUser = useSelector((state) => state.login.score);
 
   //All users
-  const ranking = useSelector((state) => state.ranking.classement[0]);
+  const ranking = useSelector((state) => state.ranking.classement);
 
   if (ranking !== undefined) {
     // we find the user connected in the ranking
@@ -69,7 +69,7 @@ if (logged) {
         <div className="game--score">Votre score est de <span className="number">{scoreUser === null ? 0 : scoreUser}</span> points</div>
        </div>
       <div className="ranking">
-        <h1>
+        <h1 className="ranking--header">
           <svg width="24px" height="24px" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M15 19H9V8.6a.6.6 0 01.6-.6h4.8a.6.6 0 01.6.6V19zM15 5H9M20.4 19H15v-3.9a.6.6 0 01.6-.6h4.8a.6.6 0 01.6.6v3.3a.6.6 0 01-.6.6zM9 19v-5.9a.6.6 0 00-.6-.6H3.6a.6.6 0 00-.6.6v5.3a.6.6 0 00.6.6H9"
               stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -84,7 +84,7 @@ if (logged) {
             <li key={player.id} className={`ranking--player ${player.name === userName ? 'display' : ''}`}>
                 <mark className="ranking--info">{player.name} </mark>
                 <small className="ranking--info">{player.score} </small>
-                <span className="ranking--label">Nombre de parties: <span className="ranking--info">{player.numberGame} </span></span>
+                <span className="ranking--label">Nombre de parties : <span className="ranking--info">{player.numberGame} </span></span>
             </li>
           ))
           ) : undefined
