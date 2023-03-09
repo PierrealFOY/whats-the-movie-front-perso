@@ -98,8 +98,10 @@
     font-size: 2em;
 
     &--played{
+      margin-left: 1em;
+      margin-right: 1em;
       text-align: center;
-      border: solid;
+      border: solid 1px;
       border-radius: 10px;
       padding: 5%;
       background-color: vars.$secondaryColor;
@@ -158,8 +160,10 @@
     }
 
     &--score{
+      margin-left: 1em;
+      margin-right: 1em;
       text-align: center;
-      border: solid;
+      border: solid 1px;
       padding: 5%;
       border-radius: 10px;
       background-color: vars.$secondaryColor;
@@ -455,6 +459,8 @@
 
         &--played{
           margin-top: 5%;
+          margin-left: 0;
+          margin-right: 0;
         }
 
         &--won{
@@ -464,6 +470,8 @@
         &--score{
           margin-top: 5%;
           margin-bottom: 5%;
+          margin-left: 0;
+          margin-right: 0;
         }
       }
 
