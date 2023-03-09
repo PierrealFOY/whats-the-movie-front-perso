@@ -23,10 +23,14 @@ function Results({ handleResetGame, handleReplay }) {
       dispatch(saveGame());
     }, []);
 
+    // getting the full ranking
     const ranking = useSelector((state) => state.ranking.classement[0]);    
     if (ranking !== undefined) {
+      // getting the current user in the ranking
       let user = ranking.find(rank => rank.id === idUser);
       if (user !== undefined) {
+        // finally, getting the place of the user in the ranking,
+        // with the index in the ranking array + 1
         userRanking = ranking.indexOf(user) + 1;
       }
     }
