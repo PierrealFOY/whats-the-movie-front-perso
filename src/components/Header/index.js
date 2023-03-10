@@ -102,7 +102,7 @@ function Header({ handleResetGame }) {
                       data-target=".navbar-collapse.show"
                       onClick={userLogout}
                     >
-                      <NavLink to="/">                      
+                      <NavLink to="/logout">                      
                         <span className="nav-link button_top">
                           Deconnexion
                           <span className="sr-only">(current)</span>
