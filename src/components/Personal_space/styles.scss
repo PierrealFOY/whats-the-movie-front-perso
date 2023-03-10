@@ -9,6 +9,7 @@
     display: flex;
     justify-content: space-between;
     margin: 1em;
+    margin-bottom: 2em;
   }
 
   &__link-add {
@@ -113,6 +114,7 @@
     flex-direction: row;
     justify-content: space-around;
     font-size: 2em;
+    margin-bottom: 1em;
 
     &--played{
       margin-left: 1em;
