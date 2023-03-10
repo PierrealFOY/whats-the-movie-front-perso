@@ -156,9 +156,7 @@ function AddMovies() {
                   classNamePrefix="select-combobox"
                   onChange={handleChangeProductionStudios}
                   options={studiosList}
-                  placeholder="Studio 1"
-                  name="studio1"
-                  required
+                  placeholder="Studio 1"             
                 />
                 <div className="can-add-icon"><i className="studio bi bi-plus-circle" onClick={handleClickAdd} /></div>
               </div>
@@ -186,8 +184,6 @@ function AddMovies() {
                     onChange={handleChangeActors}
                     options={actorsList}
                     placeholder="Acteur 1"
-                    name="actors1"
-                    required
                   />
                   <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
                 </div>
@@ -224,8 +220,6 @@ function AddMovies() {
                     onChange={handleChangeCountries}
                     options={countriesList}
                     placeholder="Pays 1"
-                    name="country1"
-                    required
                   />               
                   <div className="can-add-icon"><i className="country bi bi-plus-circle" onClick={handleClickAdd} /></div>
                 </div>
@@ -262,8 +256,6 @@ function AddMovies() {
                     onChange={handleChangeDirectors}
                     options={directorsList}
                     placeholder="Réalisateur 1"
-                    name="director1"
-                    required
                   />               
                   <div className="can-add-icon"><i className="director bi bi-plus-circle" onClick={handleClickAdd} /></div>
                 </div>
@@ -290,8 +282,6 @@ function AddMovies() {
                     onChange={handleChangeGenres}
                     options={genresList}
                     placeholder="Genre 1"
-                    name="genre1"
-                    required
                   />                
                   <div className="can-add-icon"><i className="genre bi bi-plus-circle" onClick={handleClickAdd} /></div>
                 </div>
