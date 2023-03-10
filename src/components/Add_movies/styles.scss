@@ -53,6 +53,10 @@
     width: 20%;
     color: white;
     padding: 20px;
+    // box-shadow: 8px 8px 31px -3px rgba(0,0,0,0.72);
+    background-color: #B97335;
+    border: 1px solid #6b482a;
+    border-radius: 5px;
 
     &:hover{
       transform: translateY(-0.33em);
@@ -62,20 +66,20 @@
       transform: translateY(0);
     }
 
-    &:first-child{
-      background-color: #46b290;
-
+    &:first-child {      
+      box-shadow: 5px 8px 31px -2px #46b290;
       &:hover{
-        background-color: #006666;
+        background-color: #46b290;
       }
     }
 
-    &:last-child{
-      background-color: red;
+    &:last-child {
+      box-shadow: 5px 8px 31px -2px #B22222;
       padding: 0;
 
-      &:hover{
-        background-color: #B22222;}
+      &:hover {
+        background-color: #B22222;
+      }
     }
 
     &-link {
@@ -108,7 +112,7 @@
   width: 50%;
   
   .synopsis_input{
-    height: 90px;
+    height: 100px;
   }
 }
 
@@ -152,21 +156,21 @@
   
   > div {
     width: 100%;
-    margin: 10px;
+    margin: 5px 10px 10px 10px;
     padding: 2px;
     background-color: white;
-    border: solid 2px darkgrey;
-    border-radius: 2px;
+    border: solid 1px darkgrey;
+    border-radius: 5px;
   }
 }
 
 .input-movie {
   width: 90%;
-  margin: 10px;
+  margin: 5px 10px 10px 10px;
   padding: 10px;
   background-color: white;
-  border: solid 2px darkgrey;
-  border-radius: 2px;
+  border: solid 1px darkgrey;
+  border-radius: 5px;
 }
 
 .last-select {
@@ -184,7 +188,7 @@
 
     .input-movie {
       width: 100%;
-      margin: 10px 0;
+      margin: 5px 0 10px 0;
     }
 
     .select-combobox {
@@ -203,5 +207,12 @@
         margin-left: 5px;
       }      
     }
+  }
+}
+
+label {
+  @media (min-width: 1024px) {
+    position: relative;
+    left: 15px;
   }
 }

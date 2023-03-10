@@ -1,12 +1,15 @@
 import { ThemeProvider } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 import {
   getMovies,
   nextMovie,
   resetGame,
 } from '../../actions/movies';
+
+import { handleSuccessfulAuth } from '../../actions/loginPageActions';
 
 import Header from '../Header';
 import Accueil from '../Accueil';
@@ -22,6 +25,7 @@ import AddMovies from '../Add_movies';
 import PersonalSpace from '../Personal_space';
 import ErrorLogin from '../Errors/ErrorLogin';
 import Copyright from '../Copyright/copyright';
+import LogOut from '../Logout';
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +41,21 @@ function App() {
   const handleBeginGame = () => {
     dispatch(getMovies());
   };
+
+  useEffect(() => {
+    const loginInfos = JSON.parse(localStorage.getItem('loginInfos'));
+    if (loginInfos) {
+      dispatch(handleSuccessfulAuth(
+        loginInfos.token,
+        loginInfos.id,
+        loginInfos.name,
+        loginInfos.numberGame,
+        loginInfos.score,
+        loginInfos.picture,
+        loginInfos.role[0],
+      ));
+    }
+  }, []); 
 
   return (
     <ThemeProvider
@@ -56,6 +75,7 @@ function App() {
               <Route path="/inscription" element={<RegisterForm />} />
               <Route path="/results" element={<Results handleResetGame={handleResetGame} handleReplay={handleBeginGame} />} />
               <Route path="/compte/ajout-film" element={<AddMovies />} />
+              <Route path="/logout" element={<LogOut />} />
               <Route path="*" element={<Errors />} />
             </Routes>
           </div>

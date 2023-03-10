@@ -1,12 +1,11 @@
 import './styles.scss';
 import { Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import logo from '../../assets/images/logo-WTM.png';
+import { isLogged } from '../utils';
 
 function Accueil() {
-  const logged = useSelector((state) => state.login.logged);
-  const userName = useSelector((state) => state.login.name)
+  const logged = isLogged();
 
   return (
     // main page

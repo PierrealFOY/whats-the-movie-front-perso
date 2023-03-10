@@ -14,12 +14,14 @@ import {
 } from '../../actions/formActions';
 import { submitMovie } from '../../actions/movies';
 import Loader from '../Loader';
+import { isLogged } from '../utils';
 
 import './styles.scss';
 
 function AddMovies() {
 
-  const logged = useSelector((state) => state.login.logged);
+  //const logged = useSelector((state) => state.login.logged);
+  const logged = isLogged();
 
   if (logged) {
     const dispatch = useDispatch();
@@ -108,29 +110,34 @@ function AddMovies() {
         <h1 className="AddMovies-titre">Ajouter un film</h1>
           <div className="add_new">
             <div className="left">
-              <div className="AddMovies--title">
+              <label htmlFor="title">Titre</label>
+              <div className="AddMovies--title">                
                 <input
                   className="input-movie"
                   id="title"
                   type="text"
-                  placeholder="Titre"
+                  placeholder="Titre du film"
                   value={title}
                   onChange={handleChangeTitle}
                   required
                 />
               </div>
-              <div className="AddMovies--synopsis">
+              <label htmlFor="synopsis">Synopsis</label>
+              <div className="AddMovies--synopsis">                
                 <textarea
+                  id="synopsis"
                   className="synopsis_input input-movie"
                   value={synopsis}
-                  placeholder="Synopsis"
+                  placeholder="Synopsis (au moins 50 caractères)"
                   onChange={handleChangeSynopsis}
                   minLength={50}
-                  required
+                  required                  
                 />
               </div>
-              <div className="AddMovies--date">
+              <label htmlFor="date">Date de sortie</label>
+              <div className="AddMovies--date">                
                 <input
+                  id="date"
                   className="input-movie"
                   type="date"
                   placeholder="Date de sortie"
@@ -141,13 +148,15 @@ function AddMovies() {
               </div>
 
               {/* Production Studios */}
-              <div className="AddMovies--studio studio-input can-add">
+              <label htmlFor="studio">Studio(s) de production</label>
+              <div className="AddMovies--studio studio-input can-add">                
                 <Select
+                  id="studio"
                   className="select-combobox"
                   classNamePrefix="select-combobox"
                   onChange={handleChangeProductionStudios}
                   options={studiosList}
-                  placeholder="Studio de production 1"
+                  placeholder="Studio 1"
                   required
                 />
                 <div className="can-add-icon"><i className="studio bi bi-plus-circle" onClick={handleClickAdd} /></div>
@@ -158,7 +167,7 @@ function AddMovies() {
                   classNamePrefix="select-combobox"
                   onChange={handleChangeProductionStudios}
                   options={studiosList}
-                  placeholder="Studio de production 2"
+                  placeholder="Studio 2"
                 />
                 <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>
               </div>
@@ -166,36 +175,40 @@ function AddMovies() {
 
             {/* Actors */}
             <div className="right">
-              <div className="AddMovies--acteur actor-input can-add">
-                <Select
-                  className="select-combobox"
-                  classNamePrefix="select-combobox"
-                  onChange={handleChangeActors}
-                  options={actorsList}
-                  placeholder="Acteur 1"
-                  required
-                />
-                <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
-              </div>
-              <div className="AddMovies--acteur actor-input can-add invisible">
-                <Select
-                  className="select-combobox"
-                  classNamePrefix="select-combobox"
-                  onChange={handleChangeActors}
-                  options={actorsList}
-                  placeholder="Acteur 2"
-                />
-                <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
-              </div>
-              <div className="AddMovies--acteur actor-input can-add invisible">
-                <Select
-                  className="select-combobox"
-                  classNamePrefix="select-combobox"
-                  onChange={handleChangeActors}
-                  options={actorsList}
-                  placeholder="Acteur 3"
-                />              
-                {/* <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div> */}
+              <div>
+                <label htmlFor="actors">Acteurs principaux</label>
+                <div className="AddMovies--acteur actor-input can-add">                
+                  <Select
+                    id="actors"
+                    className="select-combobox"
+                    classNamePrefix="select-combobox"
+                    onChange={handleChangeActors}
+                    options={actorsList}
+                    placeholder="Acteur 1"
+                    required
+                  />
+                  <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
+                </div>
+                <div className="AddMovies--acteur actor-input can-add invisible">
+                  <Select
+                    className="select-combobox"
+                    classNamePrefix="select-combobox"
+                    onChange={handleChangeActors}
+                    options={actorsList}
+                    placeholder="Acteur 2"
+                  />
+                  <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
+                </div>
+                <div className="AddMovies--acteur actor-input can-add invisible last-select">
+                  <Select
+                    className="select-combobox"
+                    classNamePrefix="select-combobox"
+                    onChange={handleChangeActors}
+                    options={actorsList}
+                    placeholder="Acteur 3"
+                  />              
+                  <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>
+                </div>
               </div>
               {/* <div className="AddMovies--acteur actor-input can-add invisible">
                 <Select
@@ -219,92 +232,104 @@ function AddMovies() {
               </div> */}
 
               {/* Countries */}
-              <div className="AddMovies--country country-input can-add">
-                <Select
-                  className="select-combobox" 
-                  classNamePrefix="select-combobox"                 
-                  onChange={handleChangeCountries}
-                  options={countriesList}
-                  placeholder="Pays 1"
-                  required
-                />               
-                <div className="can-add-icon"><i className="country bi bi-plus-circle" onClick={handleClickAdd} /></div>
-              </div>
-              <div className="AddMovies--country country-input can-add invisible">
-                <Select
-                  className="select-combobox"
-                  classNamePrefix="select-combobox"
-                  onChange={handleChangeCountries}
-                  options={countriesList}
-                  placeholder="Pays 2"
-                />                  
-                <div className="can-add-icon"><i className="country bi bi-plus-circle" onClick={handleClickAdd} /></div>
-              </div>
-              <div className="AddMovies--country country-input can-add invisible last-select">
-                <Select
-                  className="select-combobox"
-                  classNamePrefix="select-combobox"
-                  onChange={handleChangeCountries}
-                  options={countriesList}
-                  placeholder="Pays 3"
-                />      
-                <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>            
+              <div>
+                <label htmlFor="countries">Pays de production</label>
+                <div className="AddMovies--country country-input can-add">                
+                  <Select
+                    id="countries"
+                    className="select-combobox" 
+                    classNamePrefix="select-combobox"                 
+                    onChange={handleChangeCountries}
+                    options={countriesList}
+                    placeholder="Pays 1"
+                    required
+                  />               
+                  <div className="can-add-icon"><i className="country bi bi-plus-circle" onClick={handleClickAdd} /></div>
+                </div>
+                <div className="AddMovies--country country-input can-add invisible">
+                  <Select
+                    className="select-combobox"
+                    classNamePrefix="select-combobox"
+                    onChange={handleChangeCountries}
+                    options={countriesList}
+                    placeholder="Pays 2"
+                  />                  
+                  <div className="can-add-icon"><i className="country bi bi-plus-circle" onClick={handleClickAdd} /></div>
+                </div>
+                <div className="AddMovies--country country-input can-add invisible last-select">
+                  <Select
+                    className="select-combobox"
+                    classNamePrefix="select-combobox"
+                    onChange={handleChangeCountries}
+                    options={countriesList}
+                    placeholder="Pays 3"
+                  />      
+                  <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>            
+                </div>
               </div>
 
               {/* Directors */}
-              <div className="AddMovies--realisateur director-input can-add">
-                <Select
-                  className="select-combobox"
-                  classNamePrefix="select-combobox"
-                  onChange={handleChangeDirectors}
-                  options={directorsList}
-                  placeholder="Réalisateur 1"
-                  required
-                />               
-                <div className="can-add-icon"><i className="director bi bi-plus-circle" onClick={handleClickAdd} /></div>
-              </div>
-              <div className="AddMovies--realisateur director-input can-add invisible last-select">
-                <Select
-                  className="select-combobox"
-                  classNamePrefix="select-combobox"
-                  onChange={handleChangeDirectors}
-                  options={directorsList}
-                  placeholder="Réalisateur 2"
-                />   
-                <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>               
+              <div>
+                <label htmlFor="directors">Réalisateur(s)</label>
+                <div className="AddMovies--realisateur director-input can-add">                
+                  <Select
+                    id="directors"
+                    className="select-combobox"
+                    classNamePrefix="select-combobox"
+                    onChange={handleChangeDirectors}
+                    options={directorsList}
+                    placeholder="Réalisateur 1"
+                    required
+                  />               
+                  <div className="can-add-icon"><i className="director bi bi-plus-circle" onClick={handleClickAdd} /></div>
+                </div>
+                <div className="AddMovies--realisateur director-input can-add invisible last-select">
+                  <Select
+                    className="select-combobox"
+                    classNamePrefix="select-combobox"
+                    onChange={handleChangeDirectors}
+                    options={directorsList}
+                    placeholder="Réalisateur 2"
+                  />   
+                  <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>               
+                </div>
               </div>
 
               {/* Genres */}
-              <div className="AddMovies--genre genre-input can-add">
+              <div>
+                <label htmlFor="genres">Genre(s) du film</label>
+                <div className="AddMovies--genre genre-input can-add">                
+                  <Select
+                    id="genre"
+                    className="select-combobox"
+                    classNamePrefix="select-combobox"
+                    onChange={handleChangeGenres}
+                    options={genresList}
+                    placeholder="Genre 1"
+                    required
+                  />                
+                  <div className="can-add-icon"><i className="genre bi bi-plus-circle" onClick={handleClickAdd} /></div>
+                </div>
+                <div className="AddMovies--genre genre-input can-add invisible">
                 <Select
-                  className="select-combobox"
-                  classNamePrefix="select-combobox"
-                  onChange={handleChangeGenres}
-                  options={genresList}
-                  placeholder="Genre 1"
-                  required
-                />                
-                <div className="can-add-icon"><i className="genre bi bi-plus-circle" onClick={handleClickAdd} /></div>
-              </div>
-              <div className="AddMovies--genre genre-input can-add invisible">
-              <Select
-                  className="select-combobox"
-                  classNamePrefix="select-combobox"
-                  onChange={handleChangeGenres}
-                  options={genresList}
-                  placeholder="Genre 2"
-                />  
-                <div className="can-add-icon"><i className="genre bi bi-plus-circle" onClick={handleClickAdd} /></div>
-              </div>
-              <div className="AddMovies--genre genre-input can-add invisible last-select">
-              <Select
-                  className="select-combobox"
-                  classNamePrefix="select-combobox"
-                  onChange={handleChangeGenres}
-                  options={genresList}
-                  placeholder="Genre 3"
-                />  
-                <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>
+                    className="select-combobox"
+                    classNamePrefix="select-combobox"
+                    onChange={handleChangeGenres}
+                    options={genresList}
+                    placeholder="Genre 2"
+                  />  
+                  <div className="can-add-icon"><i className="genre bi bi-plus-circle" onClick={handleClickAdd} /></div>
+                </div>
+                <div className="AddMovies--genre genre-input can-add invisible last-select">
+                <Select
+                    className="select-combobox"
+                    classNamePrefix="select-combobox"
+                    onChange={handleChangeGenres}
+                    options={genresList}
+                    placeholder="Genre 3"
+                  />  
+                  <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>
+                </div>
               </div>
             </div>
           </div>
