@@ -68,27 +68,27 @@ function Header({ handleResetGame }) {
               ? (
                 <>
                 <li className="nav-item active">
-                  <NavLink to="/compte">
-                    <button type="button" data-toggle={isMobile ? "collapse" : ""} data-target=".navbar-collapse.show">
+                  <button type="button" data-toggle={isMobile ? "collapse" : ""} data-target=".navbar-collapse.show">
+                    <NavLink className="link" to="/compte">
                       <span className="nav-link button_top">
                         Mon compte
                         <span className="sr-only">(current)</span>
                       </span>
-                    </button>
-                  </NavLink>
+                    </NavLink>
+                  </button>
                 </li>
                 </>
               )
               : (
                 <li className="nav-item active">
-                  <NavLink to="/authentification">
                     <button type="button" data-toggle={isMobile ? "collapse" : ""} data-target=".navbar-collapse.show">
-                      <span className="nav-link button_top">
-                        Connexion
-                        <span className="sr-only">(current)</span>
-                      </span>
+                      <NavLink to="/authentification">
+                        <span className="nav-link button_top">
+                          Connexion
+                          <span className="sr-only">(current)</span>
+                        </span>
+                      </NavLink>
                     </button>
-                  </NavLink>
                 </li>
               )
             }
@@ -96,19 +96,19 @@ function Header({ handleResetGame }) {
               logged
               ? (
                 <li className="nav-item active">
-                  <NavLink to="/">
                     <button
                       type="button"
                       data-toggle={isMobile ? "collapse" : ""} 
                       data-target=".navbar-collapse.show"
                       onClick={userLogout}
-                    >                      
-                      <span className="nav-link button_top">
-                        Deconnexion
-                        <span className="sr-only">(current)</span>
-                      </span>                    
+                    >
+                      <NavLink to="/">                      
+                        <span className="nav-link button_top">
+                          Deconnexion
+                          <span className="sr-only">(current)</span>
+                        </span>
+                      </NavLink>                    
                     </button>
-                  </NavLink>
                 </li>
               )
               : undefined
@@ -118,18 +118,18 @@ function Header({ handleResetGame }) {
               logged && userRole === userAdmin ?
               (
                 <li className="nav-item active">
-                  <NavLink to="https://jean-christophemartin-server.eddi.cloud/" target="_blank">
                     <button
                       data-toggle={isMobile ? "collapse" : ""} 
                       data-target=".navbar-collapse.show"
                       type="button"
-                    >                    
+                    >
+                      <NavLink to="https://jean-christophemartin-server.eddi.cloud/" target="_blank">                    
                         <span className="nav-link button_top">
                           Accéder au back-office
                           <span className="sr-only">(current)</span>
-                        </span>                    
+                        </span>
+                      </NavLink>                    
                     </button>
-                  </NavLink>
                 </li>
               )
               : undefined
