@@ -157,6 +157,7 @@ function AddMovies() {
                   onChange={handleChangeProductionStudios}
                   options={studiosList}
                   placeholder="Studio 1"
+                  name="studio1"
                   required
                 />
                 <div className="can-add-icon"><i className="studio bi bi-plus-circle" onClick={handleClickAdd} /></div>
@@ -185,6 +186,7 @@ function AddMovies() {
                     onChange={handleChangeActors}
                     options={actorsList}
                     placeholder="Acteur 1"
+                    name="actors1"
                     required
                   />
                   <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
@@ -210,26 +212,6 @@ function AddMovies() {
                   <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>
                 </div>
               </div>
-              {/* <div className="AddMovies--acteur actor-input can-add invisible">
-                <Select
-                  className="select-combobox"
-                  classNamePrefix="select-combobox"
-                  onChange={handleChangeActors}
-                  options={actorsList}
-                  placeholder="Acteur 4"
-                />            
-                <div className="can-add-icon"><i className="actor bi bi-plus-circle" onClick={handleClickAdd} /></div>
-              </div>
-              <div className="AddMovies--acteur actor-input can-add invisible last-select">
-                <Select
-                  className="select-combobox"
-                  classNamePrefix="select-combobox"
-                  onChange={handleChangeActors}
-                  options={actorsList}
-                  placeholder="Acteur 5"
-                />    
-                <div className="can-add-icon"><i className="bi bi-plus-circle invisible" /></div>          
-              </div> */}
 
               {/* Countries */}
               <div>
@@ -242,6 +224,7 @@ function AddMovies() {
                     onChange={handleChangeCountries}
                     options={countriesList}
                     placeholder="Pays 1"
+                    name="country1"
                     required
                   />               
                   <div className="can-add-icon"><i className="country bi bi-plus-circle" onClick={handleClickAdd} /></div>
@@ -279,6 +262,7 @@ function AddMovies() {
                     onChange={handleChangeDirectors}
                     options={directorsList}
                     placeholder="Réalisateur 1"
+                    name="director1"
                     required
                   />               
                   <div className="can-add-icon"><i className="director bi bi-plus-circle" onClick={handleClickAdd} /></div>
@@ -306,6 +290,7 @@ function AddMovies() {
                     onChange={handleChangeGenres}
                     options={genresList}
                     placeholder="Genre 1"
+                    name="genre1"
                     required
                   />                
                   <div className="can-add-icon"><i className="genre bi bi-plus-circle" onClick={handleClickAdd} /></div>
