@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import './styles.scss';
-import { NavLink, Navigate } from 'react-router-dom';
+import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../assets/images/logo-WTM.png';
 import { resetTimer, stopTimer, gameOff, saveGame } from '../../actions/movies';
@@ -38,6 +38,7 @@ function Results({ handleResetGame, handleReplay }) {
     }
   }
 
+  const navigate = useNavigate();
   const handleClickReplay = (evt) => {
     evt.preventDefault();
     handleResetGame();
@@ -46,6 +47,7 @@ function Results({ handleResetGame, handleReplay }) {
     dispatch(stopTimer());
     dispatch(resetScore());
     dispatch(gameOff());
+    navigate('/jeu');
   };
 
   const handleBackHome = (evt) => {
@@ -55,6 +57,7 @@ function Results({ handleResetGame, handleReplay }) {
     dispatch(stopTimer());
     dispatch(resetScore());
     dispatch(gameOff());
+    navigate('/');
   };
 
   return (
@@ -94,20 +97,11 @@ function Results({ handleResetGame, handleReplay }) {
         </NavLink>
       )}
       <div className="btn">
-        <button type="button" className="btn-playAgain" onClick={handleClickReplay}>
-          <NavLink
-            to="/jeu"
-
-          >
-            Rejouer
-          </NavLink>
+        <button type="button" className="btn-playAgain" onClick={handleClickReplay}>          
+          Rejouer          
         </button>
         <button type="button" className="btn-BackHome" onClick={handleBackHome}>
-          <NavLink
-            to="/"
-          >
-            Retour à l'accueil
-          </NavLink>
+          Retour à l'accueil
         </button>
       </div>
     </div>
