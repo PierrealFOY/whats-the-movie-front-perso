@@ -81,11 +81,6 @@ if (logged) {
           </NavLink>
         </Button>
       </div>
-      <div className="title">
-        <h1 className="title--stats">
-          Vos statistiques :
-        </h1>
-      </div>
       <div className="game">
         <div className="game--played">Vous avez joué <span className="number">{numberGame === null ? 0 : numberGame}</span> parties</div>
         {/* <div className="game--won">Vous avez gagné 10 parties</div> */}
