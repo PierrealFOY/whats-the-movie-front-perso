@@ -123,7 +123,6 @@
       border: solid 1px;
       border-radius: 10px;
       padding: 5%;
-      background-color: vars.$secondaryColor;
       box-shadow: 8px 8px 31px -3px rgba(0,0,0,0.72);
       -webkit-animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -173,7 +172,6 @@
       border: solid 1px;
       padding: 5%;
       border-radius: 10px;
-      background-color: vars.$secondaryColor;
       box-shadow: 8px 8px 31px -3px rgba(0,0,0,0.72);
       -webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
