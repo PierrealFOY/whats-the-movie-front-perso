@@ -1,5 +1,7 @@
 # projet-10-what-s-the-movie-front
 
+## Repository du projet Back-Office : https://github.com/PierrealFOY/whats-the-movie-back-perso 
+
 ## Description
 
 Ce repo contient le travail efféctué par l'équipe Front-end du projet What's the Movie.
